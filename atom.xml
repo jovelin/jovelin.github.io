@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jovelin.cn/"/>
-  <updated>2018-06-18T15:47:16.000Z</updated>
+  <updated>2018-06-20T02:15:47.000Z</updated>
   <id>http://jovelin.cn/</id>
   
   <author>
@@ -17,34 +17,75 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>python基础</title>
-    <link href="http://jovelin.cn/2018/06/18/python%E5%9F%BA%E7%A1%80/"/>
-    <id>http://jovelin.cn/2018/06/18/python基础/</id>
-    <published>2018-06-18T15:05:25.000Z</published>
-    <updated>2018-06-18T15:47:16.000Z</updated>
+    <title>Pycharm for Mac 快捷键</title>
+    <link href="http://jovelin.cn/2017/06/20/Pycharm-for-Mac-%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://jovelin.cn/2017/06/20/Pycharm-for-Mac-快捷键/</id>
+    <published>2017-06-20T01:27:58.000Z</published>
+    <updated>2018-06-20T02:15:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Pycharm-for-Mac-快捷键"><a href="#Pycharm-for-Mac-快捷键" class="headerlink" title="Pycharm for Mac 快捷键"></a>Pycharm for Mac 快捷键</h3><p>ctrl + r                            运行</p><p>ctrl + d                           调试</p><p>ctrl + shift + r                 从编辑器运行上下文环境配置</p><p>ctrl + shift + d                从编辑器调试上下文环境配置</p><a id="more"></a><p>ctrl + opt + r                   弹出 Run 的可选菜单</p><p>ctrl + opt + d                  弹出 Debug 的可选菜单</p><p>fn + f8                            单步调试，跳过函数</p><p>fn + f7                            单步调试，会进入函数内部</p><p>cmd + 1                         展开收缩左边文件栏</p><p>cmd + /                          注释/取消注释一行</p><p>fn + ctrl + space            基本代码补全（补全任何类、方法、<br>变量）</p><p>cmd + shift + -/+           收缩/展开代码块</p><p>cmd + opt + l                 格式化代码</p><p>fn + cmd + f2                 退出运行</p><p>cmd + shift + 上/下        移动代码块</p><p>cmd + z                          撤回</p><p>cmd + shift + z               取消撤回</p><p>cmd + opt + r                 跳到下一个断点</p><p>fn + cmd + shift + f8      查看所有断点</p><p>ctrl + j                             查看函数文档注释</p>]]></content>
     
     <summary type="html">
     
+      &lt;h3 id=&quot;Pycharm-for-Mac-快捷键&quot;&gt;&lt;a href=&quot;#Pycharm-for-Mac-快捷键&quot; class=&quot;headerlink&quot; title=&quot;Pycharm for Mac 快捷键&quot;&gt;&lt;/a&gt;Pycharm for Mac 快捷键&lt;/h3&gt;&lt;p&gt;ctrl + r                            运行&lt;/p&gt;
+&lt;p&gt;ctrl + d                           调试&lt;/p&gt;
+&lt;p&gt;ctrl + shift + r                 从编辑器运行上下文环境配置&lt;/p&gt;
+&lt;p&gt;ctrl + shift + d                从编辑器调试上下文环境配置&lt;/p&gt;
+    
     </summary>
     
+      <category term="Pycharm" scheme="http://jovelin.cn/categories/Pycharm/"/>
+    
+    
+      <category term="Pycharm" scheme="http://jovelin.cn/tags/Pycharm/"/>
+    
+      <category term="快捷键" scheme="http://jovelin.cn/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   
   <entry>
-    <title>Hello Hexo</title>
-    <link href="http://jovelin.cn/2018/06/06/hello-hexo/"/>
-    <id>http://jovelin.cn/2018/06/06/hello-hexo/</id>
-    <published>2018-06-05T23:33:44.000Z</published>
-    <updated>2018-06-18T15:47:10.000Z</updated>
+    <title>写作都需要的中文排版指南</title>
+    <link href="http://jovelin.cn/2017/01/20/%E5%86%99%E4%BD%9C%E9%83%BD%E9%9C%80%E8%A6%81%E7%9A%84%E4%B8%AD%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97/"/>
+    <id>http://jovelin.cn/2017/01/20/写作都需要的中文排版指南/</id>
+    <published>2017-01-20T02:33:10.000Z</published>
+    <updated>2018-06-20T02:36:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文适用于所有编辑、作家、撰稿人、公众号作者、博主等，甚至适合所有人，因为人的一生难免避免不了写作。</p><a id="more"></a><p><img src="http://upload-images.jianshu.io/upload_images/3365001-dcd172133c814f72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h3 id="1-空格"><a href="#1-空格" class="headerlink" title="1. 空格"></a>1. 空格</h3><p>我每次看到网页上的中文字和英文、数字、符号挤在一起，就会坐立不安，忍不住想在他们之间加个空格。</p><p>「有研究显示，打字的时候不喜欢在中文和英文之间加空格的人，感情路都走得很辛苦，有七成的比例会在34岁的时候跟自己不爱的人结婚，而其余三成的人最后只能把遗产留给自己的猫。毕竟爱情跟书写都需要适时地留白。」</p><p><strong>中英文之间需要加空格</strong></p><p>eg. 大家可以在 GitHub 上搜索 jovelin 找到我。</p><p><strong>中文与数字之间需要加空格</strong></p><p>eg. 不知不觉，我已经工作 2 年了。</p><p><strong>数字与单位之间需要加空格</strong></p><p>eg. 我有一个 2 TB 的网盘，貌似还是不够用。</p><p><strong>完整的英文整句时标点与单词之间需要加空格</strong></p><p>eg. Don’t tangle, not hesitant.</p><p>But，也有一些例外：</p><p><strong>度的标志、百分号不加空格</strong></p><p>eg. 今天气温有 32° 的高温。</p><p><strong>全角标点与其他字符之间不加空格</strong></p><p>eg. 大家好，我是 jovelin，请多多关照。</p><h3 id="2-标点"><a href="#2-标点" class="headerlink" title="2. 标点"></a>2. 标点</h3><p>说到标点，不得不说下全角和半角，很多人可能不了解全角和半角的概念，这里顺便介绍下。</p><p>全角和半角是英文和中文的编码规范不同遗留下的问题，简单来说，全角占两个字节，半角占一个字节，你可以理解成中文汉字是全角，英文字母是半角，不过半角全角主要是针对标点符号来说的，中文标点占两个字节，英文标点占一个字节。体现在排版上的差异就是，全角字符屏幕打印宽度是两个，而半角字符屏幕打印宽度是一个，如中文逗号和英文逗号他们的显示分别是「，」和「,」。</p><p><strong>使用全角中文标点</strong></p><p>中文排版中所有的标点都应该使用中文全角中文标点</p><p>eg. 大家好，我是 jovelin。</p><p><strong>遇到英文整句、特殊名词时使用半角标点</strong></p><p>eg. 乔布斯说过：「Stay hungry, stay foolish.」</p><p>eg. Facebook, Inc.</p><p><strong>使用直角引号</strong></p><p>我国国家标准要求弯引号，但是个人建议在新媒体排版时使用直角引号。</p><p>eg. 你竟然不知道「MacBook Pro」？</p><p><strong>如果引号中使用引号使用直角双引号</strong></p><p>eg. 我质问他，「你难道忘记『乔布斯』了么？」</p><h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h3><p>除以上之外，还有一些其他标准推荐大家使用的。</p><p><strong>英文名词首字母尽量大写</strong></p><p>eg. Google、Android、Facebook。</p><p><strong>专有名词使用正确的大小写</strong></p><p>eg. GitHub、iOS、iPhone 6S、MacBook Pro。</p><p><strong>首行不要缩进</strong></p><p>这点可能有人不同意，但是我要在这里解释下，在说明之前我们必须弄明白「首行缩进」的目的是什么。</p><p>「每段之前空两格」是我们从小学写作文就养成的习惯，也是正式文体的格式要求，其目的是为了区分自然段。</p><p>但是像我们现在接触的阅读，都是没有固定的格式要求的，如微信公众号、电子文档等，所以大家一般都采用「空出一行」进行自然段与自然段之间的区分，这种写作方式非常省事，而且很整齐。</p><p>所以，我认为这种应该是最科学的方式，只要没有明确的格式要求，写作的排版无须首行缩进。</p><p><strong>适当的间距、空行</strong></p><p>如果段落太长，可以使用适当的空行分段，比如这篇文章，这样不会给读者造成阅读压力，提升阅读体验。</p><p>最后，你可能会问，以上这些原则是业界标准么？我不敢保证，但是你不妨看下 「Apple 中国官网」、「Microsoft 中国官网」、公众号「小道消息」、「MacTalk」、「可能吧」等的排版，基本都是使用以上排版标准。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/25797162" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25797162</a></p><p><a href="https://zhuanlan.zhihu.com/p/20506092" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20506092</a></p><p><a href="https://github.com/mzlogin/chinese-copywriting-guidelines" target="_blank" rel="noopener">mzlogin/chinese-copywriting-guidelines</a></p>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;本文适用于所有编辑、作家、撰稿人、公众号作者、博主等，甚至适合所有人，因为人的一生难免避免不了写作。&lt;/p&gt;
+    
     </summary>
     
-      <category term="hexo" scheme="http://jovelin.cn/categories/hexo/"/>
+      <category term="写作排版" scheme="http://jovelin.cn/categories/%E5%86%99%E4%BD%9C%E6%8E%92%E7%89%88/"/>
     
     
-      <category term="hexo" scheme="http://jovelin.cn/tags/hexo/"/>
+      <category term="写作排版" scheme="http://jovelin.cn/tags/%E5%86%99%E4%BD%9C%E6%8E%92%E7%89%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简书的 Markdown 编辑器</title>
+    <link href="http://jovelin.cn/2017/01/15/%E7%AE%80%E4%B9%A6%E7%9A%84Markdown%E7%BC%96%E8%BE%91%E5%99%A8/"/>
+    <id>http://jovelin.cn/2017/01/15/简书的Markdown编辑器/</id>
+    <published>2017-01-15T02:27:38.000Z</published>
+    <updated>2018-06-20T02:31:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>在简书的设置中，根据路径 <strong>基础设置 -&gt; 常用编辑器 -&gt; 点选Markdown </strong>即可启用markdown编辑器。<br>然后在创作文章的管理界面，点击切换到预览模式按钮，即可出现实时预览的创作界面。我们在左侧输入文字，在右侧会自动显示预览。</p></blockquote><a id="more"></a><h4 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-7607b3cb9f492354.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标题"></p><p>将1~6个#井号放在标题内容的前面，就能够轻松的表示不同字号的标题。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题 字号最大</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题 字号最小</span><br></pre></td></tr></table></figure><p>预览效果在上图中已经清晰的展示出来，大家也可以立刻启用简书的markdown工具，跟着文章开始动手尝试。</p><blockquote><p>为了规范使用习惯，建议大家在字符与文字之间留一个空格，在后面的许多语法也是同样的建议。</p></blockquote><h4 id="二、分割线"><a href="#二、分割线" class="headerlink" title="二、分割线"></a>二、分割线</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-4c84abae30469393.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多个横杠和等号可以用表表示一级标题和二级标题以及分割线"></p><p>使用3个以上的任意数量的-_*符号，即可输出一条分割线。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 以下几种情况都能够输出分割线</span><br><span class="line">********</span><br><span class="line">----------</span><br><span class="line">______</span><br></pre></td></tr></table></figure><p>我们可以看到，图中还可以使用文字加上等号与减号分别表示一级标题与二级标题。</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 大于两个任意数量的等号</span><br><span class="line">一级标题</span><br><span class="line">======</span><br><span class="line">// 大于两个任意属相的减号</span><br><span class="line">二级标题</span><br><span class="line">----</span><br></pre></td></tr></table></figure><h4 id="三、段落引用-Blockquotes"><a href="#三、段落引用-Blockquotes" class="headerlink" title="三、段落引用 Blockquotes"></a>三、段落引用 Blockquotes</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-2bd1d495e1c43a23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="段落引用"></p><blockquote><p>在普通段落前面加上一个 &gt; 符号，即可将该段落标记为引用。在引用中，能够与其他任意语法组合。</p></blockquote><p>输入一个空行，可结束一段引用。 </p><h4 id="四、无序列表"><a href="#四、无序列表" class="headerlink" title="四、无序列表"></a>四、无序列表</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-4fa700b7ce018f4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无序列表"></p><ul><li>加号+空格 ‘+ ‘</li></ul><ul><li>减号+空格 ‘- ‘</li></ul><ul><li>星号+空格 ‘* ‘</li></ul><p>+-*任意一种字符与空格组合，能将一个段落标记为无序列表。无序列表中也可以与其他语法组合使用。</p><p>输入一个空行，可结束一个无序列表。</p><h4 id="五、有序列表"><a href="#五、有序列表" class="headerlink" title="五、有序列表"></a>五、有序列表</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-89b2566a7c842eda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="有序列表"></p><ol start="0"><li><strong>任意数字与空格组合，可以开始一个有序列表。</strong>即使每一列的数字并不是按顺序来，输出结果也会智能的从1开始依次排序。</li><li><strong>数字+点+空格</strong> 开始一个有序列表</li><li>后面的只要都是数字，无论是多少</li><li>都会自动按顺序识别。</li></ol><ol><li>使用两行空格或者其他诸如图片这样的格式，能够终止一个有序列表。</li></ol><h4 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-dbc786df222a3baa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="超链接"></p><p><a href="http://www.jianshu.com/u/149c3a6ceb25" target="_blank" rel="noopener">我的簡書</a> <a href="https://github.com/jovelin" target="_blank" rel="noopener">github</a></p><p><em>[]()</em> 可以输出一个超链接。其中中括号中填写文字信息，小括号中填写链接地址信息。简书可以保留复制格式，也就是说，如果你从其他地方复制一个带超链接的文字过来，超链接会自动保留。</p><h4 id="七、图片"><a href="#七、图片" class="headerlink" title="七、图片"></a>七、图片</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-aab9682ae3425bd9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片"></p><p><img src="http://upload.jianshu.io/users/upload_avatars/3365001/e1eae8fc5f67.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240" alt="头像"></p><p><em>![]()</em> 可以输出一张图片的显示。其中中括号中填写图片的描述信息，描述信息最终会在图片下方的横线中显示。小括号中填写图片的地址。</p><p>而在图片的处理上，简书的markdown做到了最人性化的体验。我们可以使用剪切工具比如QQ或者微信的剪切工具在电脑上任意剪切一张图，然后就可以直接复制在简书里。如下图所示。这一点，极大的便利了我们对图片的处理。我们不用将图片保存起来，然后拖入简书。本文中所有的图片都是剪切后直接复制进来的，简单快捷方便。大爱这个特性。</p><p><img src="http://upload-images.jianshu.io/upload_images/3365001-580a8c35a74ef48f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="直接将复制在剪切板的图片粘贴进来即可，简书的markdown工具会自动上传到cdn服务器"></p><h4 id="八、强调"><a href="#八、强调" class="headerlink" title="八、强调"></a>八、强调</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-334388a61e3e19d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="强调"></p><p>*_ 可以设置文字为加粗或者斜体。具体使用情况见图。</p><h4 id="九、代码块"><a href="#九、代码块" class="headerlink" title="九、代码块"></a>九、代码块</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-241af0b59a0a47d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代码块"></p><p>这是程序员大爱的语法。<br>在 <strong><code></code></strong> 符号中输入文字或者代码片段，输入的文字将会被标注起来。<br>例如 <code>这是一段被标注的文字</code>。<br>代码块效果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 这里面支持代码高亮。</span><br><span class="line">// 所以我们程序员写博客，会经常将我们的代码放在这个语法中。</span><br><span class="line">// 不同的功能会显示出不同的颜色。</span><br><span class="line">// 例如注释</span><br><span class="line">var $element = document.querySelector(&apos;#container&apos;);</span><br></pre></td></tr></table></figure></p><h4 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-0f93642e1981a639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="表格"></p><table><thead><tr><th style="text-align:center">姓名</th><th style="text-align:center">性别</th><th style="text-align:center">年龄</th><th style="text-align:center">备注</th></tr></thead><tbody><tr><td style="text-align:center">jovelin</td><td style="text-align:center">男</td><td style="text-align:center">20</td><td style="text-align:center">简书</td></tr></tbody></table><p>在我们写文章的时候，虽然表格被用到的时候并不多，但是这确实是一个功能强大的语法，能在我们需要时轻松帮助我们解决困难。</p><p>语法的中间部分|:—:|:—:|:—:|是整个表格的关键。该部分的上方表示为标题，下方为表格的每一项。都使用竖线|隔开。</p><p>我们可以通过修改中间部分，来修改表格文案的对齐方式。</p><pre><code>|:---|:---|:---|       左对齐|:---:|:---:|:---:|    居中对齐|---:|---:|---:|       右对齐</code></pre><h4 id="十一、反斜杠"><a href="#十一、反斜杠" class="headerlink" title="十一、反斜杠"></a>十一、反斜杠</h4><p><img src="http://upload-images.jianshu.io/upload_images/3365001-9a0abbdcbae8d0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="反斜杠"></p><p>这一条其实应该不算什么语法了，只是为我们在markdown语法中输入这些符号提供了一个方式。防止这些符号被认为是语法。</p><p>花10来分钟熟练上面这十条语句，就能够轻松的使用markdown进行文学创作了。赶紧在简书web版里动手试试吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在简书的设置中，根据路径 &lt;strong&gt;基础设置 -&amp;gt; 常用编辑器 -&amp;gt; 点选Markdown &lt;/strong&gt;即可启用markdown编辑器。&lt;br&gt;然后在创作文章的管理界面，点击切换到预览模式按钮，即可出现实时预览的创作界面。我们在左侧输入文字，在右侧会自动显示预览。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://jovelin.cn/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="http://jovelin.cn/tags/Markdown/"/>
     
   </entry>
   
