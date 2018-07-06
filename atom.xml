@@ -39,28 +39,6 @@
   </entry>
   
   <entry>
-    <title>ubuntu 基本安装</title>
-    <link href="http://jovelin.cn/2018/06/23/ubuntu-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85/"/>
-    <id>http://jovelin.cn/2018/06/23/ubuntu-基本安装/</id>
-    <published>2018-06-23T01:21:33.000Z</published>
-    <updated>2018-06-23T01:23:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>一、ubuntu基本安装</p><p>1.访问 <a href="https://www.ubuntu.com/download/alternative-downloads" target="_blank" rel="noopener">https://www.ubuntu.com/download/alternative-downloads</a> 下载 Ubuntu 映像文件</p><p>2.安装 VMware 虚拟机</p><p>二、设置语言环境</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一、ubuntu基本安装&lt;/p&gt;
-&lt;p&gt;1.访问 &lt;a href=&quot;https://www.ubuntu.com/download/alternative-downloads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.ubunt
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>认识 Python</title>
     <link href="http://jovelin.cn/2017/06/22/%E8%AE%A4%E8%AF%86%20Python/"/>
     <id>http://jovelin.cn/2017/06/22/认识 Python/</id>
