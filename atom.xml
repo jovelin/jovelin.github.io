@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jovelin.cn/"/>
-  <updated>2018-06-22T14:00:43.000Z</updated>
+  <updated>2018-07-06T02:19:15.000Z</updated>
   <id>http://jovelin.cn/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>反问学习法（what、why、where），十万个为什么</title>
+    <link href="http://jovelin.cn/2018/07/06/%E5%8F%8D%E9%97%AE%E5%AD%A6%E4%B9%A0%E6%B3%95%EF%BC%88what%E3%80%81why%E3%80%81where%EF%BC%89%EF%BC%8C%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88/"/>
+    <id>http://jovelin.cn/2018/07/06/反问学习法（what、why、where），十万个为什么/</id>
+    <published>2018-07-06T02:13:37.000Z</published>
+    <updated>2018-07-06T02:19:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>不知道你们有没有这样的感受，就是当学完了一个知识点，可能知道怎么用、知道写代码的步骤（像套模板一样，按照案例、步骤一步步码出来），反正就是代码我能写出来，但是这个知识点是什么？为什么用它？在哪里使用这个知识点？往往就不是很清楚，有点印象、模模糊糊，理解不透彻。平常工作的话，知道怎么用、知道怎么实现该功能，反正能完成任务即可，管它那么多！</p><p>那么问题来了，既然平常工作都没什么问题，还管它那么多干啥呢干啥呢。。</p><p><strong>原因有两点：</strong></p><p>一、深度掌握（用起来得心应手）</p><p>不只是照抄搬运，不是所有事情 copy 就能实现，要合理利用以前写过的案例，实现过的项目功能，懂得哪些地方能抄，也要懂得想改哪里就改哪里（就像一个人物换了个皮肤，相同点还是不变的，不同点就需要自己去发现去改造了，比如：变好看了，攻击变强了。。）</p><p>二、面试</p><p>大家都知道一个完整的面试包括三个流程（1、笔试 2、技术面试 3、hr面谈）</p><p>当然也有不用笔试的，2轮技术面试的也有，没有 hr 面谈的也大有存在，CTO 直接就能决定你的薪资，这也是小公司和大公司的一种差异</p><p>1.笔试：也就类似我们平常的考试，选择题、大题都有，只不过是综合的罢了（基础）</p><p>2.技术面谈：</p><ol><li>就你写的技术进行提问（一般有三种掌握程度，了解/熟练/精通）</li><li><p>项目上的提问（实现的过程、某个难点技术、碰到的 bug、团队开发遇到的问题都有。。）</p><pre><code>***这就不仅仅是 知道怎么用、知道怎么实现该功能 就能过关了，和下面演示的 3W 有关系了。**</code></pre></li><li>hr 面谈（恭喜你基本已经被录用了，谈工资这一块了，砍价、福利。。）</li></ol><blockquote><p>知识点分类：</p><p>1.死知识（不用死记硬背，API 文档、笔记、博客查阅即可） </p><p>2.理解性知识（理解实现原理，懂得框架，实现时灵活运用）</p></blockquote><p><strong>以 socket 知识点为例：</strong></p><p>———socket———</p><p>what<br>是什么？（概念、理解）</p><p>socket(简称 套接字 也称为插口–流对象) 是进程间通信的一种方式</p><p>why<br>为什么用？（好处，特点即不同点）</p><p>是实现tcp和udp的底层技术，实现 不同主机间 的进程间通信</p><p>where<br>在哪使用？（案例、实战）</p><p>网络程序发送、接收数据（发短信、打电话、广播）</p><p>————end————</p><blockquote><p>人生苦短，我用 Python，为何你要用 Python？———杠精</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;不知道你们有没有这样的感受，就是当学完了一个知识点，可能知道怎么用、知道写代码的步骤（像套模板一样，按照案例、步骤一步步码出来），反正就是代码我能写出来，但是这个知识点是什么？为什么用它？在哪里使用这个知识点？往往就不是很清楚，有点印象、模模糊糊，理解不透彻。平常工作的话，
+      
+    
+    </summary>
+    
+      <category term="学习方法" scheme="http://jovelin.cn/categories/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+    
+    
+      <category term="学习方法" scheme="http://jovelin.cn/tags/%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu 基本安装</title>
+    <link href="http://jovelin.cn/2018/06/23/ubuntu-%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85/"/>
+    <id>http://jovelin.cn/2018/06/23/ubuntu-基本安装/</id>
+    <published>2018-06-23T01:21:33.000Z</published>
+    <updated>2018-06-23T01:23:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、ubuntu基本安装</p><p>1.访问 <a href="https://www.ubuntu.com/download/alternative-downloads" target="_blank" rel="noopener">https://www.ubuntu.com/download/alternative-downloads</a> 下载 Ubuntu 映像文件</p><p>2.安装 VMware 虚拟机</p><p>二、设置语言环境</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一、ubuntu基本安装&lt;/p&gt;
+&lt;p&gt;1.访问 &lt;a href=&quot;https://www.ubuntu.com/download/alternative-downloads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.ubunt
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>认识 Python</title>
