@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jovelin.cn/"/>
-  <updated>2018-07-06T02:22:35.000Z</updated>
+  <updated>2018-07-06T02:24:51.000Z</updated>
   <id>http://jovelin.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://jovelin.cn/2018/07/06/%E5%8F%8D%E9%97%AE%E5%AD%A6%E4%B9%A0%E6%B3%95%EF%BC%88what%E3%80%81why%E3%80%81where%EF%BC%89%EF%BC%8C%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88/"/>
     <id>http://jovelin.cn/2018/07/06/反问学习法（what、why、where），十万个为什么/</id>
     <published>2018-07-06T02:13:37.000Z</published>
-    <updated>2018-07-06T02:22:35.000Z</updated>
+    <updated>2018-07-06T02:24:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>不知道你们有没有这样的感受，就是当学完了一个知识点，可能知道怎么用、知道写代码的步骤（像套模板一样，按照案例、步骤一步步码出来），反正就是代码我能写出来，但是这个知识点是什么？为什么用它？在哪里使用这个知识点？往往就不是很清楚，有点印象、模模糊糊，理解不透彻。</p><a id="more"></a><p>平常工作的话，知道怎么用、知道怎么实现该功能，反正能完成任务即可，管它那么多！</p><p>那么问题来了，既然平常工作都没什么问题，还管它那么多干啥呢干啥呢。。</p><p><strong>原因有两点：</strong></p><p>一、深度掌握（用起来得心应手）</p><p>不只是照抄搬运，不是所有事情 copy 就能实现，要合理利用以前写过的案例，实现过的项目功能，懂得哪些地方能抄，也要懂得想改哪里就改哪里（就像一个人物换了个皮肤，相同点还是不变的，不同点就需要自己去发现去改造了，比如：变好看了，攻击变强了。。）</p><p>二、面试</p><p>大家都知道一个完整的面试包括三个流程（1、笔试 2、技术面试 3、hr面谈）</p><p>当然也有不用笔试的，2轮技术面试的也有，没有 hr 面谈的也大有存在，CTO 直接就能决定你的薪资，这也是小公司和大公司的一种差异</p><p>1.笔试：也就类似我们平常的考试，选择题、大题都有，只不过是综合的罢了（基础）</p><p>2.技术面谈：</p><ol><li>就你写的技术进行提问（一般有三种掌握程度，了解/熟练/精通）</li><li><p>项目上的提问（实现的过程、某个难点技术、碰到的 bug、团队开发遇到的问题都有。。）</p><pre><code>***这就不仅仅是 知道怎么用、知道怎么实现该功能 就能过关了，和下面演示的 3W 有关系了。**</code></pre></li><li>hr 面谈（恭喜你基本已经被录用了，谈工资这一块了，砍价、福利。。）</li></ol><blockquote><p>知识点分类：</p><p>1.死知识（不用死记硬背，API 文档、笔记、博客查阅即可） </p><p>2.理解性知识（理解实现原理，懂得框架，实现时灵活运用）</p></blockquote><p><strong>以 socket 知识点为例：</strong></p><p>———socket———</p><p>what<br>是什么？（概念、理解）</p><p>socket(简称 套接字 也称为插口–流对象) 是进程间通信的一种方式</p><p>why<br>为什么用？（好处，特点即不同点）</p><p>是实现tcp和udp的底层技术，实现 不同主机间 的进程间通信</p><p>where<br>在哪使用？（案例、实战）</p><p>网络程序发送、接收数据（发短信、打电话、广播）</p><p>————end————</p><blockquote><p>人生苦短，我用 Python，为何你要用 Python？———杠精</p></blockquote>]]></content>
     
@@ -115,7 +115,7 @@
     <link href="http://jovelin.cn/2017/06/21/Python%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"/>
     <id>http://jovelin.cn/2017/06/21/Python基础学习大纲/</id>
     <published>2017-06-21T12:34:44.000Z</published>
-    <updated>2018-06-22T14:02:10.000Z</updated>
+    <updated>2018-07-06T02:24:41.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><p>1.掌握 Python 基础语法, 具备基础的编程能力；</p><p>2.建立起编程思维以及面向对象程序设计思想。</p><p>3.能够熟练使用 Python 技术完成较小程序的开发以及简单小游戏程序的开发。</p><a id="more"></a><hr><h3 id="学习知识点"><a href="#学习知识点" class="headerlink" title="学习知识点"></a>学习知识点</h3><h4 id="1-计算机组成原理"><a href="#1-计算机组成原理" class="headerlink" title="1.计算机组成原理"></a><a href="http://jovelin.cn/2017/06/22/计算机组成原理/">1.计算机组成原理</a></h4><p>认识操作系统以及操作系统的作用</p><h4 id="2-认识-Python"><a href="#2-认识-Python" class="headerlink" title="2.认识 Python"></a>2.认识 Python</h4><p>认识 Python 及了解 Python 发展历史</p><h4 id="3-Python-开发环境"><a href="#3-Python-开发环境" class="headerlink" title="3.Python 开发环境"></a>3.Python 开发环境</h4><p>Python 开发环境的搭建、Sublime 使用、Python 交互式终端使用、IPython 交互式终端使用、Pycharm 使用</p><h4 id="4-Python-基础变量"><a href="#4-Python-基础变量" class="headerlink" title="4.Python 基础变量"></a>4.Python 基础变量</h4><p>变量以及变量的类型、标识符和关键字、变量名命名方式、算数运算符、变量数据类型转换、输入和输出、注释 </p><h4 id="5-逻辑控制语句"><a href="#5-逻辑控制语句" class="headerlink" title="5.逻辑控制语句"></a>5.逻辑控制语句</h4><p>if语句基本格式、if…else…语句、if…elif..else语句、逻辑运算符、比较关系运算符、运算符优先级、while循环语法格式、while嵌套应用、break的用法、continue的用法 </p><h4 id="6-高级变量类型"><a href="#6-高级变量类型" class="headerlink" title="6.高级变量类型"></a>6.高级变量类型</h4><p>列表概念及操作、元组概念及操作、字典概念及操作、字符串概念及操作、集合概念及操作、for循环及for…else用法 </p><h4 id="7-函数应用"><a href="#7-函数应用" class="headerlink" title="7.函数应用"></a>7.函数应用</h4><p>函数的基本语法、函数执行流程、文档注释、带参数的函数、带返回值的函数、函数的嵌套调用、匿名函数、递归函数、局部变量和全局变量、引用 </p><h4 id="8-文件操作"><a href="#8-文件操作" class="headerlink" title="8.文件操作"></a>8.文件操作</h4><p>文件的概念、文件的打开与关闭、文件读写, 以及文件定位读写、文件、目录相关操作 </p><h4 id="9-面向对象"><a href="#9-面向对象" class="headerlink" title="9.面向对象"></a>9.面向对象</h4><p>面向对象介绍、类和对象的概念、魔术方法的意义及作用、对象成员的访问控制权限、继承的概念及意义、继承、多层继承和多继承、多态的概念以及应用、类属性和实例属性、实例方法、类方法、静态方法、设计模式: 单例模式</p><h4 id="10-异常处理"><a href="#10-异常处理" class="headerlink" title="10.异常处理"></a>10.异常处理</h4><p>理解异常的作用、捕获异常、异常的传递规则、自定义异常 </p><h4 id="11-模块和包"><a href="#11-模块和包" class="headerlink" title="11.模块和包"></a>11.模块和包</h4><p>模块和包的概念、<strong>all</strong>的用法、import语句用法、from…import…用法、from…import * 用法</p><hr><h3 id="项目演练"><a href="#项目演练" class="headerlink" title="项目演练"></a>项目演练</h3><h4 id="飞机大战"><a href="#飞机大战" class="headerlink" title="飞机大战"></a>飞机大战</h4><p>pygame介绍、界面搭建、键盘事件检测、显示飞机、<br>控制飞机、飞机发射子弹、显示敌机、敌机移动规则、敌机发射子弹、碰撞检测、面向对象完成代码封装</p>]]></content>
     
