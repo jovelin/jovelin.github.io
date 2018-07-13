@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jovelin&#39;s Blog</title>
   
-  <subtitle>To Be a Better Me</subtitle>
+  <subtitle>Python The old farmer</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jovelin.cn/"/>
@@ -10,7 +10,7 @@
   <id>http://jovelin.cn/</id>
   
   <author>
-    <name>Jovelin</name>
+    <name>曹永林</name>
     
   </author>
   
