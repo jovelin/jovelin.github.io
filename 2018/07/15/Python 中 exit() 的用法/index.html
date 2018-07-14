@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python,exit方法," />
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="Python 中 exit( ) 的用法总结：   sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。  os._exit(n)，直接退出，不抛异常， 不执行相关清理工作。  常用在 子进程 的退出。">
-<meta name="keywords" content="jovelin,博客,python">
+<meta name="description" content="Python 中 exit( ) 的用法总结：  sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。">
+<meta name="keywords" content="Python,exit方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 中 exit( ) 的用法">
 <meta property="og:url" content="http://jovelin.cn/2018/07/15/Python 中 exit() 的用法/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="Python 中 exit( ) 的用法总结：   sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。  os._exit(n)，直接退出，不抛异常， 不执行相关清理工作。  常用在 子进程 的退出。">
+<meta property="og:description" content="Python 中 exit( ) 的用法总结：  sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-14T16:23:40.000Z">
+<meta property="og:updated_time" content="2018-07-14T16:30:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 中 exit( ) 的用法">
-<meta name="twitter:description" content="Python 中 exit( ) 的用法总结：   sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。  os._exit(n)，直接退出，不抛异常， 不执行相关清理工作。  常用在 子进程 的退出。">
+<meta name="twitter:description" content="Python 中 exit( ) 的用法总结：  sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作。  n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);  一般 主程序中 使用此退出。">
 
 
 
@@ -316,6 +316,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -387,18 +409,17 @@
 
       
         <p><strong>Python 中 exit( ) 的用法总结</strong>：</p>
-<p><br></p>
 <ol>
 <li><p><strong>sys.exit(n)  退出程序引发 SystemExit 异常，可以捕获异常执行些清理工作</strong>。</p>
 <p> n 默认值为 0，表示正常退出，其他都是非正常退出。还可以 sys.exit(“sorry, goodbye!”);</p>
 <p> 一般 <strong>主程序中</strong> 使用此退出。</p>
 </li>
-<li><p><strong>os._exit(n)，直接退出，不抛异常， 不执行相关清理工作</strong>。</p>
-<p> 常用在 <strong>子进程</strong> 的退出。</p>
-</li>
 </ol>
 <a id="more"></a>
 <ol>
+<li><p><strong>os._exit(n)，直接退出，不抛异常， 不执行相关清理工作</strong>。</p>
+<p> 常用在 <strong>子进程</strong> 的退出。</p>
+</li>
 <li><p><strong>exit()/quit()，跑出 SystemExit 异常</strong>。</p>
 <p> 一般在 <strong>交互式 shell 中</strong> 退出时使用。</p>
 </li>
@@ -468,6 +489,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/exit方法/" rel="tag"><i class="fa fa-tag"></i> exit方法</a>
+          
+        </div>
       
 
       
@@ -580,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
