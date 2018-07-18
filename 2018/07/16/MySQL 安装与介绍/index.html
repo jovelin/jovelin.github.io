@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
 <meta property="og:description" content="一、数据库简介1.数据存储数据库是由一些特殊的文件组成，用来存储数据 2.数据库分类 关系型数据库 非关系型数据库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-18T03:42:24.000Z">
+<meta property="og:updated_time" content="2018-07-18T05:09:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 安装与介绍">
 <meta name="twitter:description" content="一、数据库简介1.数据存储数据库是由一些特殊的文件组成，用来存储数据 2.数据库分类 关系型数据库 非关系型数据库">
@@ -425,7 +425,7 @@
 <li>非关系型数据库</li>
 </ul>
 <a id="more"></a>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 关系型数据库</span><br><span class="line"></span><br><span class="line">    建立在关系模型基础上的数据库，通俗讲这种数据库由多个表组成，表与表存在一定的关系</span><br><span class="line">    </span><br><span class="line"><span class="number">2</span>. 主要的几种关系型数据库</span><br><span class="line"></span><br><span class="line">    oracle：在大型项目中使用,银行,电信等项目</span><br><span class="line">    mysql：web时代使用最广泛的关系型数据库</span><br><span class="line">    <span class="keyword">ms</span> <span class="title">sql</span> server：在微软的项目中使用</span><br><span class="line">    sqlite：轻量级数据库，主要应用在移动平台</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 关系型数据库核心的元素</span><br><span class="line"></span><br><span class="line">	数据行（记录）</span><br><span class="line">    数据列（字段）</span><br><span class="line">    数据表（数据行的集合）</span><br><span class="line">    数据库（数据表的集合）</span><br><span class="line">    主键（特殊的字段，用来唯一标识记录的唯一性）</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 关系型数据库</span><br><span class="line"></span><br><span class="line">    建立在关系模型基础上的数据库，通俗讲这种数据库由多个表组成，表与表存在一定的关系</span><br><span class="line">    </span><br><span class="line"><span class="number">2</span>. 主要的几种关系型数据库</span><br><span class="line"></span><br><span class="line">    oracle：在大型项目中使用,银行,电信等项目</span><br><span class="line">    mysql：web时代使用最广泛的关系型数据库</span><br><span class="line">    <span class="keyword">ms</span> <span class="title">sql</span> server：在微软的项目中使用</span><br><span class="line">    sqlite：轻量级数据库，主要应用在移动平台</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 关系型数据库核心的元素</span><br><span class="line"></span><br><span class="line">    数据行（记录）</span><br><span class="line">    数据列（字段）</span><br><span class="line">    数据表（数据行的集合）</span><br><span class="line">    数据库（数据表的集合）</span><br><span class="line">    主键（特殊的字段，用来唯一标识记录的唯一性）</span><br></pre></td></tr></table></figure>
 <h4 id="3-RDBMS"><a href="#3-RDBMS" class="headerlink" title="3. RDBMS"></a>3. RDBMS</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">1. RDBMS：Relational Database Management System</span><br><span class="line"></span><br><span class="line">    关系型数据库管理系统，用于管理数据库</span><br><span class="line"></span><br><span class="line">2. RDBMS 与关系型数据库的关系</span><br><span class="line">    </span><br><span class="line">    通过 RDBMS 实现对数据库的增删改查</span><br></pre></td></tr></table></figure>
 <h4 id="4-SQL"><a href="#4-SQL" class="headerlink" title="4. SQL"></a>4. SQL</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">SQL(Structured Query Language) 结构化查询语言，是一种用来操作RDBMS的数据库语言，当前关系型数据库都支持使用SQL语言进行操作，</span><br><span class="line">也就是说可以通过 SQL 操作 oracle,sql server,mysql,sqlite 等等所有的关系型的数据库。</span><br><span class="line"></span><br><span class="line">- DQL：数据查询语言，用于对数据进行查询，如<span class="keyword">select</span></span><br><span class="line">- DML：数据操作语言，对数据进行增加、修改、删除，如<span class="keyword">insert</span>、udpate、<span class="keyword">delete</span></span><br><span class="line">- <span class="keyword">DDL</span>：数据定义语言，进行数据库、表的管理等，如<span class="keyword">create</span>、<span class="keyword">drop</span></span><br><span class="line"></span><br><span class="line">- TPL：事务处理语言，对事务进行处理，包括<span class="keyword">begin</span> <span class="keyword">transaction</span>、<span class="keyword">commit</span>、<span class="keyword">rollback</span></span><br><span class="line">- DCL：数据控制语言，进行授权与权限回收，如<span class="keyword">grant</span>、<span class="keyword">revoke</span></span><br><span class="line">- CCL：指针控制语言，通过控制指针完成表的操作，如<span class="keyword">declare</span> <span class="keyword">cursor</span></span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -472,7 +472,7 @@
   <p><span>本文标题:</span><a href="/2018/07/16/MySQL 安装与介绍/">MySQL 安装与介绍</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
   <p><span>发布时间:</span>2018年07月16日 - 10:07</p>
-  <p><span>最后更新:</span>2018年07月18日 - 11:07</p>
+  <p><span>最后更新:</span>2018年07月18日 - 13:07</p>
   <p><span>原始链接:</span><a href="/2018/07/16/MySQL 安装与介绍/" title="MySQL 安装与介绍">http://jovelin.cn/2018/07/16/MySQL 安装与介绍/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/16/MySQL 安装与介绍/"  aria-label="复制成功！"></i></span>
   </p>
