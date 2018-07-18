@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start 查看: ps -aux| grep &amp;apos;mysql&amp;apos; 停止: sudo service mysql stop 重启：sudo service mysql restart">
+<meta name="description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
 <meta name="keywords" content="Python,MySQL,MySQL 命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 命令语句">
 <meta property="og:url" content="http://jovelin.cn/2018/07/18/MySQL 命令语句/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start 查看: ps -aux| grep &amp;apos;mysql&amp;apos; 停止: sudo service mysql stop 重启：sudo service mysql restart">
+<meta property="og:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-18T02:03:00.000Z">
+<meta property="og:updated_time" content="2018-07-18T03:10:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 命令语句">
-<meta name="twitter:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start 查看: ps -aux| grep &amp;apos;mysql&amp;apos; 停止: sudo service mysql stop 重启：sudo service mysql restart">
+<meta name="twitter:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,125
+                  1,104
                 </span>
               
 
@@ -419,114 +419,42 @@
       
 
       
-        <h3 id="一、命令行脚本（重点）"><a href="#一、命令行脚本（重点）" class="headerlink" title="一、命令行脚本（重点）"></a>一、命令行脚本（重点）</h3><h4 id="1-mysql服务器操作"><a href="#1-mysql服务器操作" class="headerlink" title="1. mysql服务器操作"></a>1. mysql服务器操作</h4><pre><code>启动: sudo service mysql start
-查看: ps -aux| grep &apos;mysql&apos;
-停止: sudo service mysql stop
-重启：sudo service mysql restart
-</code></pre><a id="more"></a>
-<h4 id="2-mysql登录操作"><a href="#2-mysql登录操作" class="headerlink" title="2. mysql登录操作"></a>2. mysql登录操作</h4><pre><code>登录: mysql -u root -p
-退出: exit/quit
-</code></pre><h4 id="3-数据库操作"><a href="#3-数据库操作" class="headerlink" title="3. 数据库操作"></a>3. 数据库操作</h4><pre><code>-- 掌握命令行中的数据库操作：使用、查看、创建、删除
-
--- 使用数据库
-use db_xxx;
--- 查看所有数据库
-show databases;
--- 查看当前数据库
-select database();
--- 创建
-create database db_xxx charset=utf8;
--- 查看创建语句
-show create database db_xxx;
--- 删除
-drop database db_xxx;
-</code></pre><h4 id="4-数据表操作"><a href="#4-数据表操作" class="headerlink" title="4. 数据表操作"></a>4. 数据表操作</h4><pre><code>-- 掌握命令行中的数据表操作：查看、创建、修改、删除
-
--- 查看
-show tables;
--- 创建
-create table 数据表名字 (字段 类型 约束[, 字段 类型 约束]);
--- 修改
-alter table 表名 add|modify|change|drop 列名 类型及约束;
--- 添加字段 
-alter table 表名 add 列名 类型;
--- 修改字段：不重命名版
-alter table 表名 modify 列名 类型及约束;
--- 修改字段：重命名版
-alter table 表名 change 原名 新名 类型及约束;
--- 删除
-drop table 表名;
-</code></pre><blockquote>
+        <h3 id="一、命令行脚本（重点）"><a href="#一、命令行脚本（重点）" class="headerlink" title="一、命令行脚本（重点）"></a>一、命令行脚本（重点）</h3><h4 id="1-mysql服务器操作"><a href="#1-mysql服务器操作" class="headerlink" title="1. mysql服务器操作"></a>1. mysql服务器操作</h4><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">启动: sudo service mysql start</span><br><span class="line">查看: <span class="keyword">ps</span> -aux| <span class="keyword">grep</span> <span class="string">'mysql'</span></span><br><span class="line">停止: sudo service mysql <span class="keyword">stop</span></span><br><span class="line">重启：sudo service mysql restart</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="2-mysql登录操作"><a href="#2-mysql登录操作" class="headerlink" title="2. mysql登录操作"></a>2. mysql登录操作</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">登录: mysql -u root -p</span><br><span class="line">退出: <span class="keyword">exit</span><span class="regexp">/quit</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-数据库操作"><a href="#3-数据库操作" class="headerlink" title="3. 数据库操作"></a>3. 数据库操作</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的数据库操作：使用、查看、创建、删除</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 使用数据库</span></span><br><span class="line"><span class="keyword">use</span> db_xxx;</span><br><span class="line"><span class="comment">-- 查看所有数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br><span class="line"><span class="comment">-- 查看当前数据库</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();</span><br><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> db_xxx <span class="keyword">charset</span>=utf8;</span><br><span class="line"><span class="comment">-- 查看创建语句</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> db_xxx;</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> db_xxx;</span><br></pre></td></tr></table></figure>
+<h4 id="4-数据表操作"><a href="#4-数据表操作" class="headerlink" title="4. 数据表操作"></a>4. 数据表操作</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的数据表操作：查看、创建、修改、删除</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 查看</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 数据表名字 (字段 类型 约束[, 字段 类型 约束]);</span><br><span class="line"><span class="comment">-- 修改</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span>|<span class="keyword">modify</span>|<span class="keyword">change</span>|<span class="keyword">drop</span> 列名 类型及约束;</span><br><span class="line"><span class="comment">-- 添加字段 </span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 列名 类型;</span><br><span class="line"><span class="comment">-- 修改字段：不重命名版</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">modify</span> 列名 类型及约束;</span><br><span class="line"><span class="comment">-- 修改字段：重命名版</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">change</span> 原名 新名 类型及约束;</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>Mysql 增加、删除外键：<a href="https://blog.csdn.net/qq_34988341/article/details/78305892" target="_blank" rel="noopener">https://blog.csdn.net/qq_34988341/article/details/78305892</a></p>
 </blockquote>
-<h4 id="5-数据-记录-的增删改查curd"><a href="#5-数据-记录-的增删改查curd" class="headerlink" title="5. 数据(记录)的增删改查curd"></a>5. 数据(记录)的增删改查curd</h4><pre><code>-- 掌握命令行中的对数据表中数据的操作：增加、删除、修改和基本查询
-
--- 新增
-insert into 表名(列1,...) values(值1,...)
--- 删除
-delete from 表名 where 条件;
--- 修改
-update 表名 set 列1=值1,列2=值2... where 条件;
--- 基本查询
-select * from 表名;
-</code></pre><h3 id="二、高级查询（难点）"><a href="#二、高级查询（难点）" class="headerlink" title="二、高级查询（难点）"></a>二、高级查询（难点）</h3><h4 id="1-掌握select查询所有字段、指定字段的数据"><a href="#1-掌握select查询所有字段、指定字段的数据" class="headerlink" title="1. 掌握select查询所有字段、指定字段的数据"></a>1. 掌握select查询所有字段、指定字段的数据</h4><pre><code>select * from students;
-select name,age from students;
-</code></pre><h4 id="2-掌握消除重复行命令distinct"><a href="#2-掌握消除重复行命令distinct" class="headerlink" title="2. 掌握消除重复行命令distinct"></a>2. 掌握消除重复行命令distinct</h4><pre><code>select distinct gender from students;
-</code></pre><h4 id="3-掌握as给字段、表起别名"><a href="#3-掌握as给字段、表起别名" class="headerlink" title="3. 掌握as给字段、表起别名"></a>3. 掌握as给字段、表起别名</h4><pre><code>select s.name as &apos;姓名&apos;,s.age as &apos;年龄&apos; from students as s;
-</code></pre><h4 id="4-掌握条件查询where后跟比较运算符、逻辑运算符的用法"><a href="#4-掌握条件查询where后跟比较运算符、逻辑运算符的用法" class="headerlink" title="4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法"></a>4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法</h4><pre><code>&gt;   &lt;   &gt;=  &lt;=  =   !=   
-and  or not 
-</code></pre><blockquote>
+<h4 id="5-数据-记录-的增删改查curd"><a href="#5-数据-记录-的增删改查curd" class="headerlink" title="5. 数据(记录)的增删改查curd"></a>5. 数据(记录)的增删改查curd</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的对数据表中数据的操作：增加、删除、修改和基本查询</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 新增</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...)</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件;</span><br><span class="line"><span class="comment">-- 修改</span></span><br><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="number">1</span>=值<span class="number">1</span>,列<span class="number">2</span>=值<span class="number">2.</span>.. <span class="keyword">where</span> 条件;</span><br><span class="line"><span class="comment">-- 基本查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
+<h3 id="二、高级查询（难点）"><a href="#二、高级查询（难点）" class="headerlink" title="二、高级查询（难点）"></a>二、高级查询（难点）</h3><h4 id="1-掌握select查询所有字段、指定字段的数据"><a href="#1-掌握select查询所有字段、指定字段的数据" class="headerlink" title="1. 掌握select查询所有字段、指定字段的数据"></a>1. 掌握select查询所有字段、指定字段的数据</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,age <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
+<h4 id="2-掌握消除重复行命令distinct"><a href="#2-掌握消除重复行命令distinct" class="headerlink" title="2. 掌握消除重复行命令distinct"></a>2. 掌握消除重复行命令distinct</h4><figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> gender <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
+<h4 id="3-掌握as给字段、表起别名"><a href="#3-掌握as给字段、表起别名" class="headerlink" title="3. 掌握as给字段、表起别名"></a>3. 掌握as给字段、表起别名</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> s.name <span class="keyword">as</span> <span class="string">'姓名'</span>,s.age <span class="keyword">as</span> <span class="string">'年龄'</span> <span class="keyword">from</span> students <span class="keyword">as</span> s;</span><br></pre></td></tr></table></figure>
+<h4 id="4-掌握条件查询where后跟比较运算符、逻辑运算符的用法"><a href="#4-掌握条件查询where后跟比较运算符、逻辑运算符的用法" class="headerlink" title="4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法"></a>4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">&gt;   &lt;   &gt;=  &lt;=  =   !=   </span><br><span class="line"><span class="keyword">and</span>  <span class="keyword">or</span> <span class="keyword">not</span></span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>优先级：not&gt;and&gt;or，如果同时出现并希望先算or，需要结合()使用</p>
 </blockquote>
-<h4 id="5-掌握条件查询中的模糊查询like和范围查询in"><a href="#5-掌握条件查询中的模糊查询like和范围查询in" class="headerlink" title="5. 掌握条件查询中的模糊查询like和范围查询in"></a>5. 掌握条件查询中的模糊查询like和范围查询in</h4><pre><code>name like  &apos;%杰&apos;
-  % ： 代表任意个字符
-  _ : 代表一个字符
-
-id  in (1,3,8)
-</code></pre><h4 id="6-掌握空判断is-null和非空判断is-not-null"><a href="#6-掌握空判断is-null和非空判断is-not-null" class="headerlink" title="6. 掌握空判断is null和非空判断is not null"></a>6. 掌握空判断is null和非空判断is not null</h4><pre><code>select * from students where height is null;
-select * from students where  height is not null;
-</code></pre><h4 id="7-掌握查询中使用order-by排序"><a href="#7-掌握查询中使用order-by排序" class="headerlink" title="7. 掌握查询中使用order by排序"></a>7. 掌握查询中使用order by排序</h4><pre><code>放在 from、where、group by之后
-order by 列1 asc ，列2 desc；
-desc: 降序
-asc：升序，默认
-</code></pre><h4 id="8-掌握常用到的聚合函数count、max、min、sum、avg"><a href="#8-掌握常用到的聚合函数count、max、min、sum、avg" class="headerlink" title="8. 掌握常用到的聚合函数count、max、min、sum、avg"></a>8. 掌握常用到的聚合函数count、max、min、sum、avg</h4><pre><code>count(*)\count(列)：总数 
-max(列): 最大值
-min(列): 最小值
-sum(列) ： 求和
-avg(列) ：求平均
-</code></pre><h4 id="9-掌握分组查询group-by-group-concat-字段名-聚合函数-having"><a href="#9-掌握分组查询group-by-group-concat-字段名-聚合函数-having" class="headerlink" title="9 掌握分组查询group by + group_concat(字段名)/聚合函数/having"></a>9 掌握分组查询group by + group_concat(字段名)/聚合函数/having</h4><pre><code>更精细化统计
-group by： 分组
-group_concat： 拼接字符串，拼接字段名
-聚合函数： 最大，最小，平均，计数，求和
-having： 对分组后的结果集进一步筛选
-
-注意1: select 列 中只能存放分组函数(比如聚合函数)，或是出现在group by子句中的分组标签
-注意2：
-where: 对源数据做条件筛选， 不能接聚合函数
-having: 是对分组之后的数据做进一步的筛选操作, 有having就一定有group by, 有 group by 不一定有having，接聚合函数
-</code></pre><h4 id="10-掌握分页查询获取部分行的命令limit"><a href="#10-掌握分页查询获取部分行的命令limit" class="headerlink" title="10 掌握分页查询获取部分行的命令limit"></a>10 掌握分页查询获取部分行的命令limit</h4><pre><code>limit [start],count 
-1. 放在查询语句的最后
-2. start=(page-1)*count
-</code></pre><h4 id="11-掌握连接查询inner-left-right-join"><a href="#11-掌握连接查询inner-left-right-join" class="headerlink" title="11 掌握连接查询inner/left/right join"></a>11 掌握连接查询inner/left/right join</h4><pre><code>inner join on :内连接(结果仅包含符合连接条件的两表中的行)
-left join on : 左连接(完全显示左表所有的行，如果左表中某行 在右表中没有匹配的行，则右表该行显示NULL)
-right join on : 右连接(与左连接相反)
-</code></pre><h4 id="12-掌握子查询的方法"><a href="#12-掌握子查询的方法" class="headerlink" title="12 掌握子查询的方法"></a>12 掌握子查询的方法</h4><pre><code>查询中嵌套查询：
- 分为三种：
-  标量子查询: 子查询的结果为一个值(一行一列)
-  列子查询：  子查询的结果为一个列(一列多行)
-  表子查询:   子查询的结果为一个表(多行多列)
-</code></pre><h3 id="三、查询总结"><a href="#三、查询总结" class="headerlink" title="三、查询总结"></a>三、查询总结</h3><ul>
-<li><strong>查询的完整格式 （\^_\^ 不要被吓到 其实很简单 ! _ !）</strong></li>
+<h4 id="5-掌握条件查询中的模糊查询like和范围查询in"><a href="#5-掌握条件查询中的模糊查询like和范围查询in" class="headerlink" title="5. 掌握条件查询中的模糊查询like和范围查询in"></a>5. 掌握条件查询中的模糊查询like和范围查询in</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">name</span> like  '%杰'</span><br><span class="line">  % ： 代表任意个字符</span><br><span class="line">  _ : 代表一个字符</span><br><span class="line"></span><br><span class="line"><span class="built_in">id</span>  <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="6-掌握空判断is-null和非空判断is-not-null"><a href="#6-掌握空判断is-null和非空判断is-not-null" class="headerlink" title="6. 掌握空判断is null和非空判断is not null"></a>6. 掌握空判断is null和非空判断is not null</h4><figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> height <span class="keyword">is</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span>  height <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="7-掌握查询中使用order-by排序"><a href="#7-掌握查询中使用order-by排序" class="headerlink" title="7. 掌握查询中使用order by排序"></a>7. 掌握查询中使用order by排序</h4><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">放在 <span class="keyword">from</span>、<span class="keyword">where</span>、<span class="keyword">group</span> <span class="keyword">by</span>之后</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列<span class="number">1</span> <span class="keyword">asc</span> ，列<span class="number">2</span> <span class="keyword">desc</span>；</span><br><span class="line"><span class="keyword">desc</span>: 降序</span><br><span class="line"><span class="keyword">asc</span>：升序，默认</span><br></pre></td></tr></table></figure>
+<h4 id="8-掌握常用到的聚合函数count、max、min、sum、avg"><a href="#8-掌握常用到的聚合函数count、max、min、sum、avg" class="headerlink" title="8. 掌握常用到的聚合函数count、max、min、sum、avg"></a>8. 掌握常用到的聚合函数count、max、min、sum、avg</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">count</span><span class="params">(*)</span></span>\count(列)：总数 </span><br><span class="line"><span class="function"><span class="title">max</span><span class="params">(列)</span></span>: 最大值</span><br><span class="line"><span class="function"><span class="title">min</span><span class="params">(列)</span></span>: 最小值</span><br><span class="line"><span class="function"><span class="title">sum</span><span class="params">(列)</span></span> ： 求和</span><br><span class="line"><span class="function"><span class="title">avg</span><span class="params">(列)</span></span> ：求平均</span><br></pre></td></tr></table></figure>
+<h4 id="9-掌握分组查询group-by-group-concat-字段名-聚合函数-having"><a href="#9-掌握分组查询group-by-group-concat-字段名-聚合函数-having" class="headerlink" title="9 掌握分组查询group by + group_concat(字段名)/聚合函数/having"></a>9 掌握分组查询group by + group_concat(字段名)/聚合函数/having</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">更精细化统计</span><br><span class="line">group by： 分组</span><br><span class="line">group_concat： 拼接字符串，拼接字段名</span><br><span class="line">聚合函数： 最大，最小，平均，计数，求和</span><br><span class="line">having： 对分组后的结果集进一步筛选</span><br><span class="line">	</span><br><span class="line">注意1: select 列 中只能存放分组函数(比如聚合函数)，或是出现在group by子句中的分组标签</span><br><span class="line">注意2：</span><br><span class="line">where: 对源数据做条件筛选， 不能接聚合函数</span><br><span class="line">having: 是对分组之后的数据做进一步的筛选操作, 有having就一定有group by, 有<span class="built_in"> group </span>by 不一定有having，接聚合函数</span><br></pre></td></tr></table></figure>
+<h4 id="10-掌握分页查询获取部分行的命令limit"><a href="#10-掌握分页查询获取部分行的命令limit" class="headerlink" title="10 掌握分页查询获取部分行的命令limit"></a>10 掌握分页查询获取部分行的命令limit</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">limit [<span class="keyword">start</span>],<span class="keyword">count</span> </span><br><span class="line"><span class="number">1.</span> 放在查询语句的最后</span><br><span class="line"><span class="number">2.</span> <span class="keyword">start</span>=(page<span class="number">-1</span>)*<span class="keyword">count</span></span><br></pre></td></tr></table></figure>
+<h4 id="11-掌握连接查询inner-left-right-join"><a href="#11-掌握连接查询inner-left-right-join" class="headerlink" title="11 掌握连接查询inner/left/right join"></a>11 掌握连接查询inner/left/right join</h4><figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line">inner <span class="built_in">join</span> <span class="keyword">on</span> :内连接(结果仅包含符合连接条件的两表中的行)</span><br><span class="line"><span class="built_in">left</span> <span class="built_in">join</span> <span class="keyword">on</span> : 左连接(完全显示左表所有的行，如果左表中某行 在右表中没有匹配的行，则右表该行显示<span class="literal">NULL</span>)</span><br><span class="line"><span class="built_in">right</span> <span class="built_in">join</span> <span class="keyword">on</span> : 右连接(与左连接相反)</span><br></pre></td></tr></table></figure>
+<h4 id="12-掌握子查询的方法"><a href="#12-掌握子查询的方法" class="headerlink" title="12 掌握子查询的方法"></a>12 掌握子查询的方法</h4><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">查询中嵌套查询：</span><br><span class="line"> 分为三种：</span><br><span class="line">  标量子查询: 子查询的结果为一个值<span class="comment">(一行一列)</span></span><br><span class="line">  列子查询：  子查询的结果为一个列<span class="comment">(一列多行)</span></span><br><span class="line">  表子查询:   子查询的结果为一个表<span class="comment">(多行多列)</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、查询总结"><a href="#三、查询总结" class="headerlink" title="三、查询总结"></a>三、查询总结</h3><ul>
+<li><strong>查询的完整格式 （^_^ 不要被吓到 其实很简单 ! _ !）</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT select_expr [,select_expr,...] [      </span><br><span class="line">      FROM tb_name</span><br><span class="line">      [WHERE 条件判断]</span><br><span class="line">      [GROUP BY &#123;col_name | postion&#125; [ASC | DESC], ...] </span><br><span class="line">      [HAVING WHERE 条件判断]</span><br><span class="line">      [ORDER BY &#123;col_name|expr|postion&#125; [ASC | DESC], ...]</span><br><span class="line">      [ LIMIT &#123;[offset,]rowcount | row_count OFFSET offset&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> select_expr [,select_expr,...] [      </span><br><span class="line">      <span class="keyword">FROM</span> tb_name</span><br><span class="line">      [<span class="keyword">WHERE</span> 条件判断]</span><br><span class="line">      [<span class="keyword">GROUP</span> <span class="keyword">BY</span> &#123;col_name | postion&#125; [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>], ...] </span><br><span class="line">      [<span class="keyword">HAVING</span> <span class="keyword">WHERE</span> 条件判断]</span><br><span class="line">      [<span class="keyword">ORDER</span> <span class="keyword">BY</span> &#123;col_name|expr|postion&#125; [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>], ...]</span><br><span class="line">      [ <span class="keyword">LIMIT</span> &#123;[<span class="keyword">offset</span>,]rowcount | <span class="keyword">row_count</span> <span class="keyword">OFFSET</span> <span class="keyword">offset</span>&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>完整的select语句</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select distinct *</span><br><span class="line">from 表名</span><br><span class="line">where ....</span><br><span class="line">group by ... having ...</span><br><span class="line">order by ...</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">select distinct *</span><br><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line">where <span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">group by <span class="built_in">..</span>. having <span class="built_in">..</span>.</span><br><span class="line">order by <span class="built_in">..</span>.</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>执行顺序</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from 表名</span><br><span class="line">where ....</span><br><span class="line">group by ...</span><br><span class="line">select distinct *</span><br><span class="line">having ...</span><br><span class="line">order by ...</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line">where <span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">group by <span class="built_in">..</span>.</span><br><span class="line">select distinct *</span><br><span class="line">having <span class="built_in">..</span>.</span><br><span class="line">order by <span class="built_in">..</span>.</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>实际使用中，只是语句中某些部分的组合，而不是全部</p>
 </blockquote>
@@ -560,7 +488,7 @@ right join on : 右连接(与左连接相反)
   <p><span>本文标题:</span><a href="/2018/07/18/MySQL 命令语句/">MySQL 命令语句</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
   <p><span>发布时间:</span>2018年07月18日 - 10:07</p>
-  <p><span>最后更新:</span>2018年07月18日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月18日 - 11:07</p>
   <p><span>原始链接:</span><a href="/2018/07/18/MySQL 命令语句/" title="MySQL 命令语句">http://jovelin.cn/2018/07/18/MySQL 命令语句/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/18/MySQL 命令语句/"  aria-label="复制成功！"></i></span>
   </p>
@@ -861,7 +789,7 @@ right join on : 右连接(与左连接相反)
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 21.5k 字</span>
+    <span class="post-count">博客全站共 20.8k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
@@ -1157,7 +1085,7 @@ right join on : 右连接(与左连接相反)
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("", "");</script>
+  <script>AV.initialize("jWsEzfDgfPMwFR8Ipxk79oxQ-gzGzoHsz", "9QB1iOu3CLMOW0BW40BAxL3N");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
