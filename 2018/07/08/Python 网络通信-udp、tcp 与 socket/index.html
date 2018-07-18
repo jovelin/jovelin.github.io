@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<!--<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">-->
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="Python,udp,tcp,socket," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jovelin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta name="keywords" content="Python,udp,tcp,socket">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 网络通信-udp、tcp 与 socket">
+<meta property="og:url" content="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/index.html">
+<meta property="og:site_name" content="Jovelin&#39;s Blog">
+<meta property="og:description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-03725767e52c896a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-d812e52bc2dc7743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-5d9168459fadd31a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-3f3bcc28ca39fa1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-4203e495de645009.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-e77fdb8210af7052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-66f6ee5be9f9df0f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-55244b661df4c1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-07-18T02:07:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 网络通信-udp、tcp 与 socket">
+<meta name="twitter:description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/"/>
+
+
+
+
+  <title>Python 网络通信-udp、tcp 与 socket | Jovelin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jovelin"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    <!--<a href="https://github.com/jovelin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jovelin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Python The old farmer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹永林">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jovelin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 网络通信-udp、tcp 与 socket</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-08T00:21:11+08:00">
+                2018-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/08/Python 网络通信-udp、tcp 与 socket/" class="leancloud_visitors" data-flag-title="Python 网络通信-udp、tcp 与 socket">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>°C</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,815
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Python-网络通信"><a href="#Python-网络通信" class="headerlink" title="Python 网络通信"></a>Python 网络通信</h1><h3 id="udp-和-tcp-及-socket-介绍"><a href="#udp-和-tcp-及-socket-介绍" class="headerlink" title="udp 和 tcp 及 socket 介绍"></a>udp 和 tcp 及 socket 介绍</h3><p><strong>注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。</strong></p>
+<p><strong>udp 和 tcp (发短信和打电话)(不同: 是否创建链接)</strong></p>
+<a id="more"></a>
+<ol>
+<li><p><strong>udp 是用户数据报协议</strong>，UDP(User Datagram Protocol)不能保证数据的准确性和有效性。<br>(数据报:是通过网络传输的数据的基本单元) </p>
+</li>
+<li><p><strong>tcp 是传输控制协议</strong>，TCP(Transmission Control Protocol)能保证数据的准确性和有效性。<br>(和udp差不多依靠socket技术)</p>
+</li>
+<li><p><strong>socket 就是具体实现 tcp 和 udp 的底层技术(也称套接字/流对象)</strong>(不在网络七层协议之列-因为是技术不是协议)</p>
+</li>
+</ol>
+<h3 id="网络七层协议-四-五层模型"><a href="#网络七层协议-四-五层模型" class="headerlink" title="网络七层协议(四/五层模型)"></a>网络七层协议(四/五层模型)</h3><p><img src="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="七层协议1.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-03725767e52c896a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="七层协议2.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-d812e52bc2dc7743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网络七层协议.png"></p>
+<h3 id="IP-地址与端口"><a href="#IP-地址与端口" class="headerlink" title="IP 地址与端口"></a>IP 地址与端口</h3><p>网络通信过程中，之所需要ip、port等，就是为了能够将一个复杂的通信过程进行任务划分，从而保证数据准确无误的传递。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-5d9168459fadd31a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ip和端口.png"></p>
+<h4 id="ip-地址"><a href="#ip-地址" class="headerlink" title="ip 地址"></a>ip 地址</h4><p>作用：用来在网络中标记一台电脑，比如 192．168．1．1 在本地局域网上是唯一的。</p>
+<p>注意：IP 地址 127．0．0．1~127．255．255．255 用于回路测试</p>
+<h4 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h4><p>端口是通过端口号来标记的，端口号只有整数，范围是从0到65535</p>
+<h5 id="知名端口"><a href="#知名端口" class="headerlink" title="知名端口"></a>知名端口</h5><p>众所周知的端口号，范围从0到1023</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">80 端口分配给HTTP服务</span><br><span class="line">21 端口分配给FTP服务</span><br></pre></td></tr></table></figure>
+<h5 id="动态端口"><a href="#动态端口" class="headerlink" title="动态端口"></a>动态端口</h5><p>范围是从1024到65535</p>
+<h5 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat －an 查看端口状态</span><br><span class="line">lsof -i:port 查看端口占用</span><br></pre></td></tr></table></figure>
+<h3 id="Python3-编码转换"><a href="#Python3-编码转换" class="headerlink" title="Python3 编码转换"></a>Python3 编码转换</h3><p>str-&gt;bytes:encode编码</p>
+<p>bytes-&gt;str:decode解码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># encoding: 在解码编码过程中使用的编码(此处指“编码方案”是名词)</span><br><span class="line"># errors: 错误的处理方案</span><br><span class="line">bytes.decode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</span><br><span class="line">str.encode(encoding=&quot;utf-8&quot;, errors=&quot;strict&quot;)</span><br></pre></td></tr></table></figure>
+<p>详细的可以参照官方文档：</p>
+<p><a href="https://docs.python.org/3/library/stdtypes.html?highlight=decode#str.encode" target="_blank" rel="noopener">str.encode()</a></p>
+<p><a href="https://docs.python.org/3/library/stdtypes.html?highlight=decode#bytes.decode" target="_blank" rel="noopener">bytes.decode()</a></p>
+<h3 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h3><p><strong>socket(简称 套接字也成为插口–流对象)</strong> 是进程间通信的一种方式，它与其他进程间通信的一个主要不同是：</p>
+<p>它能实现不同主机间的进程间通信，我们网络上各种各样的服务大多都是基于 Socket 来完成通信的。</p>
+<p>例如我们每天浏览网页、QQ 聊天、收发 email 等等。</p>
+<h4 id="Socket-反问理解"><a href="#Socket-反问理解" class="headerlink" title="Socket 反问理解"></a>Socket 反问理解</h4><p>———start———</p>
+<p><strong>what 是什么</strong>？（概念、理解）</p>
+<p>socket(简称 套接字 也称为插口–流对象) 是进程间通信的一种方式</p>
+<p><br></p>
+<p><strong>why 为什么用</strong>？（用它的好处，特点/不同点）</p>
+<p>是实现tcp和udp的底层技术，能实现 不同主机间 的进程间通信</p>
+<p><br></p>
+<p><strong>where 在哪使用</strong>？（案例、项目）</p>
+<p>网络程序发送、接收数据（发短信、打电话、广播）</p>
+<p>————end————</p>
+<h3 id="UDP-协议"><a href="#UDP-协议" class="headerlink" title="UDP 协议"></a>UDP 协议</h3><p>udp 是用户数据报协议，UDP (User Datagram Protocol) 不能保证数据的准确性和有效性。 (数据报:是通过网络传输的数据的基本单元)</p>
+<p>udp 通信模型中，在通信开始之前，不需要建立相关的链接，只需要发送数据即可，类似于生活中，”写信/发短信”</p>
+<p>python 使用 udp 协议要通过 socket 技术:</p>
+<pre><code>使用步骤：1.引包 2.创建流对象(ipv4, udp) 3.发送(二进制字符串, 元组ip和端口) 4.关闭流对象
+</code></pre><p>创建 socket 语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Address Family：可以选择 AF_INET（用于 Internet 进程间通信） 或者 AF_UNIX（用于同一台机器进程间通信）,实际工作中常用AF_INET</span><br><span class="line"># Type：套接字类型，可以是 SOCK_STREAM（流式套接字，主要用于 TCP 协议）或者 SOCK_DGRAM（数据报套接字，主要用于 UDP 协议）</span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line">    socket.socket(AddressFamily, Type)</span><br></pre></td></tr></table></figure>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>1.udp 发送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 1.引包</span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # 2.创建流对象(ipv4, udp)</span><br><span class="line">    # socket是一个模块</span><br><span class="line">    # socket.socket是一个类</span><br><span class="line">    #   socket.AF_INET: 这个socket数据传世用ipv4;</span><br><span class="line">    #   socket.SOCK_DGRAM: 这个socket使用udp协议进行数据传输;</span><br><span class="line">    </span><br><span class="line">    # socket对象(套接字);    插口 -- 流对象(就要关闭 -- 发送和接收信息)</span><br><span class="line">    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">    </span><br><span class="line">    # 3.发送(二进制字符串, 元组ip和端口)</span><br><span class="line">    str1 = &apos;你好,我是udp协议发送的测试数据...&apos;</span><br><span class="line">    tuple1 = (&apos;192.168.1.1&apos;, 8888)</span><br><span class="line">    udp_socket.sendto(str1.encode(&apos;utf-8&apos;), tuple1)</span><br><span class="line">    print(tuple1, &apos;发送成功!&apos;)</span><br><span class="line">    </span><br><span class="line">    # 4.关闭流对象</span><br><span class="line">    udp_socket.close()</span><br></pre></td></tr></table></figure>
+<p>2.udp 接收（主动接收方需手动绑定端口，发送方才知道发送给谁）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # 1.创建套接字对象</span><br><span class="line">    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line">    # 2. 绑定本地的相关信息，如果一个网络程序不绑定，则系统会随机分配</span><br><span class="line">    local_addr = (&apos;&apos;, 8888) #  ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span><br><span class="line">    udp_socket.bind(local_addr)</span><br><span class="line"></span><br><span class="line">    # 3.数据接收( recvfrom() )</span><br><span class="line">    #       参数: 最多一次性接收1024字节;</span><br><span class="line">    #       返回值: 一个元组(二进制数据, ip及port组成的元组)</span><br><span class="line">    #       recvfrom(): 可以阻塞代码!( 类似input() )</span><br><span class="line">    #       发送和接收数据的时候,udp承受的最大上线为: 64k</span><br><span class="line">    str2, tuple2 = udp_socket.recvfrom(1024)</span><br><span class="line">    print(str2)</span><br><span class="line">    print(tuple2)</span><br><span class="line">    print(str2.decode(&apos;utf-8&apos;))</span><br><span class="line">    # print(str2.decode(&apos;gbk&apos;))</span><br><span class="line"></span><br><span class="line">    # 4.关闭套接字</span><br><span class="line">    udp_socket.close()</span><br></pre></td></tr></table></figure>
+<p>3.udp 聊天器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">说明：在一个电脑中编写1个程序，有2个功能：</span><br><span class="line">    1.获取键盘数据，并将其发送给对方</span><br><span class="line">    2.接收数据并显示</span><br><span class="line">    并且功能数据进行选择以上的2个功能调用</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def send_msg(udp_socket):</span><br><span class="line">    &quot;&quot;&quot;获取键盘数据，并将其发送给对方&quot;&quot;&quot;</span><br><span class="line">    # 1. 从键盘输入数据</span><br><span class="line">    msg = input(&quot;\n请输入要发送的数据:&quot;)</span><br><span class="line">    # 2. 输入对方的ip地址</span><br><span class="line">    dest_ip = input(&quot;\n请输入对方的ip地址:&quot;)</span><br><span class="line">    # 3. 输入对方的port</span><br><span class="line">    dest_port = int(input(&quot;\n请输入对方的port:&quot;))</span><br><span class="line">    # 4. 发送数据</span><br><span class="line">    udp_socket.sendto(msg.encode(&quot;utf-8&quot;), (dest_ip, dest_port))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def recv_msg(udp_socket):</span><br><span class="line">    &quot;&quot;&quot;接收数据并显示&quot;&quot;&quot;</span><br><span class="line">    # 1. 接收数据</span><br><span class="line">    recv_msg = udp_socket.recvfrom(1024)</span><br><span class="line">    # 2. 解码</span><br><span class="line">    recv_ip = recv_msg[1]</span><br><span class="line">    recv_msg = recv_msg[0].decode(&quot;utf-8&quot;)</span><br><span class="line">    # 3. 显示接收到的数据</span><br><span class="line">    print(&quot;&gt;&gt;&gt;%s:%s&quot; % (str(recv_ip), recv_msg))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 1. 创建套接字</span><br><span class="line">    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">    # 2. 绑定本地信息</span><br><span class="line">    udp_socket.bind((&quot;&quot;, 7890))</span><br><span class="line">    while True:</span><br><span class="line">        # 3. 选择功能</span><br><span class="line">        print(&quot;=&quot;*30)</span><br><span class="line">        print(&quot;1:发送消息&quot;)</span><br><span class="line">        print(&quot;2:接收消息&quot;)</span><br><span class="line">        print(&quot;=&quot;*30)</span><br><span class="line">        op_num = input(&quot;请输入要操作的功能序号:&quot;)</span><br><span class="line"></span><br><span class="line">        # 4. 根据选择调用相应的函数</span><br><span class="line">        if op_num == &quot;1&quot;:</span><br><span class="line">            send_msg(udp_socket)</span><br><span class="line">        elif op_num == &quot;2&quot;:</span><br><span class="line">            recv_msg(udp_socket)</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;输入有误，请重新输入...&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h3 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="TCP 协议"></a>TCP 协议</h3><p>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由 IETF 的 RFC 793 定义。</p>
+<p>TCP通信需要经过 <strong>创建连接、数据传送、终止连接</strong> 三个步骤。</p>
+<p>TCP通信模型中，在通信开始之前，一定要先建立相关的链接，才能发送数据，类似于生活中，”打电话””</p>
+<h4 id="TCP-特点"><a href="#TCP-特点" class="headerlink" title="TCP 特点"></a>TCP 特点</h4><p><strong>1.面向连接</strong></p>
+<ol>
+<li>通信双方必须先建立连接才能进行数据的传输，双方都必须为该连接分配必要的系统内核资源，以管理连接的状态和连接上的传输。</li>
+<li><strong>TCP不适用于广播的应用程序，基于广播的应用程序请使用UDP协议。</strong></li>
+</ol>
+<p><strong>2.可靠传输</strong></p>
+<ol>
+<li>TCP采用发送应答机制<ul>
+<li>TCP发送的每个报文段都必须得到接收方的应答才认为这个TCP报文段传输成功</li>
+</ul>
+</li>
+<li>超时重传<ul>
+<li>发送端发出一个报文段之后就启动定时器，如果在定时时间内没有收到应答就重新发送这个报文段。</li>
+<li>TCP为了保证不发生丢包，就给每个包一个序号，同时序号也保证了传送到接收端实体的包的按序接收。然后接收端实体对已成功收到的包发回一个相应的确认（ACK）；如果发送端实体在合理的往返时延（RTT）内未收到确认，那么对应的数据包就被假设为已丢失将会被进行重传。</li>
+</ul>
+</li>
+<li>错误校验<ul>
+<li>TCP用一个校验和函数来检验数据是否有错误；在发送和接收时都要计算校验和。</li>
+</ul>
+</li>
+<li>流量控制和阻塞管理<ul>
+<li>流量控制用来避免主机发送得过快而使接收方来不及完全收下。</li>
+</ul>
+</li>
+</ol>
+<h4 id="tcp-注意点"><a href="#tcp-注意点" class="headerlink" title="tcp 注意点"></a>tcp 注意点</h4><ol>
+<li>tcp服务器一般情况下都需要绑定ip和端口，否则客户端找不到这个服务器及其服务对应的端口</li>
+<li>tcp客户端一般不绑定，因为是主动链接服务器，所以只要确定好服务器的ip、port等信息就好，本地客户端可以随机</li>
+<li>tcp服务器中通过listen可以将socket创建出来的主动套接字变为被动的，这是做tcp服务器时必须要做的</li>
+<li>当客户端需要链接服务器时，就需要使用connect进行链接，udp是不需要链接的而是直接发送，但是tcp必须先链接，只有链接成功才能通信</li>
+<li>当一个tcp客户端连接服务器时，服务器端会有1个新的套接字，这个套接字用来标记这个客户端，单独为这个客户端服务</li>
+<li>listen后的套接字是被动套接字，用来接收新的客户端的链接请求的，而accept返回的新套接字是标记这个新客户端的</li>
+<li>关闭listen后的套接字意味着被动套接字关闭了，会导致新的客户端不能够链接服务器，但是之前已经链接成功的客户端正常通信。</li>
+<li>关闭accept返回的套接字意味着这个客户端已经服务完毕</li>
+<li>当客户端的套接字调用close后，服务器端会recv解堵塞，并且返回的长度为0，因此服务器可以通过返回数据的长度来区别客户端是否已经下线</li>
+<li>空字符串能够直接发送不能够直接接收(tcp服务端会过滤)</li>
+</ol>
+<h4 id="tcp-三次握手和四次挥手"><a href="#tcp-三次握手和四次挥手" class="headerlink" title="tcp 三次握手和四次挥手"></a>tcp 三次握手和四次挥手</h4><h5 id="tcp-三次握手图解"><a href="#tcp-三次握手图解" class="headerlink" title="tcp 三次握手图解"></a>tcp 三次握手图解</h5><p><img src="https://upload-images.jianshu.io/upload_images/3365001-3f3bcc28ca39fa1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tcp三次握手1.png"></p>
+<table>
+<thead>
+<tr>
+<th>标志位</th>
+<th>序号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SYN: 表示连接请求</td>
+<td>seq:表示报文序号</td>
+</tr>
+<tr>
+<td>ACK: 表示确认</td>
+<td>ack: 表示确认号</td>
+</tr>
+<tr>
+<td>FIN:  表示关闭连接</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-4203e495de645009.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="tcp三次握手.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">（1）第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。</span><br><span class="line">（2）第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1， ack (number )=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。</span><br><span class="line">（3）第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED状态，完成三次握手，随后Client与Server之间可以开始传输数据了。</span><br><span class="line"></span><br><span class="line">理解总结：</span><br><span class="line">1.客户端发起连接请求，等待服务端确定</span><br><span class="line">2.服务端确认连接请求</span><br><span class="line">3.客户端收到确认后，再次发送数据包验证（验证正确，连接成功，完成三次握手）</span><br></pre></td></tr></table></figure>
+<h5 id="tcp-四次挥手图解"><a href="#tcp-四次挥手图解" class="headerlink" title="tcp 四次挥手图解"></a>tcp 四次挥手图解</h5><p><img src="https://upload-images.jianshu.io/upload_images/3365001-e77fdb8210af7052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tcp四次挥手.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">客户端主动关闭（三次挥手）：</span><br><span class="line">（1）第一次挥手：客户端发送一个FIN，用来关闭客户端到服务的数据传送。</span><br><span class="line">（2）第二次挥手：服务端发送一个ACK，用来关闭服务端到客户端的数据传送。</span><br><span class="line">（3) 第三次挥手：客户端收到ACK后，接着发送一个ACK给服务端，确认序号为收到序号+1。</span><br><span class="line"></span><br><span class="line">服务端主动关闭（四次挥手）：</span><br><span class="line">（1）第一次挥手：server发送一个FIN，用来关闭server到client的数据传送。</span><br><span class="line">（2) 第二次挥手：client收到FIN后，发送一个ACK给server，确认序号为收到序号+1。</span><br><span class="line">（3）第三次挥手：client发送一个FIN，用来关闭Client到Server的数据传送。</span><br><span class="line">（4) 第四次挥手：Server收到FIN后，接着发送一个ACK给Client，确认序号为收到序号+1。</span><br><span class="line"></span><br><span class="line">理解总结：</span><br><span class="line">1.服务端 close()（我要关闭连接了）</span><br><span class="line">2.客户端收到后发送一条消息（别急，事情还没处理完...）</span><br><span class="line">3.客户端处理完成后 close()（可以关闭连接了）</span><br><span class="line">4.服务端接着发送一个 ACK 给 Client（连接已关闭！四次挥手完成）</span><br></pre></td></tr></table></figure>
+<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><p>1.tcp 客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from socket import *</span><br><span class="line"></span><br><span class="line"># 创建socket</span><br><span class="line">tcp_client_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"></span><br><span class="line"># 目的信息</span><br><span class="line">server_ip = input(&quot;请输入服务器ip:&quot;)</span><br><span class="line">server_port = int(input(&quot;请输入服务器port:&quot;))</span><br><span class="line"></span><br><span class="line"># 链接服务器</span><br><span class="line">tcp_client_socket.connect((server_ip, server_port))</span><br><span class="line"></span><br><span class="line"># 提示用户输入数据</span><br><span class="line">send_data = input(&quot;请输入要发送的数据：&quot;)</span><br><span class="line"></span><br><span class="line">tcp_client_socket.send(send_data.encode(&quot;gbk&quot;))</span><br><span class="line"></span><br><span class="line"># 接收对方发送过来的数据，最大接收1024个字节</span><br><span class="line">recvData = tcp_client_socket.recv(1024)</span><br><span class="line">print(&apos;接收到的数据为:&apos;, recvData.decode(&apos;gbk&apos;))</span><br><span class="line"></span><br><span class="line"># 关闭套接字</span><br><span class="line">tcp_client_socket.close()</span><br></pre></td></tr></table></figure>
+<p>2.tcp 服务端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">步骤：</span><br><span class="line">    1.socket创建一个套接字</span><br><span class="line">    2.bind绑定ip和port</span><br><span class="line">    3.listen使套接字变为可以被动链接</span><br><span class="line">    4.accept等待客户端的链接</span><br><span class="line">    5.recv/send接收发送数据</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from socket import *</span><br><span class="line"></span><br><span class="line"># 创建socket</span><br><span class="line">tcp_server_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"></span><br><span class="line"># 本地信息</span><br><span class="line">address = (&apos;&apos;, 7788)</span><br><span class="line"></span><br><span class="line"># 绑定</span><br><span class="line">tcp_server_socket.bind(address)</span><br><span class="line"></span><br><span class="line"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span><br><span class="line">tcp_server_socket.listen(128)</span><br><span class="line"></span><br><span class="line"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span><br><span class="line"># client_socket用来为这个客户端服务</span><br><span class="line"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span><br><span class="line">client_socket, clientAddr = tcp_server_socket.accept()</span><br><span class="line"></span><br><span class="line"># 接收对方发送过来的数据</span><br><span class="line">recv_data = client_socket.recv(1024)  # 接收1024个字节</span><br><span class="line">print(&apos;接收到的数据为:&apos;, recv_data.decode(&apos;gbk&apos;))</span><br><span class="line"></span><br><span class="line"># 发送一些数据到客户端</span><br><span class="line">client_socket.send(&quot;thank you !&quot;.encode(&apos;gbk&apos;))</span><br><span class="line"></span><br><span class="line"># 关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</span><br><span class="line">client_socket.close()</span><br></pre></td></tr></table></figure>
+<h3 id="TCP-与-UDP-的不同点"><a href="#TCP-与-UDP-的不同点" class="headerlink" title="TCP 与 UDP 的不同点"></a>TCP 与 UDP 的不同点</h3><p><strong>TCP：</strong></p>
+<ul>
+<li>面向连接（确认有创建三方交握，连接已创建才作传输。）</li>
+<li>有序数据传输</li>
+<li>重发丢失的数据包</li>
+<li>舍弃重复的数据包</li>
+<li>无差错的数据传输</li>
+<li>阻塞/流量控制</li>
+</ul>
+<p><strong>UDP 通信模型（类似于写信/发短信/广播/视频聊天）</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-66f6ee5be9f9df0f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="udp通信模型.jpg"></p>
+<p><strong>TCP 通信模型（类似于打电话）</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-55244b661df4c1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TCP通信模型.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/07/08/Python 网络通信-udp、tcp 与 socket/">Python 网络通信-udp、tcp 与 socket</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
+  <p><span>发布时间:</span>2018年07月08日 - 00:07</p>
+  <p><span>最后更新:</span>2018年07月18日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/08/Python 网络通信-udp、tcp 与 socket/" title="Python 网络通信-udp、tcp 与 socket">http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/udp/" rel="tag"><i class="fa fa-tag"></i> udp</a>
+          
+            <a href="/tags/tcp/" rel="tag"><i class="fa fa-tag"></i> tcp</a>
+          
+            <a href="/tags/socket/" rel="tag"><i class="fa fa-tag"></i> socket</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/06/反问学习法（what、why、where），十万个为什么/" rel="next" title="反问学习法（what、why、where），十万个为什么">
+                <i class="fa fa-chevron-left"></i> 反问学习法（what、why、where），十万个为什么
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/10/Python 多任务-线程、进程与协程/" rel="prev" title="Python 多任务-线程、进程与协程">
+                Python 多任务-线程、进程与协程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="曹永林" />
+            
+              <p class="site-author-name" itemprop="name">曹永林</p>
+              <p class="site-description motion-element" itemprop="description">Python 老农民</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jovelin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/u/jovelin" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/149c3a6ceb25" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cuiqingcai.com/" title="崔庆才" target="_blank">崔庆才</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-网络通信"><span class="nav-number">1.</span> <span class="nav-text">Python 网络通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#udp-和-tcp-及-socket-介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">udp 和 tcp 及 socket 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络七层协议-四-五层模型"><span class="nav-number">1.0.2.</span> <span class="nav-text">网络七层协议(四/五层模型)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-地址与端口"><span class="nav-number">1.0.3.</span> <span class="nav-text">IP 地址与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ip-地址"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">ip 地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#知名端口"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">知名端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态端口"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">动态端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看端口"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">查看端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python3-编码转换"><span class="nav-number">1.0.4.</span> <span class="nav-text">Python3 编码转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-套接字"><span class="nav-number">1.0.5.</span> <span class="nav-text">Socket 套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket-反问理解"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Socket 反问理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-协议"><span class="nav-number">1.0.6.</span> <span class="nav-text">UDP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">TCP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-特点"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">TCP 特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-注意点"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">tcp 注意点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-三次握手和四次挥手"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">tcp 三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-三次握手图解"><span class="nav-number">1.0.7.3.1.</span> <span class="nav-text">tcp 三次握手图解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-四次挥手图解"><span class="nav-number">1.0.7.3.2.</span> <span class="nav-text">tcp 四次挥手图解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例-1"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-与-UDP-的不同点"><span class="nav-number">1.0.8.</span> <span class="nav-text">TCP 与 UDP 的不同点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    <!--<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461525011&auto=0&height=66"></iframe>
+    </div>-->
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+    <!--<i class="fa fa-user"></i>-->
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹永林</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="powered-by">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_site_pv">
+      访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count">博客全站共 21.5k 字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count"><p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p></span>
+  </div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+
+ <script>
+   'use strict';
+   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+   function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+   var Circle = function () {
+      function Circle(x, y) {
+           _classCallCheck(this, Circle);
+           this.x = x;
+           this.y = y;
+           this.r = Math.random() * 10;
+           this._mx = Math.random();
+           this._my = Math.random();
+       }
+      _createClass(Circle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+               ctx.fill();
+           }
+       }, {
+           key: 'drawLine',
+           value: function drawLine(ctx, _circle) {
+               var dx = this.x - _circle.x;
+               var dy = this.y - _circle.y;
+               var d = Math.sqrt(dx * dx + dy * dy);
+               if (d < 150) {
+                   ctx.beginPath();
+                   ctx.moveTo(this.x, this.y); //起始点
+                   ctx.lineTo(_circle.x, _circle.y); //终点
+                   ctx.closePath();
+                   ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                   ctx.stroke();
+               }
+           }
+       }, {
+           key: 'move',
+           value: function move(w, h) {
+               this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+               this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+               this.x += this._mx / 2;
+               this.y += this._my / 2;
+           }
+       }]);
+       return Circle;
+   }();
+   var currentCirle = function (_Circle) {
+       _inherits(currentCirle, _Circle);
+       function currentCirle(x, y) {
+           _classCallCheck(this, currentCirle);
+           return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+       }
+       _createClass(currentCirle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+               this.r = 8;
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+               ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+               ctx.fill();
+           }
+       }]);
+       return currentCirle;
+   }(Circle);
+   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+   var canvas = document.getElementById('canvas');
+   var ctx = canvas.getContext('2d');
+   var w = canvas.width = canvas.offsetWidth;
+   var h = canvas.height = canvas.offsetHeight;
+   var circles = [];
+   var current_circle = new currentCirle(0, 0);
+   var draw = function draw() {
+       ctx.clearRect(0, 0, w, h);
+       for (var i = 0; i < circles.length; i++) {
+           circles[i].move(w, h);
+           circles[i].drawCircle(ctx);
+           for (j = i + 1; j < circles.length; j++) {
+               circles[i].drawLine(ctx, circles[j]);
+           }
+       }
+       if (current_circle.x) {
+           current_circle.drawCircle(ctx);
+           for (var k = 1; k < circles.length; k++) {
+               current_circle.drawLine(ctx, circles[k]);
+           }
+       }
+       requestAnimationFrame(draw);
+   };
+   var init = function init(num) {
+       for (var i = 0; i < num; i++) {
+           circles.push(new Circle(Math.random() * w, Math.random() * h));
+       }
+       draw();
+   };
+   window.addEventListener('load', init(60));
+   window.onmousemove = function (e) {
+       e = e || window.event;
+       current_circle.x = e.clientX;
+       current_circle.y = e.clientY;
+   };
+   window.onmouseout = function () {
+       current_circle.x = null;
+       current_circle.y = null;
+   };
+</script>
+
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+ </div>
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
