@@ -1987,7 +1987,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9a135b;
+  background: #17636c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3092,9 +3092,6 @@ hr {
   color: #000;
   background: transparent;
 }
-.sidebar {
-  background: url("http://om8u46rmb.bkt.clouddn.com/sildeBarBg.jpg") no-repeat !important;
-}
 code {
   color: #ff7600;
   background: #fbf7f8;
@@ -3126,7 +3123,7 @@ body {
 }
 .main-inner {
   margin-top: 60px;
-  padding: 30px 25px 0px 25px;
+  padding: 30px 25px 30px 25px;
   background: #fff;
   opacity: 0.82;
 }
