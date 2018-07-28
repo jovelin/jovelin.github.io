@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="Python 多任务-线程、进程与协程什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 线程线程是进程的一个实体，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。">
+<meta name="description" content="前言：  多线程； 多进程； 进程、线程对比； 多协程； 进程、线程、协程对比。">
 <meta name="keywords" content="Python,多任务,线程,进程,协程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 多任务-线程、进程与协程">
 <meta property="og:url" content="http://jovelin.cn/2018/07/10/Python 多任务-线程、进程与协程/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="Python 多任务-线程、进程与协程什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 线程线程是进程的一个实体，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。">
+<meta property="og:description" content="前言：  多线程； 多进程； 进程、线程对比； 多协程； 进程、线程、协程对比。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-4cf0e2846bad9723.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-9365b83598e8f764.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-4e2b4618127c7d94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-d37fbaaca0679c6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-8f26f1b69124ba7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-18T02:07:44.000Z">
+<meta property="og:updated_time" content="2018-07-28T02:26:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 多任务-线程、进程与协程">
-<meta name="twitter:description" content="Python 多任务-线程、进程与协程什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。 线程线程是进程的一个实体，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。">
+<meta name="twitter:description" content="前言：  多线程； 多进程； 进程、线程对比； 多协程； 进程、线程、协程对比。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3365001-4cf0e2846bad9723.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,765
+                  1,800
                 </span>
               
 
@@ -415,9 +415,19 @@
       
 
       
-        <h1 id="Python-多任务-线程、进程与协程"><a href="#Python-多任务-线程、进程与协程" class="headerlink" title="Python 多任务-线程、进程与协程"></a>Python 多任务-线程、进程与协程</h1><p>什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。</p>
-<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程是进程的一个实体，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。</p>
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>多线程；</li>
+<li>多进程；</li>
+<li>进程、线程对比；</li>
+<li>多协程；</li>
+<li>进程、线程、协程对比。</li>
+</ol>
+</blockquote>
 <a id="more"></a>
+<h1 id="Python-多任务-线程、进程与协程"><a href="#Python-多任务-线程、进程与协程" class="headerlink" title="Python 多任务-线程、进程与协程"></a>Python 多任务-线程、进程与协程</h1><p>什么叫“多任务”呢？简单地说，就是操作系统可以同时运行多个任务。</p>
+<h3 id="一、线程"><a href="#一、线程" class="headerlink" title="一、线程"></a>一、线程</h3><p>线程是进程的一个实体，是 CPU 调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-4cf0e2846bad9723.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="进程和线程.png"></p>
 <h4 id="并行-并发"><a href="#并行-并发" class="headerlink" title="并行/并发"></a>并行/并发</h4><p><img src="https://upload-images.jianshu.io/upload_images/3365001-9365b83598e8f764.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="02-CPU及线程介绍.png"></p>
 <p><strong>并发</strong></p>
@@ -449,10 +459,10 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Python 解释器中有一个模块专门控制线程，实现多任务</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_msg</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        print(<span class="string">"send msg"</span>, i + <span class="number">1</span>)</span><br><span class="line">        time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">receive_msg</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        print(<span class="string">"receive msg"</span>, i + <span class="number">1</span>)</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 创建线程对象（target=函数名, name=线程别名, args=参数, kwargs=字典参数）</span></span><br><span class="line">    t1 = threading.Thread(target=send_msg, name=<span class="string">"send"</span>, args=(<span class="number">3</span>,))</span><br><span class="line">    t2 = threading.Thread(target=receive_msg, name=<span class="string">"receive"</span>, kwargs=&#123;<span class="string">"num"</span>: <span class="number">3</span>&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 三个 API</span></span><br><span class="line">    print(threading.enumerate())</span><br><span class="line">    print(threading.current_thread())</span><br><span class="line">    print(threading.active_count())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 守护线程</span></span><br><span class="line">    t1.setDaemon(<span class="keyword">True</span>)</span><br><span class="line">    t2.setDaemon(<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开启线程</span></span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 线程等待</span></span><br><span class="line">    t1.join()</span><br><span class="line">    t2.join()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"*** main thread ***"</span>)</span><br></pre></td></tr></table></figure>
 <p>2.自定义线程类</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendThread</span>(<span class="title">threading</span>.<span class="title">Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, num)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="comment"># threading.Thread.__init__(self)</span></span><br><span class="line">        <span class="keyword">super</span>(SendThread, <span class="keyword">self</span>).__init_<span class="number">_</span>()</span><br><span class="line">        <span class="comment"># super().__init__()</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">self</span>.num = num</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_msg</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)<span class="symbol">:</span></span><br><span class="line">            print(<span class="string">"send msg"</span>, i + <span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0</span>.<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.send_msg()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReceiveThread</span>(<span class="title">threading</span>.<span class="title">Thread</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">receive_msg</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)<span class="symbol">:</span></span><br><span class="line">            print(<span class="string">"receive msg"</span>, i + <span class="number">1</span>)</span><br><span class="line">            time.sleep(<span class="number">0</span>.<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.receive_msg()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">'__main__'</span><span class="symbol">:</span></span><br><span class="line">    t1 = SendThread(<span class="number">3</span>)</span><br><span class="line">    t2 = ReceiveThread()</span><br><span class="line"></span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"*** main thread ***"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>运行的程序以及运行时用到的资源这个整体称之为进程，是系统进行资源分配和调度的一个独立单位。</p>
+<h3 id="二、进程"><a href="#二、进程" class="headerlink" title="二、进程"></a>二、进程</h3><p>运行的程序以及运行时用到的资源这个整体称之为进程，是系统进行资源分配和调度的一个独立单位。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-4e2b4618127c7d94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="01-进程.png"></p>
 <h4 id="进程间通信-Queue"><a href="#进程间通信-Queue" class="headerlink" title="进程间通信-Queue"></a>进程间通信-Queue</h4><p>进程间通信：运行的程序之间的数据共享。</p>
-<h3 id="进程、线程对比"><a href="#进程、线程对比" class="headerlink" title="进程、线程对比"></a>进程、线程对比</h3><p>功能</p>
+<h3 id="三、进程、线程对比"><a href="#三、进程、线程对比" class="headerlink" title="三、进程、线程对比"></a>三、进程、线程对比</h3><p>功能</p>
 <ul>
 <li>进程，能够完成多任务，比如 在一台电脑上能够同时运行多个 QQ。</li>
 <li>线程，能够完成多任务，比如 一个 QQ 中的多个聊天窗口。</li>
@@ -475,7 +485,7 @@
 <ul>
 <li>线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；而进程正相反。</li>
 </ul>
-<h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p>协程，又称微线程，纤程。英文名Coroutine。</p>
+<h3 id="四、协程"><a href="#四、协程" class="headerlink" title="四、协程"></a>四、协程</h3><p>协程，又称微线程，纤程。英文名Coroutine。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-d37fbaaca0679c6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="02-协程.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-8f26f1b69124ba7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="03-迭代器和生成器.png"></p>
 <h4 id="greenlet"><a href="#greenlet" class="headerlink" title="greenlet"></a>greenlet</h4><p>为了更好使用协程来完成多任务，python中的greenlet模块对其封装，从而使得切换任务变的更加简单</p>
@@ -490,7 +500,7 @@
 <h4 id="协程和线程差异"><a href="#协程和线程差异" class="headerlink" title="协程和线程差异"></a>协程和线程差异</h4><p>在实现多任务时, 线程切换从系统层面远不止保存和恢复 CPU 上下文这么简单。</p>
 <p>操作系统为了程序运行的高效性每个线程都有自己缓存 Cache 等等数据，操作系统还会帮你做这些数据的恢复操作。所以线程的切换非常耗性能。</p>
 <p>但是协程的切换只是单纯的操作 CPU 的上下文，所以一秒钟切换个上百万次系统都抗的住。</p>
-<h3 id="进程、线程、协程对比"><a href="#进程、线程、协程对比" class="headerlink" title="进程、线程、协程对比"></a>进程、线程、协程对比</h3><ol>
+<h3 id="五、进程、线程、协程对比"><a href="#五、进程、线程、协程对比" class="headerlink" title="五、进程、线程、协程对比"></a>五、进程、线程、协程对比</h3><ol>
 <li>进程是资源分配的单位</li>
 <li>线程是操作系统调度的单位</li>
 <li>进程切换需要的资源很最大，效率很低</li>
@@ -528,7 +538,7 @@
   <p><span>本文标题:</span><a href="/2018/07/10/Python 多任务-线程、进程与协程/">Python 多任务-线程、进程与协程</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
   <p><span>发布时间:</span>2018年07月10日 - 00:07</p>
-  <p><span>最后更新:</span>2018年07月18日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
   <p><span>原始链接:</span><a href="/2018/07/10/Python 多任务-线程、进程与协程/" title="Python 多任务-线程、进程与协程">http://jovelin.cn/2018/07/10/Python 多任务-线程、进程与协程/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/10/Python 多任务-线程、进程与协程/"  aria-label="复制成功！"></i></span>
   </p>
@@ -674,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -696,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -780,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-多任务-线程、进程与协程"><span class="nav-number">1.</span> <span class="nav-text">Python 多任务-线程、进程与协程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-number">1.0.1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行-并发"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">并行/并发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程图解"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">多线程图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享全局变量与问题"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">共享全局变量与问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-异步"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">同步/异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互斥锁"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">互斥锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁（一种-bug）"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">死锁（一种 bug）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程"><span class="nav-number">1.0.2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信-Queue"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">进程间通信-Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程、线程对比"><span class="nav-number">1.0.3.</span> <span class="nav-text">进程、线程对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协程"><span class="nav-number">1.0.4.</span> <span class="nav-text">协程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#greenlet"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">greenlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gevent"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">gevent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协程和线程差异"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">协程和线程差异</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程、线程、协程对比"><span class="nav-number">1.0.5.</span> <span class="nav-text">进程、线程、协程对比</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-多任务-线程、进程与协程"><span class="nav-number">1.</span> <span class="nav-text">Python 多任务-线程、进程与协程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、线程"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行-并发"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">并行/并发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程图解"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">多线程图解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享全局变量与问题"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">共享全局变量与问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-异步"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">同步/异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互斥锁"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">互斥锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁（一种-bug）"><span class="nav-number">1.0.1.6.</span> <span class="nav-text">死锁（一种 bug）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.0.1.7.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、进程"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信-Queue"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">进程间通信-Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、进程、线程对比"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、进程、线程对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、协程"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、协程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#greenlet"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">greenlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gevent"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">gevent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协程和线程差异"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">协程和线程差异</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、进程、线程、协程对比"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、进程、线程、协程对比</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -837,7 +847,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 20.8k 字</span>
+    <span class="post-count">博客全站共 33.3k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<!--<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">-->
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="Linux,Linux 命令," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jovelin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Linux 终端命令01. 终端命令格式command [-options] [parameter]    command：命令名，相应功能的英文单词或单词的缩写    [-options]：选项，可用来对命令进行控制，也可以省略    [parameter]：传给命令的参数，可以是 零个、一个 或者 多个 02. 查阅命令帮助信息2.1 --help    command --help    显">
+<meta name="keywords" content="Linux,Linux 命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 终端命令">
+<meta property="og:url" content="http://jovelin.cn/2018/07/03/Linux 终端命令/index.html">
+<meta property="og:site_name" content="Jovelin&#39;s Blog">
+<meta property="og:description" content="Linux 终端命令01. 终端命令格式command [-options] [parameter]    command：命令名，相应功能的英文单词或单词的缩写    [-options]：选项，可用来对命令进行控制，也可以省略    [parameter]：传给命令的参数，可以是 零个、一个 或者 多个 02. 查阅命令帮助信息2.1 --help    command --help    显">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-28T02:50:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 终端命令">
+<meta name="twitter:description" content="Linux 终端命令01. 终端命令格式command [-options] [parameter]    command：命令名，相应功能的英文单词或单词的缩写    [-options]：选项，可用来对命令进行控制，也可以省略    [parameter]：传给命令的参数，可以是 零个、一个 或者 多个 02. 查阅命令帮助信息2.1 --help    command --help    显">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jovelin.cn/2018/07/03/Linux 终端命令/"/>
+
+
+
+
+  <title>Linux 终端命令 | Jovelin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jovelin"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    <!--<a href="https://github.com/jovelin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jovelin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Python The old farmer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/03/Linux 终端命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹永林">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jovelin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux 终端命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T09:00:01+08:00">
+                2018-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/03/Linux 终端命令/" class="leancloud_visitors" data-flag-title="Linux 终端命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>°C</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,069
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Linux-终端命令"><a href="#Linux-终端命令" class="headerlink" title="Linux 终端命令"></a>Linux 终端命令</h3><h4 id="01-终端命令格式"><a href="#01-终端命令格式" class="headerlink" title="01. 终端命令格式"></a>01. 终端命令格式</h4><figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line">command <span class="string">[-options]</span> <span class="string">[parameter]</span></span><br><span class="line">    command：命令名，相应功能的英文单词或单词的缩写</span><br><span class="line">    <span class="string">[-options]</span>：选项，可用来对命令进行控制，也可以省略</span><br><span class="line">    <span class="string">[parameter]</span>：传给命令的参数，可以是 零个、一个 或者 多个</span><br></pre></td></tr></table></figure>
+<h4 id="02-查阅命令帮助信息"><a href="#02-查阅命令帮助信息" class="headerlink" title="02. 查阅命令帮助信息"></a>02. 查阅命令帮助信息</h4><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="number">2.1</span> <span class="comment">--help</span></span><br><span class="line">    <span class="keyword">command</span> --<span class="title">help</span></span><br><span class="line">    显示 <span class="keyword">command</span> 命令的帮助信息</span><br><span class="line"></span><br><span class="line"><span class="number">2.2</span> man</span><br><span class="line">    man <span class="keyword">command</span></span><br><span class="line">    查阅 <span class="keyword">command</span> 命令的使用手册</span><br><span class="line">    </span><br><span class="line">    man 是 manual 的缩写，是 Linux 提供的一个手册，包含了绝大部分的命令、函数的详细使用说明</span><br><span class="line"></span><br><span class="line">    使用 man 时的操作键：</span><br><span class="line">        空格键：显示手册页的下一屏</span><br><span class="line">        Enter 键：一次滚动手册页的一行</span><br><span class="line">        b：回滚一屏</span><br><span class="line">        f：前滚一屏</span><br><span class="line">        q：退出</span><br><span class="line">        /<span class="built_in">word</span>：搜索 <span class="built_in">word</span> 字符串</span><br></pre></td></tr></table></figure>
+<h3 id="Linux-基本命令-一"><a href="#Linux-基本命令-一" class="headerlink" title="Linux 基本命令(一)"></a>Linux 基本命令(一)</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">Linux 文件或者目录名称最长可以有 265 个字符，“.”代表当前目录，“..”代表上一级目录，以“.”开头的文件为隐藏文件，需要用 -a 参数才能显示。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1. 查看文件信息：<span class="keyword">ls</span></span><br><span class="line">    -a  显示指定目录下所有子目录与文件，包括隐藏文件</span><br><span class="line">    -<span class="keyword">l</span>	以列表方式显示文件的详细信息</span><br><span class="line">    -<span class="keyword">h</span>	配合 -<span class="keyword">l</span> 以人性化的方式显示文件大小（字节大小以 K 显示）</span><br><span class="line">    </span><br><span class="line">    $ <span class="keyword">ls</span> -a</span><br><span class="line">    $ <span class="keyword">ls</span> -<span class="keyword">l</span></span><br><span class="line">    $ <span class="keyword">ls</span> -<span class="keyword">l</span> -<span class="built_in">h</span></span><br><span class="line">    $ <span class="keyword">ls</span> -alh</span><br><span class="line">    </span><br><span class="line">2. 清屏：<span class="keyword">clear</span></span><br><span class="line">    <span class="keyword">clear</span> 作用为清除终端上的显示(类似于 DOS 的 cls 清屏功能)，也可使用快捷键：Ctrl + <span class="keyword">L</span></span><br><span class="line"></span><br><span class="line">3. 切换工作目录： <span class="keyword">cd</span></span><br><span class="line">    <span class="keyword">cd</span>	    切换到当前用户的主目录(/home/用户目录)，用户登陆的时候，默认的目录就是用户的主目录。</span><br><span class="line">    <span class="keyword">cd</span> ~	切换到当前用户的主目录(/home/用户目录)</span><br><span class="line">    <span class="keyword">cd</span> .	切换到当前目录</span><br><span class="line">    <span class="keyword">cd</span> ..	切换到上级目录</span><br><span class="line">    <span class="keyword">cd</span> -	可进入上次所在的目录</span><br><span class="line">    </span><br><span class="line">4. 显示当前路径：<span class="keyword">pwd</span></span><br><span class="line">    </span><br><span class="line">5. 创建目录：<span class="keyword">mkdir</span></span><br><span class="line">    通过<span class="keyword">mkdir</span>命令可以创建一个新的目录。参数 -p 可递归创建目录。</span><br><span class="line">    </span><br><span class="line">    $ <span class="keyword">mkdir</span> newdir1</span><br><span class="line">    $ <span class="keyword">mkdir</span> -p newdir2/a/b/c</span><br><span class="line">    </span><br><span class="line">6. 删除文件：<span class="keyword">rm</span></span><br><span class="line">    可通过<span class="keyword">rm</span>删除文件或目录。使用<span class="keyword">rm</span>命令要小心，因为文件删除后不能恢复。</span><br><span class="line">    为了防止文件误删，可以在<span class="keyword">rm</span>后使用-i参数以逐个确认要删除的文件。</span><br><span class="line">    </span><br><span class="line">    -i	以进行交互式方式执行</span><br><span class="line">    -f	强制删除，忽略不存在的文件，无需提示</span><br><span class="line">    -r	递归地删除目录下的内容，删除文件夹时必须加此参数</span><br><span class="line">    </span><br><span class="line">    $ <span class="keyword">rm</span> -<span class="keyword">if</span> newfile.txt</span><br><span class="line">    $ <span class="keyword">rm</span> -<span class="keyword">ir</span> newdir1</span><br><span class="line">    </span><br><span class="line">7. 拷贝：cp</span><br><span class="line">    cp 命令的功能是将给出的文件或目录复制到另一个文件或目录中，相当于 DOS 下的 <span class="keyword">copy</span> 命令。</span><br><span class="line">    </span><br><span class="line">    -a	该选项通常在复制目录时使用，它保留链接、文件属性，并递归地复制目录，简单而言，保持文件原有属性。</span><br><span class="line">    -f	已经存在的目标文件而不提示</span><br><span class="line">    -i	交互式复制，在覆盖目标文件之前将给出提示要求用户确认</span><br><span class="line">    -r	若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名。</span><br><span class="line">    -v	显示拷贝进度</span><br><span class="line">    </span><br><span class="line">    $ cp -ivr newdir1 newdir2</span><br><span class="line">    </span><br><span class="line">8. mv：移动、重命名</span><br><span class="line">    用户可以使用mv命令来移动文件或目录，也可以给文件或目录重命名。</span><br><span class="line">    </span><br><span class="line">    -f	禁止交互式操作，如有覆盖也不会给出提示</span><br><span class="line">    -i	确认交互方式操作，如果mv操作将导致对已存在的目标文件的覆盖，系统会询问是否重写，要求用户回答以避免误覆盖文件</span><br><span class="line">    -v	显示移动进度</span><br><span class="line">    </span><br><span class="line">    $ mv -iv newdir1 newdir3</span><br><span class="line">    </span><br><span class="line">9. 创建文件: touch</span><br><span class="line">    用户可以通过touch来创建一个空的文件</span><br><span class="line">    </span><br><span class="line">    $ touch hello.txt</span><br><span class="line">    </span><br><span class="line">10. 查看文件树状图：tree</span><br><span class="line">    通过使用 tree 命令来查看我们的文件树状图，那么如果我们的电脑里面没有安装tree的软件的话，那么就会执行命令失败，出现如下的问题：-bash: tree: command not found</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">Mac</span> 上安装 tree 安装包：</span><br><span class="line">    $ brew install tree</span><br><span class="line"></span><br><span class="line">11. echo</span><br><span class="line">    echo 命令用于在 <span class="keyword">shell</span> 中打印 <span class="keyword">shell</span> 变量的值，或者直接输出指定的字符串。</span><br><span class="line">    </span><br><span class="line">12. gedit</span><br><span class="line">    gedit 命令可以打开 linux 下记事本，类似 windows 下的 notepad (txt-记事本)</span><br></pre></td></tr></table></figure>
+<h3 id="Linux-基本命令-二"><a href="#Linux-基本命令-二" class="headerlink" title="Linux 基本命令(二)"></a>Linux 基本命令(二)</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">1. 输出重定向命令：&gt;</span><br><span class="line">    Linux 允许将命令执行结果重定向到一个文件，本应显示在终端上的内容保存到指定文件中。</span><br><span class="line">    </span><br><span class="line">    # <span class="keyword">test</span>.txt 如果不存在，则创建，存在则覆盖其内容</span><br><span class="line">        $ <span class="keyword">ls</span> &gt; <span class="keyword">test</span>.txt</span><br><span class="line">        $ echo 111 &gt; <span class="keyword">test</span>.txt</span><br><span class="line">        $ tree &gt; <span class="keyword">test</span>.txt</span><br><span class="line">    </span><br><span class="line">    注意：&gt;输出重定向会覆盖原来的内容，&gt;&gt;输出重定向则会追加到文件的尾部。 </span><br><span class="line"></span><br><span class="line">2. 查看或者合并文件内容：<span class="keyword">cat</span></span><br><span class="line"></span><br><span class="line">    # 查看文件所有内容,并全部显示</span><br><span class="line">	    $ <span class="keyword">cat</span> 文件</span><br><span class="line">	# 1.txt 2.txt文件内容保存到3.txt</span><br><span class="line">	    $ <span class="keyword">cat</span> 1.txt 2.txt &gt; 3.txt</span><br><span class="line">	# 1.txt 2.txt文件内容追加到3.txt</span><br><span class="line">    	$ <span class="keyword">cat</span> 1.txt 2.txt &gt;&gt; 3.txt</span><br><span class="line">		</span><br><span class="line">3. 分屏显示：<span class="keyword">more</span></span><br><span class="line">    分屏显示文件内容,每次只显示一页</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">more</span> 文件名</span><br><span class="line">	</span><br><span class="line">	f/空格：翻到下一页</span><br><span class="line">	b：翻到上一页</span><br><span class="line">	回车：显示下一行</span><br><span class="line">	q：退出当前显示</span><br><span class="line">	<span class="keyword">h</span>：查看帮助</span><br><span class="line">	</span><br><span class="line">4. 管道：|</span><br><span class="line">	一个命令的输出可以通过管道做为另一个命令的输入</span><br><span class="line">	</span><br><span class="line">	$ <span class="keyword">ls</span> /bin | <span class="keyword">more</span></span><br><span class="line">	</span><br><span class="line">	查看 bin 目录下的文件信息，让显示在终端的数据保存在管道里面，然后通过 <span class="keyword">more</span> 分屏显示管道里面的数据</span><br><span class="line">	经常和 grep/xargs 连用</span><br><span class="line">	</span><br><span class="line">	$ grep -i '-' 1.txt | <span class="keyword">more</span></span><br><span class="line">	</span><br><span class="line">5. 文本搜索：grep</span><br><span class="line">    Linux 系统中 grep 命令是一种强大的文本搜索工具，grep 允许对文本文件进行模式查找。</span><br><span class="line">    如果找到匹配模式，grep 打印包含模式的所有行。</span><br><span class="line">    </span><br><span class="line">    grep [-选项] '搜索内容串' 文件名</span><br><span class="line">    </span><br><span class="line">    -v	显示不包含匹配文本的所有行（相当于求反）</span><br><span class="line">    -<span class="keyword">n</span>	显示匹配行及行号</span><br><span class="line">    -i	忽略大小写</span><br><span class="line">    </span><br><span class="line">    grep 常用正则表达式：</span><br><span class="line"></span><br><span class="line">    ^a	  行首,搜寻以 a 开头的行；grep -<span class="keyword">n</span> '^a' 1.txt</span><br><span class="line">    ke$	  行尾,搜寻以 ke 结束的行；grep -<span class="keyword">n</span> 'ke$' 1.txt</span><br><span class="line">    [Ss]  匹配 [] 里中一系列字符中的一个；grep -<span class="keyword">n</span> '[Ss]igna' 1.txt</span><br><span class="line">    .	  匹配一个非换行符的字符；grep -<span class="keyword">n</span> '<span class="keyword">e</span>.<span class="keyword">e</span>' 1.txt</span><br><span class="line">    </span><br><span class="line">6. 建立链接文件：<span class="built_in">ln</span></span><br><span class="line">    1. 软链接</span><br><span class="line">    	适合做快捷方式</span><br><span class="line">    		源文件删除,软链接失效</span><br><span class="line">    		</span><br><span class="line">    	$ ln -s 源文件/文件夹 软链接名</span><br><span class="line">    	</span><br><span class="line">    	软链接文件和源文件不在同一个目录，源文件要使用绝对路径</span><br><span class="line">    	软链接可以对文件或文件夹进行操作</span><br><span class="line">    	创建软链接,文件/目录硬链接数不会增加</span><br><span class="line">	</span><br><span class="line">	2. 硬链接</span><br><span class="line">    	适合做数据备份</span><br><span class="line">    		源文件删除,硬链接不失效</span><br><span class="line">    	</span><br><span class="line">    	$ ln 源文件 硬链接名</span><br><span class="line">    	</span><br><span class="line">    	硬链接只能对文件进行操作</span><br><span class="line">    	创建硬链接,文件的硬链接数会增加</span><br><span class="line">    	</span><br><span class="line">7. 查找文件：find</span><br><span class="line">    find 命令功能非常强大，通常用来在特定的目录下搜索符合条件的文件，也可以用来搜索特定用户属主的文件。</span><br><span class="line">    </span><br><span class="line">    find ./ -name <span class="keyword">test</span>.<span class="keyword">sh</span>	查找当前目录下所有名为<span class="keyword">test</span>.<span class="keyword">sh</span>的文件</span><br><span class="line">    find ./ -name '*.<span class="keyword">sh</span>'	查找当前目录下所有后缀为.<span class="keyword">sh</span>的文件</span><br><span class="line">    find ./ -name '[A-Z]*'	查找当前目录下所有以大写字母开头的文件</span><br><span class="line">    find /tmp -size 2M	    查找在/tmp 目录下等于2M的文件</span><br><span class="line">    find /tmp -size +2M	    查找在/tmp 目录下大于2M的文件</span><br><span class="line">    find /tmp -size -2M	    查找在/tmp 目录下小于2M的文件</span><br><span class="line">    find ./ -size +4k -size -5M	    查找当前目录下大于4k，小于5M的文件</span><br><span class="line">    find ./ -perm 777	    查找当前目录下权限为 777 的文件或目录</span><br><span class="line">    find 目录 -<span class="keyword">type</span> f/<span class="keyword">d</span>     查找指定目录下的文件/文件夹</span><br><span class="line"></span><br><span class="line">8. 归档管理：tar</span><br><span class="line">	1. 归档+打包</span><br><span class="line">		tar</span><br><span class="line">			归档：tar -cvf <span class="keyword">test</span>.tar *.txt</span><br><span class="line">			        把所有.txt文件打包为<span class="keyword">test</span>.tar</span><br><span class="line">			解档：tar -xvf <span class="keyword">test</span>.tar -C指定文件夹</span><br><span class="line">			        将<span class="keyword">test</span>.tar解档到指定目录</span><br><span class="line">		gzip</span><br><span class="line">			压缩：gzip -r <span class="keyword">test</span>.tar <span class="keyword">test</span>.tar.gz</span><br><span class="line">					将<span class="keyword">test</span>.tar压缩为<span class="keyword">test</span>.tar.gzip</span><br><span class="line">			解压：gzip -<span class="keyword">d</span> <span class="keyword">test</span>.tar.gz <span class="keyword">test</span>.tar</span><br><span class="line">					将<span class="keyword">test</span>.tar.gz解压为<span class="keyword">test</span>.tar</span><br><span class="line">		bzip2</span><br><span class="line">			压缩：bzip2 -r <span class="keyword">test</span>.tar <span class="keyword">test</span>.tar.bz2</span><br><span class="line">					将<span class="keyword">test</span>.tar压缩为<span class="keyword">test</span>.tar.bz2</span><br><span class="line">			解压：bzip2 -<span class="keyword">d</span> <span class="keyword">test</span>.tar.bz2 <span class="keyword">test</span>.tar</span><br><span class="line">					将<span class="keyword">test</span>.tar.bz2解压为<span class="keyword">test</span>.tar</span><br><span class="line">	2. gzip格式</span><br><span class="line">		tar 归档+压缩：tar -zcvf <span class="keyword">test</span>.tar.gz *.txt</span><br><span class="line">				所有.txt后缀的文件压缩为<span class="keyword">test</span>.tar.gz</span><br><span class="line">		tar 解档+解压：tar -zxvf <span class="keyword">test</span>.tar.gz -C 指定文件夹</span><br><span class="line">				解压<span class="keyword">test</span>.tar.gz到指定的文件夹</span><br><span class="line">				</span><br><span class="line">	3. bzip2格式</span><br><span class="line">		tar 归档+压缩：tar -jcvf <span class="keyword">test</span>.tar.bz2 *.html</span><br><span class="line">				所有.html后缀的文件压缩为<span class="keyword">test</span>.tar.bz2</span><br><span class="line">		tar 解档+解压：tar -jxvf <span class="keyword">test</span>.tar.bz2 -C 指定文件夹</span><br><span class="line">				解压<span class="keyword">test</span>.tar.bz2到指定的文件夹</span><br><span class="line">	4. <span class="keyword">zip</span>格式</span><br><span class="line">		<span class="keyword">zip</span> 压缩：<span class="keyword">zip</span> -r <span class="keyword">test</span>.<span class="keyword">zip</span> *.py</span><br><span class="line">				<span class="keyword">zip</span>格式压缩所有.py文件</span><br><span class="line">		unzip 解压：unzip -<span class="keyword">d</span> 指定文件夹 <span class="keyword">test</span>.<span class="keyword">zip</span></span><br><span class="line">				解压<span class="keyword">test</span>.<span class="keyword">zip</span>到指定文件夹</span><br><span class="line">				</span><br><span class="line">	常用参数</span><br><span class="line">    	-c	生成档案文件，创建打包文件</span><br><span class="line">        -v	列出归档解档的详细过程，显示进度</span><br><span class="line">        -f	指定档案文件名称，f后面一定是.tar文件，所以必须放选项最后</span><br><span class="line">        -t	列出档案中包含的文件</span><br><span class="line">        -x	解开档案文件</span><br><span class="line">        -<span class="keyword">d</span>	解压</span><br><span class="line">        -r	压缩所有子目录</span><br><span class="line">        -z  指定压缩包的格式为：<span class="keyword">file</span>.tar.gz</span><br><span class="line"></span><br><span class="line">9. 查看命令位置：<span class="keyword">which</span></span><br><span class="line">    $ <span class="keyword">which</span> <span class="keyword">ls</span></span><br><span class="line">    </span><br><span class="line">10. 修改文件权限：chmod</span><br><span class="line">	文件权限</span><br><span class="line">		r   可读    数字代号: 4</span><br><span class="line">		w   可写    数字代号: 2</span><br><span class="line">		x   可执行  数字代号: 1</span><br><span class="line">		-   无任何权限  数字代号: 0</span><br><span class="line">		</span><br><span class="line">	用户</span><br><span class="line">		<span class="keyword">u</span>   当前用户(user)</span><br><span class="line">		<span class="keyword">g</span>   同组用户(group)</span><br><span class="line">		o   其他用户(other)</span><br><span class="line">		a	所有用户(all)</span><br><span class="line">		</span><br><span class="line">	设置权限</span><br><span class="line">		+	添加权限</span><br><span class="line">		-	删除权限</span><br><span class="line">		=	设置权限</span><br><span class="line">		</span><br><span class="line">	字母法设置权限</span><br><span class="line">		chmod <span class="keyword">u</span>/<span class="keyword">g</span>/o/a +/-/= rwx 文件</span><br><span class="line">		chmod a= 1.txt</span><br><span class="line">			所有用户没有权限</span><br><span class="line">		chmod a=rwx 1.txt</span><br><span class="line">			所有用户都有全部权限</span><br><span class="line">		chmod <span class="keyword">u</span>+x 1.txt</span><br><span class="line">			给当前用户添加可执行的权限</span><br><span class="line">			</span><br><span class="line">	数字法设置权限</span><br><span class="line">		chmod 777 文件名</span><br><span class="line">			给所有用户添加全部权限</span><br><span class="line">		chmod 751 文件名</span><br><span class="line">			给当前用户rwx权限,本组用户rx权限,其他用户x权限</span><br><span class="line"></span><br><span class="line">11. 切换账号</span><br><span class="line">	切换到管理员账号</span><br><span class="line">		sudo -<span class="built_in">s</span></span><br><span class="line">	切换到其他账号</span><br><span class="line">		<span class="keyword">su</span> 其他账号名</span><br><span class="line">		</span><br><span class="line">12. 设置用户密码：passwd</span><br><span class="line">	sudo passwd 新密码</span><br><span class="line">	</span><br><span class="line">13. 退出登录账户：<span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">14. 查看登录用户：who</span><br><span class="line">	who     查看当前系统登录的所有用户名</span><br><span class="line">	who -q  只显示用户登录的账号和登录的用户数量</span><br><span class="line">	who -<span class="keyword">u</span>  只显示列标题</span><br><span class="line">	whoami  只显示当前用户登录的用户名</span><br><span class="line">	</span><br><span class="line">15. 关机重启</span><br><span class="line">	shutdown</span><br><span class="line">		shutdown -r now</span><br><span class="line">			重启系统,并给其他用户提示</span><br><span class="line">		shutdown -<span class="keyword">h</span> now</span><br><span class="line">			立刻关机</span><br><span class="line">		shutdown -<span class="keyword">h</span> 20:25</span><br><span class="line">			系统在今天的20:25 关机</span><br><span class="line">		shutdown -<span class="keyword">h</span> +10</span><br><span class="line">			系统再过十分钟,自动关机</span><br><span class="line">		shutdown -c</span><br><span class="line">			取消关机</span><br><span class="line">			</span><br><span class="line">	init</span><br><span class="line">		init 0  系统关机</span><br><span class="line">		init 6  系统重启</span><br><span class="line">		</span><br><span class="line">	reboot</span><br><span class="line">		重新启动系统</span><br></pre></td></tr></table></figure>
+<h3 id="软件操作的相关命令"><a href="#软件操作的相关命令" class="headerlink" title="软件操作的相关命令"></a>软件操作的相关命令</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> update  更新源</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install package 安装包</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> <span class="builtin-name">remove</span> package 删除包</span><br><span class="line"></span><br><span class="line">sudo apt-cache search package 搜索软件包</span><br><span class="line"></span><br><span class="line">sudo apt-cache show package  获取包的相关信息，如说明、大小、版本等</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install package --reinstall   重新安装包</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> -f install   修复安装</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> <span class="builtin-name">remove</span> package --purge 删除包，包括配置文件等</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> build-dep package 安装相关的编译环境</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span><span class="built_in"> upgrade </span>更新已安装的包</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> dist-upgrade 升级系统</span><br><span class="line"></span><br><span class="line">sudo apt-cache depends package 了解使用该包依赖那些包</span><br><span class="line"></span><br><span class="line">sudo apt-cache rdepends package 查看该包被哪些包依赖</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> source package  下载该包的源代码</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> clean &amp;&amp; sudo apt-<span class="builtin-name">get</span> autoclean 清理无用的包</span><br><span class="line"></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> check 检查是否有损坏的依赖</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="1-必须学会使用的"><a href="#1-必须学会使用的" class="headerlink" title="1.必须学会使用的"></a>1.必须学会使用的</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">命令行安装工具：（例如: tree/greenlet/gevent.<span class="string">..</span>）</span><br><span class="line">	sudo apt-get install 包名</span><br><span class="line">	sudo gedit 文件名</span><br><span class="line">		</span><br><span class="line">基本命令：<span class="keyword">cd</span> <span class="keyword">ls</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-大纲要求会的-以后上班有可能用的到"><a href="#2-大纲要求会的-以后上班有可能用的到" class="headerlink" title="2.大纲要求会的(以后上班有可能用的到)"></a>2.大纲要求会的(以后上班有可能用的到)</h4><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">a</span>. <span class="keyword">cp</span>/rm/<span class="built_in">mkdir</span>/mv/touch/<span class="keyword">find</span></span><br><span class="line"><span class="keyword">b</span>. putty/filezilla 等远程操控及文件传输软件的使用</span><br><span class="line"><span class="keyword">c</span>. <span class="keyword">vim</span> 能够修改内容（最简单形式）</span><br><span class="line">d. 命令 | <span class="keyword">grep</span> 内容：从前面命令中获取指定内容</span><br><span class="line"><span class="keyword">e</span>. passwd/who/<span class="keyword">ln</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/07/03/Linux 终端命令/">Linux 终端命令</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
+  <p><span>发布时间:</span>2018年07月03日 - 09:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/03/Linux 终端命令/" title="Linux 终端命令">http://jovelin.cn/2018/07/03/Linux 终端命令/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/03/Linux 终端命令/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/Linux-命令/" rel="tag"><i class="fa fa-tag"></i> Linux 命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/02/Linux 系统介绍/" rel="next" title="Linux 系统介绍">
+                <i class="fa fa-chevron-left"></i> Linux 系统介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/06/反问学习法（what、why、where），十万个为什么/" rel="prev" title="反问学习法（what、why、where），十万个为什么">
+                反问学习法（what、why、where），十万个为什么 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="曹永林" />
+            
+              <p class="site-author-name" itemprop="name">曹永林</p>
+              <p class="site-description motion-element" itemprop="description">Python 老农民</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jovelin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/u/jovelin" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/149c3a6ceb25" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cuiqingcai.com/" title="崔庆才" target="_blank">崔庆才</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-终端命令"><span class="nav-number">1.</span> <span class="nav-text">Linux 终端命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-终端命令格式"><span class="nav-number">1.1.</span> <span class="nav-text">01. 终端命令格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-查阅命令帮助信息"><span class="nav-number">1.2.</span> <span class="nav-text">02. 查阅命令帮助信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-基本命令-一"><span class="nav-number">2.</span> <span class="nav-text">Linux 基本命令(一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-基本命令-二"><span class="nav-number">3.</span> <span class="nav-text">Linux 基本命令(二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件操作的相关命令"><span class="nav-number">4.</span> <span class="nav-text">软件操作的相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-必须学会使用的"><span class="nav-number">5.1.</span> <span class="nav-text">1.必须学会使用的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-大纲要求会的-以后上班有可能用的到"><span class="nav-number">5.2.</span> <span class="nav-text">2.大纲要求会的(以后上班有可能用的到)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    <!--<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461525011&auto=0&height=66"></iframe>
+    </div>-->
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+    <!--<i class="fa fa-user"></i>-->
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹永林</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="powered-by">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_site_pv">
+      访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count">博客全站共 33.3k 字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count"><p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p></span>
+  </div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+
+ <script>
+   'use strict';
+   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+   function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+   var Circle = function () {
+      function Circle(x, y) {
+           _classCallCheck(this, Circle);
+           this.x = x;
+           this.y = y;
+           this.r = Math.random() * 10;
+           this._mx = Math.random();
+           this._my = Math.random();
+       }
+      _createClass(Circle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+               ctx.fill();
+           }
+       }, {
+           key: 'drawLine',
+           value: function drawLine(ctx, _circle) {
+               var dx = this.x - _circle.x;
+               var dy = this.y - _circle.y;
+               var d = Math.sqrt(dx * dx + dy * dy);
+               if (d < 150) {
+                   ctx.beginPath();
+                   ctx.moveTo(this.x, this.y); //起始点
+                   ctx.lineTo(_circle.x, _circle.y); //终点
+                   ctx.closePath();
+                   ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                   ctx.stroke();
+               }
+           }
+       }, {
+           key: 'move',
+           value: function move(w, h) {
+               this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+               this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+               this.x += this._mx / 2;
+               this.y += this._my / 2;
+           }
+       }]);
+       return Circle;
+   }();
+   var currentCirle = function (_Circle) {
+       _inherits(currentCirle, _Circle);
+       function currentCirle(x, y) {
+           _classCallCheck(this, currentCirle);
+           return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+       }
+       _createClass(currentCirle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+               this.r = 8;
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+               ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+               ctx.fill();
+           }
+       }]);
+       return currentCirle;
+   }(Circle);
+   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+   var canvas = document.getElementById('canvas');
+   var ctx = canvas.getContext('2d');
+   var w = canvas.width = canvas.offsetWidth;
+   var h = canvas.height = canvas.offsetHeight;
+   var circles = [];
+   var current_circle = new currentCirle(0, 0);
+   var draw = function draw() {
+       ctx.clearRect(0, 0, w, h);
+       for (var i = 0; i < circles.length; i++) {
+           circles[i].move(w, h);
+           circles[i].drawCircle(ctx);
+           for (j = i + 1; j < circles.length; j++) {
+               circles[i].drawLine(ctx, circles[j]);
+           }
+       }
+       if (current_circle.x) {
+           current_circle.drawCircle(ctx);
+           for (var k = 1; k < circles.length; k++) {
+               current_circle.drawLine(ctx, circles[k]);
+           }
+       }
+       requestAnimationFrame(draw);
+   };
+   var init = function init(num) {
+       for (var i = 0; i < num; i++) {
+           circles.push(new Circle(Math.random() * w, Math.random() * h));
+       }
+       draw();
+   };
+   window.addEventListener('load', init(60));
+   window.onmousemove = function (e) {
+       e = e || window.event;
+       current_circle.x = e.clientX;
+       current_circle.y = e.clientY;
+   };
+   window.onmouseout = function () {
+       current_circle.x = null;
+       current_circle.y = null;
+   };
+</script>
+
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+ </div>
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("jWsEzfDgfPMwFR8Ipxk79oxQ-gzGzoHsz", "9QB1iOu3CLMOW0BW40BAxL3N");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

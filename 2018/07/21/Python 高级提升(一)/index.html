@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Python,MySQL,MySQL 命令," />
+  <meta name="keywords" content="Python,Python 高级," />
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
-<meta name="keywords" content="Python,MySQL,MySQL 命令">
+<meta name="description" content="前言：  GIL (全局解释器锁)； 赋值、浅拷贝、深拷贝； import 导入模块； 多继承以及 MRO 顺序。">
+<meta name="keywords" content="Python,Python 高级">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL 命令语句">
-<meta property="og:url" content="http://jovelin.cn/2018/07/18/MySQL 命令语句/index.html">
+<meta property="og:title" content="Python 高级提升(一)">
+<meta property="og:url" content="http://jovelin.cn/2018/07/21/Python 高级提升(一)/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
+<meta property="og:description" content="前言：  GIL (全局解释器锁)； 赋值、浅拷贝、深拷贝； import 导入模块； 多继承以及 MRO 顺序。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-18T03:10:23.000Z">
+<meta property="og:updated_time" content="2018-07-28T02:02:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 命令语句">
-<meta name="twitter:description" content="一、命令行脚本（重点）1. mysql服务器操作启动: sudo service mysql start查看: ps -aux| grep &apos;mysql&apos;停止: sudo service mysql stop重启：sudo service mysql restart">
+<meta name="twitter:title" content="Python 高级提升(一)">
+<meta name="twitter:description" content="前言：  GIL (全局解释器锁)； 赋值、浅拷贝、深拷贝； import 导入模块； 多继承以及 MRO 顺序。">
 
 
 
@@ -131,12 +131,12 @@
 
 
 
-  <link rel="canonical" href="http://jovelin.cn/2018/07/18/MySQL 命令语句/"/>
+  <link rel="canonical" href="http://jovelin.cn/2018/07/21/Python 高级提升(一)/"/>
 
 
 
 
-  <title>MySQL 命令语句 | Jovelin's Blog</title>
+  <title>Python 高级提升(一) | Jovelin's Blog</title>
   
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/18/MySQL 命令语句/">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/21/Python 高级提升(一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="曹永林">
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL 命令语句</h1>
+          <h1 class="post-title" itemprop="name headline">Python 高级提升(一)</h1>
         
 
         <div class="post-meta">
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T10:00:01+08:00">
-                2018-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-21T09:00:01+08:00">
+                2018-07-21
               </time>
             
 
@@ -335,17 +335,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/MySQL/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -356,7 +345,7 @@
 
           
           
-             <span id="/2018/07/18/MySQL 命令语句/" class="leancloud_visitors" data-flag-title="MySQL 命令语句">
+             <span id="/2018/07/21/Python 高级提升(一)/" class="leancloud_visitors" data-flag-title="Python 高级提升(一)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -382,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,104
+                  1,648
                 </span>
               
 
@@ -398,7 +387,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -419,46 +408,21 @@
       
 
       
-        <h3 id="一、命令行脚本（重点）"><a href="#一、命令行脚本（重点）" class="headerlink" title="一、命令行脚本（重点）"></a>一、命令行脚本（重点）</h3><h4 id="1-mysql服务器操作"><a href="#1-mysql服务器操作" class="headerlink" title="1. mysql服务器操作"></a>1. mysql服务器操作</h4><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">启动: sudo service mysql start</span><br><span class="line">查看: <span class="keyword">ps</span> -aux| <span class="keyword">grep</span> <span class="string">'mysql'</span></span><br><span class="line">停止: sudo service mysql <span class="keyword">stop</span></span><br><span class="line">重启：sudo service mysql restart</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>GIL (全局解释器锁)；</li>
+<li>赋值、浅拷贝、深拷贝；</li>
+<li>import 导入模块；</li>
+<li>多继承以及 MRO 顺序。</li>
+</ol>
+</blockquote>
 <a id="more"></a>
-<h4 id="2-mysql登录操作"><a href="#2-mysql登录操作" class="headerlink" title="2. mysql登录操作"></a>2. mysql登录操作</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">登录: mysql -u root -p</span><br><span class="line">退出: <span class="keyword">exit</span><span class="regexp">/quit</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-数据库操作"><a href="#3-数据库操作" class="headerlink" title="3. 数据库操作"></a>3. 数据库操作</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的数据库操作：使用、查看、创建、删除</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 使用数据库</span></span><br><span class="line"><span class="keyword">use</span> db_xxx;</span><br><span class="line"><span class="comment">-- 查看所有数据库</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br><span class="line"><span class="comment">-- 查看当前数据库</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">database</span>();</span><br><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> db_xxx <span class="keyword">charset</span>=utf8;</span><br><span class="line"><span class="comment">-- 查看创建语句</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">database</span> db_xxx;</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> db_xxx;</span><br></pre></td></tr></table></figure>
-<h4 id="4-数据表操作"><a href="#4-数据表操作" class="headerlink" title="4. 数据表操作"></a>4. 数据表操作</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的数据表操作：查看、创建、修改、删除</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 查看</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">tables</span>;</span><br><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 数据表名字 (字段 类型 约束[, 字段 类型 约束]);</span><br><span class="line"><span class="comment">-- 修改</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span>|<span class="keyword">modify</span>|<span class="keyword">change</span>|<span class="keyword">drop</span> 列名 类型及约束;</span><br><span class="line"><span class="comment">-- 添加字段 </span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 列名 类型;</span><br><span class="line"><span class="comment">-- 修改字段：不重命名版</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">modify</span> 列名 类型及约束;</span><br><span class="line"><span class="comment">-- 修改字段：重命名版</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">change</span> 原名 新名 类型及约束;</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Mysql 增加、删除外键：<a href="https://blog.csdn.net/qq_34988341/article/details/78305892" target="_blank" rel="noopener">https://blog.csdn.net/qq_34988341/article/details/78305892</a></p>
-</blockquote>
-<h4 id="5-数据-记录-的增删改查curd"><a href="#5-数据-记录-的增删改查curd" class="headerlink" title="5. 数据(记录)的增删改查curd"></a>5. 数据(记录)的增删改查curd</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 掌握命令行中的对数据表中数据的操作：增加、删除、修改和基本查询</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">-- 新增</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(列<span class="number">1</span>,...) <span class="keyword">values</span>(值<span class="number">1</span>,...)</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span> 条件;</span><br><span class="line"><span class="comment">-- 修改</span></span><br><span class="line"><span class="keyword">update</span> 表名 <span class="keyword">set</span> 列<span class="number">1</span>=值<span class="number">1</span>,列<span class="number">2</span>=值<span class="number">2.</span>.. <span class="keyword">where</span> 条件;</span><br><span class="line"><span class="comment">-- 基本查询</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
-<h3 id="二、高级查询（难点）"><a href="#二、高级查询（难点）" class="headerlink" title="二、高级查询（难点）"></a>二、高级查询（难点）</h3><h4 id="1-掌握select查询所有字段、指定字段的数据"><a href="#1-掌握select查询所有字段、指定字段的数据" class="headerlink" title="1. 掌握select查询所有字段、指定字段的数据"></a>1. 掌握select查询所有字段、指定字段的数据</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,age <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
-<h4 id="2-掌握消除重复行命令distinct"><a href="#2-掌握消除重复行命令distinct" class="headerlink" title="2. 掌握消除重复行命令distinct"></a>2. 掌握消除重复行命令distinct</h4><figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> gender <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
-<h4 id="3-掌握as给字段、表起别名"><a href="#3-掌握as给字段、表起别名" class="headerlink" title="3. 掌握as给字段、表起别名"></a>3. 掌握as给字段、表起别名</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> s.name <span class="keyword">as</span> <span class="string">'姓名'</span>,s.age <span class="keyword">as</span> <span class="string">'年龄'</span> <span class="keyword">from</span> students <span class="keyword">as</span> s;</span><br></pre></td></tr></table></figure>
-<h4 id="4-掌握条件查询where后跟比较运算符、逻辑运算符的用法"><a href="#4-掌握条件查询where后跟比较运算符、逻辑运算符的用法" class="headerlink" title="4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法"></a>4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法</h4><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">&gt;   &lt;   &gt;=  &lt;=  =   !=   </span><br><span class="line"><span class="keyword">and</span>  <span class="keyword">or</span> <span class="keyword">not</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>优先级：not&gt;and&gt;or，如果同时出现并希望先算or，需要结合()使用</p>
-</blockquote>
-<h4 id="5-掌握条件查询中的模糊查询like和范围查询in"><a href="#5-掌握条件查询中的模糊查询like和范围查询in" class="headerlink" title="5. 掌握条件查询中的模糊查询like和范围查询in"></a>5. 掌握条件查询中的模糊查询like和范围查询in</h4><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">name</span> like  '%杰'</span><br><span class="line">  % ： 代表任意个字符</span><br><span class="line">  _ : 代表一个字符</span><br><span class="line"></span><br><span class="line"><span class="built_in">id</span>  <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="6-掌握空判断is-null和非空判断is-not-null"><a href="#6-掌握空判断is-null和非空判断is-not-null" class="headerlink" title="6. 掌握空判断is null和非空判断is not null"></a>6. 掌握空判断is null和非空判断is not null</h4><figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span> height <span class="keyword">is</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> students <span class="keyword">where</span>  height <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="7-掌握查询中使用order-by排序"><a href="#7-掌握查询中使用order-by排序" class="headerlink" title="7. 掌握查询中使用order by排序"></a>7. 掌握查询中使用order by排序</h4><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">放在 <span class="keyword">from</span>、<span class="keyword">where</span>、<span class="keyword">group</span> <span class="keyword">by</span>之后</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列<span class="number">1</span> <span class="keyword">asc</span> ，列<span class="number">2</span> <span class="keyword">desc</span>；</span><br><span class="line"><span class="keyword">desc</span>: 降序</span><br><span class="line"><span class="keyword">asc</span>：升序，默认</span><br></pre></td></tr></table></figure>
-<h4 id="8-掌握常用到的聚合函数count、max、min、sum、avg"><a href="#8-掌握常用到的聚合函数count、max、min、sum、avg" class="headerlink" title="8. 掌握常用到的聚合函数count、max、min、sum、avg"></a>8. 掌握常用到的聚合函数count、max、min、sum、avg</h4><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">count</span><span class="params">(*)</span></span>\count(列)：总数 </span><br><span class="line"><span class="function"><span class="title">max</span><span class="params">(列)</span></span>: 最大值</span><br><span class="line"><span class="function"><span class="title">min</span><span class="params">(列)</span></span>: 最小值</span><br><span class="line"><span class="function"><span class="title">sum</span><span class="params">(列)</span></span> ： 求和</span><br><span class="line"><span class="function"><span class="title">avg</span><span class="params">(列)</span></span> ：求平均</span><br></pre></td></tr></table></figure>
-<h4 id="9-掌握分组查询group-by-group-concat-字段名-聚合函数-having"><a href="#9-掌握分组查询group-by-group-concat-字段名-聚合函数-having" class="headerlink" title="9 掌握分组查询group by + group_concat(字段名)/聚合函数/having"></a>9 掌握分组查询group by + group_concat(字段名)/聚合函数/having</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">更精细化统计</span><br><span class="line">group by： 分组</span><br><span class="line">group_concat： 拼接字符串，拼接字段名</span><br><span class="line">聚合函数： 最大，最小，平均，计数，求和</span><br><span class="line">having： 对分组后的结果集进一步筛选</span><br><span class="line">	</span><br><span class="line">注意1: select 列 中只能存放分组函数(比如聚合函数)，或是出现在group by子句中的分组标签</span><br><span class="line">注意2：</span><br><span class="line">where: 对源数据做条件筛选， 不能接聚合函数</span><br><span class="line">having: 是对分组之后的数据做进一步的筛选操作, 有having就一定有group by, 有<span class="built_in"> group </span>by 不一定有having，接聚合函数</span><br></pre></td></tr></table></figure>
-<h4 id="10-掌握分页查询获取部分行的命令limit"><a href="#10-掌握分页查询获取部分行的命令limit" class="headerlink" title="10 掌握分页查询获取部分行的命令limit"></a>10 掌握分页查询获取部分行的命令limit</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">limit [<span class="keyword">start</span>],<span class="keyword">count</span> </span><br><span class="line"><span class="number">1.</span> 放在查询语句的最后</span><br><span class="line"><span class="number">2.</span> <span class="keyword">start</span>=(page<span class="number">-1</span>)*<span class="keyword">count</span></span><br></pre></td></tr></table></figure>
-<h4 id="11-掌握连接查询inner-left-right-join"><a href="#11-掌握连接查询inner-left-right-join" class="headerlink" title="11 掌握连接查询inner/left/right join"></a>11 掌握连接查询inner/left/right join</h4><figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line">inner <span class="built_in">join</span> <span class="keyword">on</span> :内连接(结果仅包含符合连接条件的两表中的行)</span><br><span class="line"><span class="built_in">left</span> <span class="built_in">join</span> <span class="keyword">on</span> : 左连接(完全显示左表所有的行，如果左表中某行 在右表中没有匹配的行，则右表该行显示<span class="literal">NULL</span>)</span><br><span class="line"><span class="built_in">right</span> <span class="built_in">join</span> <span class="keyword">on</span> : 右连接(与左连接相反)</span><br></pre></td></tr></table></figure>
-<h4 id="12-掌握子查询的方法"><a href="#12-掌握子查询的方法" class="headerlink" title="12 掌握子查询的方法"></a>12 掌握子查询的方法</h4><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">查询中嵌套查询：</span><br><span class="line"> 分为三种：</span><br><span class="line">  标量子查询: 子查询的结果为一个值<span class="comment">(一行一列)</span></span><br><span class="line">  列子查询：  子查询的结果为一个列<span class="comment">(一列多行)</span></span><br><span class="line">  表子查询:   子查询的结果为一个表<span class="comment">(多行多列)</span></span><br></pre></td></tr></table></figure>
-<h3 id="三、查询总结"><a href="#三、查询总结" class="headerlink" title="三、查询总结"></a>三、查询总结</h3><ul>
-<li><strong>查询的完整格式 （^_^ 不要被吓到 其实很简单 ! _ !）</strong></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> select_expr [,select_expr,...] [      </span><br><span class="line">      <span class="keyword">FROM</span> tb_name</span><br><span class="line">      [<span class="keyword">WHERE</span> 条件判断]</span><br><span class="line">      [<span class="keyword">GROUP</span> <span class="keyword">BY</span> &#123;col_name | postion&#125; [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>], ...] </span><br><span class="line">      [<span class="keyword">HAVING</span> <span class="keyword">WHERE</span> 条件判断]</span><br><span class="line">      [<span class="keyword">ORDER</span> <span class="keyword">BY</span> &#123;col_name|expr|postion&#125; [<span class="keyword">ASC</span> | <span class="keyword">DESC</span>], ...]</span><br><span class="line">      [ <span class="keyword">LIMIT</span> &#123;[<span class="keyword">offset</span>,]rowcount | <span class="keyword">row_count</span> <span class="keyword">OFFSET</span> <span class="keyword">offset</span>&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>完整的select语句</strong></li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">select distinct *</span><br><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line">where <span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">group by <span class="built_in">..</span>. having <span class="built_in">..</span>.</span><br><span class="line">order by <span class="built_in">..</span>.</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>执行顺序</strong></li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line">where <span class="built_in">..</span><span class="built_in">..</span></span><br><span class="line">group by <span class="built_in">..</span>.</span><br><span class="line">select distinct *</span><br><span class="line">having <span class="built_in">..</span>.</span><br><span class="line">order by <span class="built_in">..</span>.</span><br><span class="line">limit start,count</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>实际使用中，只是语句中某些部分的组合，而不是全部</p>
-</blockquote>
-
+<h3 id="一、GIL-全局解释器锁"><a href="#一、GIL-全局解释器锁" class="headerlink" title="一、GIL (全局解释器锁)"></a>一、GIL (全局解释器锁)</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 单线程、多线程、多进程执行分析</span><br><span class="line">   双核 cpu</span><br><span class="line">     - 单线程： 一个 cpu <span class="number">100</span>% 使用，另一个空闲</span><br><span class="line">     - 两个线程： 两个 cpu 各自使用 <span class="number">50</span>%</span><br><span class="line">     - 两个进程： 两个 cpu 各自使用 <span class="number">100</span>%</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> GIL 概念：</span><br><span class="line">	GIL，全局解释器锁(global interpreter lock)，它不是 python 语言的特性，而是 python 默认的解析器 cpython 的特性</span><br><span class="line">	cpython 要求每个线程必须先获取 GIL 锁，才能执行线程中的代码</span><br><span class="line">	</span><br><span class="line">	目的：解决多线程同时竞争解析器程序的全局变量而出现的线程安全问题</span><br><span class="line">	不足：在多线程中不能充分利用多核 cpu</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 如何解决 GIL 问题：</span><br><span class="line">	<span class="number">1.</span> 换解析器 ，把 cpython 换成其他的，比如 jpython</span><br><span class="line">	<span class="number">2.</span> 针对多线程执行的业务，用其他语言代码，比如 c++，java 来代替，python 就是胶水语言</span><br><span class="line">	<span class="number">3.</span> 多进程+多协程方案</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 面试题：</span><br><span class="line">	描述 Python GIL 的概念，以及它对 python 多线程的影响？一个单线程抓取网页的程序，与一个多线程抓取网页的程序哪个性能更高，并解释原因。</span><br><span class="line"></span><br><span class="line">	<span class="number">1.</span> GIL，全局解释器锁(global interpreter lock)，它是 cpython 解析器的特性，不是 python 的特性 ，它要求线程在执行前，需要获取GIL锁，</span><br><span class="line">	<span class="number">2.</span> 由于 GIL 的存在，会影响多线程不能利用多核 CPU 资源，通过多进程方式可利用多个 CPU 资源</span><br><span class="line">	<span class="number">3.</span> 线程释放 GIL 锁的情况：</span><br><span class="line">		在 IO 操作等可能会引起阻塞的 system call 之前，可以暂时释放 GIL，但在执行完毕后，必须重新获取 GIL</span><br><span class="line">		Python <span class="number">3.</span>x 使用计时器（执行时间达到阈值后，当前线程释放 GIL）</span><br><span class="line">	<span class="number">4.</span> 多线程爬取比单线程性能有提升，因为遇到 IO 阻塞会自动释放 GIL 锁，这样在线程阻塞情况下，可以执行其他线程中的代码</span><br></pre></td></tr></table></figure>
+<h3 id="二、赋值、浅拷贝、深拷贝"><a href="#二、赋值、浅拷贝、深拷贝" class="headerlink" title="二、赋值、浅拷贝、深拷贝"></a>二、赋值、浅拷贝、深拷贝</h3><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">赋值是对多个对象指向同一个内存空间，多个对象共同操作同一个数据</span><br><span class="line">深拷贝与浅拷贝是对内存数据的复制，目的是能够单独操作数据</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. 赋值</span><br><span class="line">	对象之间赋值本质上是对象之间内存地址的引用传递</span><br><span class="line">	也就是多个对象指向同一个内存空间</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. 浅拷贝</span><br><span class="line">	<span class="number">1</span>. 引入 <span class="keyword">copy</span><span class="bash"> 模块</span></span><br><span class="line"><span class="bash">	2. copy.copy(object)</span></span><br><span class="line"><span class="bash">	    object: 要拷贝的对象</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">	小结：浅拷贝是对象的第一层(顶层)的拷贝</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">3. 深拷贝</span></span><br><span class="line"><span class="bash">	深拷贝</span></span><br><span class="line"><span class="bash">	1. 引入 copy 模块</span></span><br><span class="line"><span class="bash">	2. copy.deepcopy(object)</span></span><br><span class="line"><span class="bash">	    object: 要拷贝的对象</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">	小结：深拷贝是对象的所有层的拷贝</span></span><br><span class="line"><span class="bash">  </span></span><br><span class="line"><span class="bash">4. 不可变类型(元组,数字,字符串)的拷贝</span></span><br><span class="line"><span class="bash">    1&gt; 如果在多层嵌套中都是不可变类型</span></span><br><span class="line"><span class="bash"> 	    浅拷贝与深拷贝都是相同的，都不会单独开辟内存空间，而是引用原来的内存空间</span></span><br><span class="line"><span class="bash"> 	2&gt; 如果顶层是不可变类型，但内部元素有嵌入可变类型</span></span><br><span class="line"><span class="bash">	     浅拷贝还是不会开辟新的内存空间，而是引用原来的内存空间</span></span><br><span class="line"><span class="bash">	     深拷贝会拷贝对象的所有层</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">5. 其他拷贝方式(列表切片、字典中的 copy)</span></span><br><span class="line"><span class="bash">    列表切片、字典中的 copy 都使用浅拷贝</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">面试题：</span></span><br><span class="line"><span class="bash">    如何在内存中复制一个数据</span></span><br><span class="line"><span class="bash">        浅拷贝，深拷贝 copy 模块</span></span><br><span class="line"><span class="bash">    切片操作与字典中的拷贝属于哪种拷贝:</span></span><br><span class="line"><span class="bash">        浅拷贝</span></span><br></pre></td></tr></table></figure>
+<h4 id="三、import-导入模块"><a href="#三、import-导入模块" class="headerlink" title="三、import 导入模块"></a>三、import 导入模块</h4><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">import</span> 搜索路径</span><br><span class="line">	a&gt; 查看搜索路径</span><br><span class="line">		sys.path # 系统预设的搜索路径</span><br><span class="line">		</span><br><span class="line">	b&gt; 设置搜索路径</span><br><span class="line">	    sys.path.append(<span class="string">"/python/a"</span>)</span><br><span class="line">	    sys.path.insert(<span class="number">0</span>,<span class="string">"/python/b"</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 重新导入模块</span><br><span class="line">	热更新： 服务没有停止，再更新模块</span><br><span class="line">	<span class="keyword">import</span> imp</span><br><span class="line">	 imp.reload(load_test)</span><br><span class="line">	   load_test:模块名</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 多模块开发时引用其它模块共享变量的问题 </span><br><span class="line">  	<span class="number">1.</span> <span class="keyword">import</span> <span class="keyword">module</span> 方式  </span><br><span class="line">  		本地不会创建新变量，操作的是目标模块的变量</span><br><span class="line"> 	<span class="number">2.</span> <span class="keyword">from</span> <span class="keyword">module</span> <span class="keyword">import</span> * 方式</span><br><span class="line"> 		在本地创建一个与目标模块相同的变量名，并且与目标模块变量指向同一个内存空间</span><br><span class="line"></span><br><span class="line">面试题: <span class="keyword">import</span> <span class="keyword">module</span> 与 <span class="keyword">from</span> <span class="keyword">module</span> <span class="keyword">import</span> * 两种模块导入有何区别</span><br><span class="line"></span><br><span class="line">	 <span class="number">1.</span> <span class="keyword">import</span> <span class="keyword">module</span> 引用共享变量时，要使用 <span class="keyword">module</span>.变量名，而 <span class="keyword">from</span> <span class="keyword">module</span> <span class="keyword">import</span> * 直接使用变量名即可</span><br><span class="line">	 <span class="number">2.</span> <span class="keyword">import</span> <span class="keyword">module</span> 方式  </span><br><span class="line"> 		本地不会创建新变量，操作的是目标模块的变量</span><br><span class="line"> 	 <span class="number">3.</span> <span class="keyword">from</span> <span class="keyword">module</span> <span class="keyword">import</span> * 方式</span><br><span class="line">		在本地创建一个与目标模块相同的变量名，并且与目标模块变量指向同一个内存空间</span><br></pre></td></tr></table></figure>
+<h3 id="四、多继承以及-MRO-顺序"><a href="#四、多继承以及-MRO-顺序" class="headerlink" title="四、多继承以及 MRO 顺序"></a>四、多继承以及 MRO 顺序</h3><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 单继承</span><br><span class="line">	子类调用父类的方法的方式：</span><br><span class="line"></span><br><span class="line">	  <span class="number">1</span>. super().__init__()</span><br><span class="line">	  <span class="number">2</span>. Parent.__init__(<span class="keyword">self</span>)</span><br><span class="line">	  <span class="number">3</span>. super(类名,<span class="keyword">self</span>).__init__()</span><br><span class="line"></span><br><span class="line">	 单继承中，使用父类名与super调用父类的方法没有差异，是一样的</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. 多继承中使用父类名调用父类的方法</span><br><span class="line">	出现问题： 父类的方法会调用多次</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 多继承中使用 super() 调用父类的方法</span><br><span class="line">	在多继承中，建议使用 super() 来调用父类的方法，而不用父类名的方式</span><br><span class="line"></span><br><span class="line">	- mro顺序： <span class="function"><span class="keyword">Method</span> <span class="title">Resolution</span> <span class="title">Order</span> :</span></span><br><span class="line">	    方法解决顺序，方法解析顺序</span><br><span class="line">	    用于描述在Python多继承中子类调用多个父类相同方法的顺序 </span><br><span class="line">		内部通过C3算法去解析</span><br><span class="line">	- 类名.__mro__ : 用元组的形式存放子类调用多个父类相同方法的顺序（mro算法执行的结果）</span><br><span class="line"></span><br><span class="line">	- super()与类名.__mro__的关系：</span><br><span class="line">	# (&lt;<span class="keyword">class</span> <span class="string">'__main__.Grandson'</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">'__main__.Son1'</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">'__main__.Son2'</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">'__main__.Parent'</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">'object'</span>&gt;)</span><br><span class="line"></span><br><span class="line">	 super(类名，<span class="keyword">self</span>)就是依照这个顺序确定要调用的是哪个父类的方法</span><br><span class="line">	    通过<span class="keyword">self</span>确定mro顺序</span><br><span class="line">	    通过类名找到当前类在mro中的位置，再返回下一个类作为super调用的父类</span><br><span class="line"></span><br><span class="line">小结： </span><br><span class="line">   <span class="number">1</span>. 单继承中，super().__init__相对于类名.__init__，基本无差别</span><br><span class="line">   <span class="number">2</span>. 多继承中，super() 能保证每个父类的方法只会执行一次，而使用类名的方法会导致方法被执行多次</span><br><span class="line">      多继承中建议使用super()</span><br><span class="line">   <span class="number">2</span>. super() 内部是通过 mro 算法来确定调用哪个父类的方法</span><br></pre></td></tr></table></figure>
+<h3 id="五、其他"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他</h3><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. vim -On one<span class="selector-class">.py</span>  two<span class="selector-class">.py</span> </span><br><span class="line">	在vim中分屏显示多个文件</span><br><span class="line"><span class="number">2</span>.Htop命令： </span><br><span class="line">	显示的内容比<span class="attribute">top</span>命令更加丰富，用于监视进程的资源占用率的情况</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -485,12 +449,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/07/18/MySQL 命令语句/">MySQL 命令语句</a></p>
+  <p><span>本文标题:</span><a href="/2018/07/21/Python 高级提升(一)/">Python 高级提升(一)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
-  <p><span>发布时间:</span>2018年07月18日 - 10:07</p>
-  <p><span>最后更新:</span>2018年07月18日 - 11:07</p>
-  <p><span>原始链接:</span><a href="/2018/07/18/MySQL 命令语句/" title="MySQL 命令语句">http://jovelin.cn/2018/07/18/MySQL 命令语句/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/18/MySQL 命令语句/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年07月21日 - 09:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/21/Python 高级提升(一)/" title="Python 高级提升(一)">http://jovelin.cn/2018/07/21/Python 高级提升(一)/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/21/Python 高级提升(一)/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -522,9 +486,7 @@
           
             <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
           
-            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
-          
-            <a href="/tags/MySQL-命令/" rel="tag"><i class="fa fa-tag"></i> MySQL 命令</a>
+            <a href="/tags/Python-高级/" rel="tag"><i class="fa fa-tag"></i> Python 高级</a>
           
         </div>
       
@@ -537,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/16/MySQL 安装与介绍/" rel="next" title="MySQL 安装与介绍">
-                <i class="fa fa-chevron-left"></i> MySQL 安装与介绍
+              <a href="/2018/07/18/MySQL 高级提升(四)/" rel="next" title="MySQL 高级提升(四)">
+                <i class="fa fa-chevron-left"></i> MySQL 高级提升(四)
               </a>
             
           </div>
@@ -546,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/22/Python 高级提升(二)/" rel="prev" title="Python 高级提升(二)">
+                Python 高级提升(二) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -626,7 +592,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +603,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -648,7 +614,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -732,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、命令行脚本（重点）"><span class="nav-number">1.</span> <span class="nav-text">一、命令行脚本（重点）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-mysql服务器操作"><span class="nav-number">1.1.</span> <span class="nav-text">1. mysql服务器操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-mysql登录操作"><span class="nav-number">1.2.</span> <span class="nav-text">2. mysql登录操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-数据库操作"><span class="nav-number">1.3.</span> <span class="nav-text">3. 数据库操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-数据表操作"><span class="nav-number">1.4.</span> <span class="nav-text">4. 数据表操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-数据-记录-的增删改查curd"><span class="nav-number">1.5.</span> <span class="nav-text">5. 数据(记录)的增删改查curd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、高级查询（难点）"><span class="nav-number">2.</span> <span class="nav-text">二、高级查询（难点）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-掌握select查询所有字段、指定字段的数据"><span class="nav-number">2.1.</span> <span class="nav-text">1. 掌握select查询所有字段、指定字段的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-掌握消除重复行命令distinct"><span class="nav-number">2.2.</span> <span class="nav-text">2. 掌握消除重复行命令distinct</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-掌握as给字段、表起别名"><span class="nav-number">2.3.</span> <span class="nav-text">3. 掌握as给字段、表起别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-掌握条件查询where后跟比较运算符、逻辑运算符的用法"><span class="nav-number">2.4.</span> <span class="nav-text">4. 掌握条件查询where后跟比较运算符、逻辑运算符的用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-掌握条件查询中的模糊查询like和范围查询in"><span class="nav-number">2.5.</span> <span class="nav-text">5. 掌握条件查询中的模糊查询like和范围查询in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-掌握空判断is-null和非空判断is-not-null"><span class="nav-number">2.6.</span> <span class="nav-text">6. 掌握空判断is null和非空判断is not null</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-掌握查询中使用order-by排序"><span class="nav-number">2.7.</span> <span class="nav-text">7. 掌握查询中使用order by排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-掌握常用到的聚合函数count、max、min、sum、avg"><span class="nav-number">2.8.</span> <span class="nav-text">8. 掌握常用到的聚合函数count、max、min、sum、avg</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-掌握分组查询group-by-group-concat-字段名-聚合函数-having"><span class="nav-number">2.9.</span> <span class="nav-text">9 掌握分组查询group by + group_concat(字段名)/聚合函数/having</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-掌握分页查询获取部分行的命令limit"><span class="nav-number">2.10.</span> <span class="nav-text">10 掌握分页查询获取部分行的命令limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-掌握连接查询inner-left-right-join"><span class="nav-number">2.11.</span> <span class="nav-text">11 掌握连接查询inner/left/right join</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-掌握子查询的方法"><span class="nav-number">2.12.</span> <span class="nav-text">12 掌握子查询的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、查询总结"><span class="nav-number">3.</span> <span class="nav-text">三、查询总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、GIL-全局解释器锁"><span class="nav-number">1.</span> <span class="nav-text">一、GIL (全局解释器锁)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、赋值、浅拷贝、深拷贝"><span class="nav-number">2.</span> <span class="nav-text">二、赋值、浅拷贝、深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三、import-导入模块"><span class="nav-number">2.1.</span> <span class="nav-text">三、import 导入模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、多继承以及-MRO-顺序"><span class="nav-number">3.</span> <span class="nav-text">四、多继承以及 MRO 顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、其他"><span class="nav-number">4.</span> <span class="nav-text">五、其他</span></a></li></ol></div>
             
 
           </div>
@@ -789,7 +755,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 20.8k 字</span>
+    <span class="post-count">博客全站共 33.3k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<!--<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">-->
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="Python,Python 高级," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jovelin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言：  代码编写两大原则； 闭包； 装饰器。">
+<meta name="keywords" content="Python,Python 高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 高级提升(三)">
+<meta property="og:url" content="http://jovelin.cn/2018/07/24/Python 高级提升(三)/index.html">
+<meta property="og:site_name" content="Jovelin&#39;s Blog">
+<meta property="og:description" content="前言：  代码编写两大原则； 闭包； 装饰器。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-28T02:12:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 高级提升(三)">
+<meta name="twitter:description" content="前言：  代码编写两大原则； 闭包； 装饰器。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jovelin.cn/2018/07/24/Python 高级提升(三)/"/>
+
+
+
+
+  <title>Python 高级提升(三) | Jovelin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jovelin"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    <!--<a href="https://github.com/jovelin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jovelin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Python The old farmer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/24/Python 高级提升(三)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹永林">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jovelin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 高级提升(三)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T09:00:01+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/24/Python 高级提升(三)/" class="leancloud_visitors" data-flag-title="Python 高级提升(三)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>°C</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,187
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>代码编写两大原则；</li>
+<li>闭包；</li>
+<li>装饰器。</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<h3 id="一-代码编写两大原则"><a href="#一-代码编写两大原则" class="headerlink" title="一. 代码编写两大原则"></a>一. 代码编写两大原则</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>开放封闭原则</span><br><span class="line"><span class="code">    封闭：已实现的功能代码块</span></span><br><span class="line"><span class="code">    开放：对扩展开放</span></span><br><span class="line"><span class="code">    对已经实现的功能代码不允许被修改，但可以被扩展</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="bullet">2. </span>高内聚低耦合原则</span><br><span class="line"><span class="code">    高内聚：针对的是模块内部；</span></span><br><span class="line"><span class="code">    描述的是内部各个元素结合的密切程度，一般一个模块就做一件事情</span></span><br><span class="line"><span class="code">    低耦合：针对的是模块之间；模块之间关联度尽量少一点</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、闭包"><a href="#二、闭包" class="headerlink" title="二、闭包"></a>二、闭包</h3><h4 id="1-函数名"><a href="#1-函数名" class="headerlink" title="1. 函数名"></a>1. 函数名</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>函数名是一个引用函数代码空间的对象，这个对象在被赋值的时候也可以引用其他空间</span><br><span class="line"><span class="bullet">2. </span>可以把函数名当做参数来使用</span><br></pre></td></tr></table></figure>
+<h4 id="2-闭包"><a href="#2-闭包" class="headerlink" title="2. 闭包"></a>2. 闭包</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">闭包好比是一个轻量级的实例对象</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 闭包的结构</span><br><span class="line">	<span class="number">1.</span> 外部函数：外部函数返回内部函数的引用</span><br><span class="line">	<span class="number">2.</span> 内部函数：内部函数使用了外部函数的参数或者的变量</span><br><span class="line">	把这种结构的整体称为闭包</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 闭包与普通函数的区别</span><br><span class="line">	<span class="number">1.</span> 普通函数能保存功能，但是不能保存传送给函数的数据(局部变量)</span><br><span class="line">	<span class="number">2.</span> 闭包能保存功能，也可以保存数据</span><br><span class="line">	   </span><br><span class="line">提示：</span><br><span class="line">    假如内部函数要修改外部函数的变量，则需先声明 </span><br><span class="line">    在 python3 中使用 <span class="keyword">nonlocal</span> 关键字(好比函数使用全局变量，使用 <span class="keyword">global</span> 关键字)</span><br></pre></td></tr></table></figure>
+<h4 id="3-闭包的语法格式"><a href="#3-闭包的语法格式" class="headerlink" title="3. 闭包的语法格式"></a>3. 闭包的语法格式</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 闭包的语法格式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="comment"># 处理业务</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"内部函数使用了外部函数的参数：%d"</span> % num)</span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">f1 = func(<span class="number">100</span>)  <span class="comment"># f1---&gt;inner--&gt;内部函数的定义</span></span><br><span class="line"></span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+<h3 id="三、装饰器"><a href="#三、装饰器" class="headerlink" title="三、装饰器"></a>三、装饰器</h3><h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 在不改变函数的定义和调用的前提下，给函数扩展功能，这就是装饰器</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 装饰器的语法格式</span><br><span class="line">    <span class="comment"># 装饰器函数 本质就是闭包</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">w1</span><span class="params">(func)</span>:</span></span><br><span class="line">	    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">	        <span class="comment"># 验证1</span></span><br><span class="line">	        print(<span class="string">"正在验证..."</span>)</span><br><span class="line">	        func()</span><br><span class="line">	    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">	@w1  # 本质就是  f1 = w1(f1)</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span> <span class="comment"># 被装饰的函数</span></span><br><span class="line">	    print(<span class="string">"查账"</span>)</span><br><span class="line">	</span><br><span class="line">	f1()</span><br></pre></td></tr></table></figure>
+<h4 id="2-装饰器装饰不同类型的函数"><a href="#2-装饰器装饰不同类型的函数" class="headerlink" title="2. 装饰器装饰不同类型的函数"></a>2. 装饰器装饰不同类型的函数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 装饰器装饰不同类型的函数</span><br><span class="line">	a&gt; 装饰器装饰的函数没参数，没返回值</span><br><span class="line">	b&gt; 装饰器装饰的函数有参数，没返回值</span><br><span class="line">	c&gt; 装饰器装饰的函数没参数，有返回值</span><br><span class="line">	d&gt; 装饰器装饰的函数有参数，有返回值</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 万能装饰器，无|有参数(多个)，无|有返回值</span><br><span class="line">	<span class="comment"># 装饰器函数</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">w1</span><span class="params">(func)</span>:</span></span><br><span class="line">	    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	        print(<span class="string">"正在执行身份验证..."</span>)  <span class="comment"># 拓展功能</span></span><br><span class="line">	        <span class="keyword">return</span> func(*args, **kwargs)  <span class="comment"># 执行被装饰函数</span></span><br><span class="line">	    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line">	<span class="comment"># 被装饰的函数</span></span><br><span class="line"><span class="meta">	@w1</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	    print(<span class="string">"被装饰的函数：查账"</span>)</span><br><span class="line">	    print(args)</span><br><span class="line">	    print(kwargs)</span><br><span class="line">	    <span class="keyword">return</span> <span class="string">"value"</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-多个装饰器装饰一个函数"><a href="#3-多个装饰器装饰一个函数" class="headerlink" title="3. 多个装饰器装饰一个函数"></a>3. 多个装饰器装饰一个函数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">""" </span></span><br><span class="line"><span class="string">多个装饰器装饰一个函数的分析：</span></span><br><span class="line"><span class="string">参照对象：被装饰的函数</span></span><br><span class="line"><span class="string">    1. 装饰时，由里到外</span></span><br><span class="line"><span class="string">    2. 执行的，由外到里</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@sms_veri  # 本质  f1=sms_veri(f1)  func---&gt; f1(被装饰函数的内存空间)</span></span><br><span class="line"><span class="meta">@pwd_veri  # 本质  f1=pwd_veri(f1)  func---&gt; f1(被装饰函数的内存空间)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span>  <span class="comment"># 被装饰的函数</span></span><br><span class="line">    print(<span class="string">"被装饰函数：转账功能"</span>)</span><br><span class="line">f1()</span><br></pre></td></tr></table></figure>
+<h4 id="4-带有额外参数的装饰器函数"><a href="#4-带有额外参数的装饰器函数" class="headerlink" title="4. 带有额外参数的装饰器函数"></a>4. 带有额外参数的装饰器函数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">小结：通过装饰器工厂来实现带额外参数的装饰器函数</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(flag)</span>:</span> <span class="comment"># 装饰器的工厂函数</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(func)</span>:</span> <span class="comment"># 装饰器函数</span></span><br><span class="line">            <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">                <span class="keyword">if</span> flag==<span class="number">1</span>:</span><br><span class="line">                    print(<span class="string">"正在执行身份验证功能..."</span>)</span><br><span class="line">                func() <span class="comment"># 执行被装饰的函数</span></span><br><span class="line">            <span class="keyword">return</span> inner</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @outer(1)  # outer(0)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"被装饰函数：转账功能"</span>)</span><br><span class="line">    </span><br><span class="line">    f1()</span><br></pre></td></tr></table></figure>
+<h4 id="5-类装饰器"><a href="#5-类装饰器" class="headerlink" title="5. 类装饰器"></a>5. 类装饰器</h4><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 以定义类的方式实现装饰器</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 类装饰器</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="title">object</span>):</span></span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, func)</span></span><span class="symbol">:</span></span><br><span class="line">            <span class="keyword">self</span>.func = func</span><br><span class="line">            print(<span class="string">"添加身份验证的装饰功能"</span>)</span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(<span class="keyword">self</span>, *args, **kwargs)</span></span><span class="symbol">:</span></span><br><span class="line">            print(<span class="string">"正在身份验证..."</span>)</span><br><span class="line">            <span class="keyword">self</span>.func()         </span><br><span class="line">    </span><br><span class="line">    @Person  <span class="comment"># check = Person(check) </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pay</span><span class="params">()</span></span>:  <span class="comment"># 被装饰的函数</span></span><br><span class="line">        print(<span class="string">"我是被装饰的函数...支付功能..."</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 目前的 check 起始就是 Person 类的实例对象</span></span><br><span class="line">    <span class="comment"># 实例对象()：表示该对象是可调用的，所有需要对创建该对象的类添加 __call__ 魔法方法</span></span><br><span class="line">    pay()</span><br></pre></td></tr></table></figure>
+<h3 id="四、装饰器总结"><a href="#四、装饰器总结" class="headerlink" title="四、装饰器总结"></a>四、装饰器总结</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>装饰器函数只有一个参数就是被装饰的函数的引用</span><br><span class="line"><span class="bullet">2. </span>装饰器能够将一个函数的功能在不修改代码和调用的情况下进行扩展</span><br><span class="line"><span class="bullet">3. </span>在函数定义的上方 @装饰器函数名，即可直接使用装饰器对下面的函数进行装饰</span><br><span class="line"><span class="bullet">4. </span>装饰器的使用场景</span><br><span class="line"><span class="code">	引入日志</span></span><br><span class="line"><span class="code">	函数执行时间统计</span></span><br><span class="line"><span class="code">	执行函数前预备处理</span></span><br><span class="line"><span class="code">	执行函数后清理功能</span></span><br><span class="line"><span class="code">	权限校验等场景</span></span><br><span class="line"><span class="code">	缓存</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/07/24/Python 高级提升(三)/">Python 高级提升(三)</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
+  <p><span>发布时间:</span>2018年07月24日 - 09:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/24/Python 高级提升(三)/" title="Python 高级提升(三)">http://jovelin.cn/2018/07/24/Python 高级提升(三)/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/24/Python 高级提升(三)/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Python-高级/" rel="tag"><i class="fa fa-tag"></i> Python 高级</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/22/Python 高级提升(二)/" rel="next" title="Python 高级提升(二)">
+                <i class="fa fa-chevron-left"></i> Python 高级提升(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/26/Python miniweb 框架/" rel="prev" title="Python miniweb 框架">
+                Python miniweb 框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="曹永林" />
+            
+              <p class="site-author-name" itemprop="name">曹永林</p>
+              <p class="site-description motion-element" itemprop="description">Python 老农民</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jovelin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/u/jovelin" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/149c3a6ceb25" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cuiqingcai.com/" title="崔庆才" target="_blank">崔庆才</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-代码编写两大原则"><span class="nav-number">1.</span> <span class="nav-text">一. 代码编写两大原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、闭包"><span class="nav-number">2.</span> <span class="nav-text">二、闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-函数名"><span class="nav-number">2.1.</span> <span class="nav-text">1. 函数名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-闭包"><span class="nav-number">2.2.</span> <span class="nav-text">2. 闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-闭包的语法格式"><span class="nav-number">2.3.</span> <span class="nav-text">3. 闭包的语法格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、装饰器"><span class="nav-number">3.</span> <span class="nav-text">三、装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-定义"><span class="nav-number">3.1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-装饰器装饰不同类型的函数"><span class="nav-number">3.2.</span> <span class="nav-text">2. 装饰器装饰不同类型的函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-多个装饰器装饰一个函数"><span class="nav-number">3.3.</span> <span class="nav-text">3. 多个装饰器装饰一个函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-带有额外参数的装饰器函数"><span class="nav-number">3.4.</span> <span class="nav-text">4. 带有额外参数的装饰器函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-类装饰器"><span class="nav-number">3.5.</span> <span class="nav-text">5. 类装饰器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、装饰器总结"><span class="nav-number">4.</span> <span class="nav-text">四、装饰器总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    <!--<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461525011&auto=0&height=66"></iframe>
+    </div>-->
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+    <!--<i class="fa fa-user"></i>-->
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹永林</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="powered-by">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_site_pv">
+      访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count">博客全站共 33.3k 字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count"><p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p></span>
+  </div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+
+ <script>
+   'use strict';
+   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+   function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+   var Circle = function () {
+      function Circle(x, y) {
+           _classCallCheck(this, Circle);
+           this.x = x;
+           this.y = y;
+           this.r = Math.random() * 10;
+           this._mx = Math.random();
+           this._my = Math.random();
+       }
+      _createClass(Circle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+               ctx.fill();
+           }
+       }, {
+           key: 'drawLine',
+           value: function drawLine(ctx, _circle) {
+               var dx = this.x - _circle.x;
+               var dy = this.y - _circle.y;
+               var d = Math.sqrt(dx * dx + dy * dy);
+               if (d < 150) {
+                   ctx.beginPath();
+                   ctx.moveTo(this.x, this.y); //起始点
+                   ctx.lineTo(_circle.x, _circle.y); //终点
+                   ctx.closePath();
+                   ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                   ctx.stroke();
+               }
+           }
+       }, {
+           key: 'move',
+           value: function move(w, h) {
+               this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+               this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+               this.x += this._mx / 2;
+               this.y += this._my / 2;
+           }
+       }]);
+       return Circle;
+   }();
+   var currentCirle = function (_Circle) {
+       _inherits(currentCirle, _Circle);
+       function currentCirle(x, y) {
+           _classCallCheck(this, currentCirle);
+           return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+       }
+       _createClass(currentCirle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+               this.r = 8;
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+               ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+               ctx.fill();
+           }
+       }]);
+       return currentCirle;
+   }(Circle);
+   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+   var canvas = document.getElementById('canvas');
+   var ctx = canvas.getContext('2d');
+   var w = canvas.width = canvas.offsetWidth;
+   var h = canvas.height = canvas.offsetHeight;
+   var circles = [];
+   var current_circle = new currentCirle(0, 0);
+   var draw = function draw() {
+       ctx.clearRect(0, 0, w, h);
+       for (var i = 0; i < circles.length; i++) {
+           circles[i].move(w, h);
+           circles[i].drawCircle(ctx);
+           for (j = i + 1; j < circles.length; j++) {
+               circles[i].drawLine(ctx, circles[j]);
+           }
+       }
+       if (current_circle.x) {
+           current_circle.drawCircle(ctx);
+           for (var k = 1; k < circles.length; k++) {
+               current_circle.drawLine(ctx, circles[k]);
+           }
+       }
+       requestAnimationFrame(draw);
+   };
+   var init = function init(num) {
+       for (var i = 0; i < num; i++) {
+           circles.push(new Circle(Math.random() * w, Math.random() * h));
+       }
+       draw();
+   };
+   window.addEventListener('load', init(60));
+   window.onmousemove = function (e) {
+       e = e || window.event;
+       current_circle.x = e.clientX;
+       current_circle.y = e.clientY;
+   };
+   window.onmouseout = function () {
+       current_circle.x = null;
+       current_circle.y = null;
+   };
+</script>
+
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+ </div>
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("jWsEzfDgfPMwFR8Ipxk79oxQ-gzGzoHsz", "9QB1iOu3CLMOW0BW40BAxL3N");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>

@@ -90,13 +90,13 @@
 
 
 
-<meta name="description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta name="description" content="前言：  UDP 和 TCP 及 socket 介绍； 网络七层协议(四/五层模型)； IP 地址与端口； Python3 编码转换； Socket 套接字； UDP 协议； TCP 协议。">
 <meta name="keywords" content="Python,udp,tcp,socket">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 网络通信-udp、tcp 与 socket">
 <meta property="og:url" content="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta property="og:description" content="前言：  UDP 和 TCP 及 socket 介绍； 网络七层协议(四/五层模型)； IP 地址与端口； Python3 编码转换； Socket 套接字； UDP 协议； TCP 协议。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-03725767e52c896a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -107,10 +107,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-e77fdb8210af7052.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-66f6ee5be9f9df0f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-55244b661df4c1a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-18T02:07:36.000Z">
+<meta property="og:updated_time" content="2018-07-28T02:21:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 网络通信-udp、tcp 与 socket">
-<meta name="twitter:description" content="Python 网络通信udp 和 tcp 及 socket 介绍注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。 udp 和 tcp (发短信和打电话)(不同: 是否创建链接)">
+<meta name="twitter:description" content="前言：  UDP 和 TCP 及 socket 介绍； 网络七层协议(四/五层模型)； IP 地址与端口； Python3 编码转换； Socket 套接字； UDP 协议； TCP 协议。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,617
+                  3,673
                 </span>
               
 
@@ -418,9 +418,21 @@
       
 
       
-        <h1 id="Python-网络通信"><a href="#Python-网络通信" class="headerlink" title="Python 网络通信"></a>Python 网络通信</h1><h3 id="udp-和-tcp-及-socket-介绍"><a href="#udp-和-tcp-及-socket-介绍" class="headerlink" title="udp 和 tcp 及 socket 介绍"></a>udp 和 tcp 及 socket 介绍</h3><p><strong>注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。</strong></p>
-<p><strong>udp 和 tcp (发短信和打电话)(不同: 是否创建链接)</strong></p>
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>UDP 和 TCP 及 socket 介绍；</li>
+<li>网络七层协议(四/五层模型)；</li>
+<li>IP 地址与端口；</li>
+<li>Python3 编码转换；</li>
+<li>Socket 套接字；</li>
+<li>UDP 协议；</li>
+<li>TCP 协议。</li>
+</ol>
+</blockquote>
 <a id="more"></a>
+<h1 id="Python-网络通信"><a href="#Python-网络通信" class="headerlink" title="Python 网络通信"></a>Python 网络通信</h1><h3 id="一、UDP-和-TCP-及-socket-介绍"><a href="#一、UDP-和-TCP-及-socket-介绍" class="headerlink" title="一、UDP 和 TCP 及 socket 介绍"></a>一、UDP 和 TCP 及 socket 介绍</h3><p><strong>注意：udp 和 tcp 都是网络传输的协议，只不过具体传输形式不一样，但功能都是定义网络传输数据规则。</strong></p>
+<p><strong>udp 和 tcp (发短信和打电话)(不同: 是否创建链接)</strong></p>
 <ol>
 <li><p><strong>udp 是用户数据报协议</strong>，UDP(User Datagram Protocol)不能保证数据的准确性和有效性。<br>(数据报:是通过网络传输的数据的基本单元) </p>
 </li>
@@ -429,10 +441,10 @@
 <li><p><strong>socket 就是具体实现 tcp 和 udp 的底层技术(也称套接字/流对象)</strong>(不在网络七层协议之列-因为是技术不是协议)</p>
 </li>
 </ol>
-<h3 id="网络七层协议-四-五层模型"><a href="#网络七层协议-四-五层模型" class="headerlink" title="网络七层协议(四/五层模型)"></a>网络七层协议(四/五层模型)</h3><p><img src="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="七层协议1.png"></p>
+<h3 id="二、网络七层协议-四-五层模型"><a href="#二、网络七层协议-四-五层模型" class="headerlink" title="二、网络七层协议(四/五层模型)"></a>二、网络七层协议(四/五层模型)</h3><p><img src="https://upload-images.jianshu.io/upload_images/3365001-893eb6882ef825ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="七层协议1.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-03725767e52c896a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="七层协议2.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-d812e52bc2dc7743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="网络七层协议.png"></p>
-<h3 id="IP-地址与端口"><a href="#IP-地址与端口" class="headerlink" title="IP 地址与端口"></a>IP 地址与端口</h3><p>网络通信过程中，之所需要ip、port等，就是为了能够将一个复杂的通信过程进行任务划分，从而保证数据准确无误的传递。</p>
+<h3 id="三、IP-地址与端口"><a href="#三、IP-地址与端口" class="headerlink" title="三、IP 地址与端口"></a>三、IP 地址与端口</h3><p>网络通信过程中，之所需要ip、port等，就是为了能够将一个复杂的通信过程进行任务划分，从而保证数据准确无误的传递。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3365001-5d9168459fadd31a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ip和端口.png"></p>
 <h4 id="ip-地址"><a href="#ip-地址" class="headerlink" title="ip 地址"></a>ip 地址</h4><p>作用：用来在网络中标记一台电脑，比如 192．168．1．1 在本地局域网上是唯一的。</p>
 <p>注意：IP 地址 127．0．0．1~127．255．255．255 用于回路测试</p>
@@ -441,13 +453,13 @@
 <figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">80 </span>端口分配给HTTP服务</span><br><span class="line"><span class="symbol">21 </span>端口分配给FTP服务</span><br></pre></td></tr></table></figure>
 <h5 id="动态端口"><a href="#动态端口" class="headerlink" title="动态端口"></a>动态端口</h5><p>范围是从1024到65535</p>
 <h5 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h5><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">netstat －an 查看端口状态</span><br><span class="line">lsof -<span class="selector-tag">i</span>:port 查看端口占用</span><br></pre></td></tr></table></figure>
-<h3 id="Python3-编码转换"><a href="#Python3-编码转换" class="headerlink" title="Python3 编码转换"></a>Python3 编码转换</h3><p>str-&gt;bytes:encode编码</p>
+<h3 id="四、Python3-编码转换"><a href="#四、Python3-编码转换" class="headerlink" title="四、Python3 编码转换"></a>四、Python3 编码转换</h3><p>str-&gt;bytes:encode编码</p>
 <p>bytes-&gt;str:decode解码</p>
 <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment"># encoding: 在解码编码过程中使用的编码(此处指“编码方案”是名词)</span></span><br><span class="line"><span class="comment"># errors: 错误的处理方案</span></span><br><span class="line">bytes.decode(<span class="attribute">encoding</span>=<span class="string">"utf-8"</span>, <span class="attribute">errors</span>=<span class="string">"strict"</span>)</span><br><span class="line">str.encode(<span class="attribute">encoding</span>=<span class="string">"utf-8"</span>, <span class="attribute">errors</span>=<span class="string">"strict"</span>)</span><br></pre></td></tr></table></figure>
 <p>详细的可以参照官方文档：</p>
 <p><a href="https://docs.python.org/3/library/stdtypes.html?highlight=decode#str.encode" target="_blank" rel="noopener">str.encode()</a></p>
 <p><a href="https://docs.python.org/3/library/stdtypes.html?highlight=decode#bytes.decode" target="_blank" rel="noopener">bytes.decode()</a></p>
-<h3 id="Socket-套接字"><a href="#Socket-套接字" class="headerlink" title="Socket 套接字"></a>Socket 套接字</h3><p><strong>socket(简称 套接字也成为插口–流对象)</strong> 是进程间通信的一种方式，它与其他进程间通信的一个主要不同是：</p>
+<h3 id="五、Socket-套接字"><a href="#五、Socket-套接字" class="headerlink" title="五、Socket 套接字"></a>五、Socket 套接字</h3><p><strong>socket(简称 套接字也成为插口–流对象)</strong> 是进程间通信的一种方式，它与其他进程间通信的一个主要不同是：</p>
 <p>它能实现不同主机间的进程间通信，我们网络上各种各样的服务大多都是基于 Socket 来完成通信的。</p>
 <p>例如我们每天浏览网页、QQ 聊天、收发 email 等等。</p>
 <h4 id="Socket-反问理解"><a href="#Socket-反问理解" class="headerlink" title="Socket 反问理解"></a>Socket 反问理解</h4><p>———start———</p>
@@ -460,7 +472,7 @@
 <p><strong>where 在哪使用</strong>？（案例、项目）</p>
 <p>网络程序发送、接收数据（发短信、打电话、广播）</p>
 <p>————end————</p>
-<h3 id="UDP-协议"><a href="#UDP-协议" class="headerlink" title="UDP 协议"></a>UDP 协议</h3><p>udp 是用户数据报协议，UDP (User Datagram Protocol) 不能保证数据的准确性和有效性。 (数据报:是通过网络传输的数据的基本单元)</p>
+<h3 id="六、UDP-协议"><a href="#六、UDP-协议" class="headerlink" title="六、UDP 协议"></a>六、UDP 协议</h3><p>udp 是用户数据报协议，UDP (User Datagram Protocol) 不能保证数据的准确性和有效性。 (数据报:是通过网络传输的数据的基本单元)</p>
 <p>udp 通信模型中，在通信开始之前，不需要建立相关的链接，只需要发送数据即可，类似于生活中，”写信/发短信”</p>
 <p>python 使用 udp 协议要通过 socket 技术:</p>
 <pre><code>使用步骤：1.引包 2.创建流对象(ipv4, udp) 3.发送(二进制字符串, 元组ip和端口) 4.关闭流对象
@@ -472,7 +484,7 @@
 <figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">import <span class="built_in">socket</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 1.创建套接字对象</span></span><br><span class="line">    udp_socket = <span class="built_in">socket</span>.<span class="built_in">socket</span>(<span class="built_in">socket</span>.AF_INET, <span class="built_in">socket</span>.SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 绑定本地的相关信息，如果一个网络程序不绑定，则系统会随机分配</span></span><br><span class="line">    local_addr = (<span class="string">''</span>, <span class="number">8888</span>) <span class="comment">#  ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span></span><br><span class="line">    udp_socket.bind(local_addr)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.数据接收( recvfrom() )</span></span><br><span class="line">    <span class="comment">#       参数: 最多一次性接收1024字节;</span></span><br><span class="line">    <span class="comment">#       返回值: 一个元组(二进制数据, ip及port组成的元组)</span></span><br><span class="line">    <span class="comment">#       recvfrom(): 可以阻塞代码!( 类似input() )</span></span><br><span class="line">    <span class="comment">#       发送和接收数据的时候,udp承受的最大上线为: 64k</span></span><br><span class="line">    str2, tuple2 = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    print(str2)</span><br><span class="line">    print(tuple2)</span><br><span class="line">    print(str2.decode(<span class="string">'utf-8'</span>))</span><br><span class="line">    <span class="comment"># print(str2.decode('gbk'))</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.关闭套接字</span></span><br><span class="line">    udp_socket.<span class="built_in">close</span>()</span><br></pre></td></tr></table></figure>
 <p>3.udp 聊天器</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">说明：在一个电脑中编写1个程序，有2个功能：</span></span><br><span class="line"><span class="string">    1.获取键盘数据，并将其发送给对方</span></span><br><span class="line"><span class="string">    2.接收数据并显示</span></span><br><span class="line"><span class="string">    并且功能数据进行选择以上的2个功能调用</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_msg</span><span class="params">(udp_socket)</span>:</span></span><br><span class="line">    <span class="string">"""获取键盘数据，并将其发送给对方"""</span></span><br><span class="line">    <span class="comment"># 1. 从键盘输入数据</span></span><br><span class="line">    msg = input(<span class="string">"\n请输入要发送的数据:"</span>)</span><br><span class="line">    <span class="comment"># 2. 输入对方的ip地址</span></span><br><span class="line">    dest_ip = input(<span class="string">"\n请输入对方的ip地址:"</span>)</span><br><span class="line">    <span class="comment"># 3. 输入对方的port</span></span><br><span class="line">    dest_port = int(input(<span class="string">"\n请输入对方的port:"</span>))</span><br><span class="line">    <span class="comment"># 4. 发送数据</span></span><br><span class="line">    udp_socket.sendto(msg.encode(<span class="string">"utf-8"</span>), (dest_ip, dest_port))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recv_msg</span><span class="params">(udp_socket)</span>:</span></span><br><span class="line">    <span class="string">"""接收数据并显示"""</span></span><br><span class="line">    <span class="comment"># 1. 接收数据</span></span><br><span class="line">    recv_msg = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    <span class="comment"># 2. 解码</span></span><br><span class="line">    recv_ip = recv_msg[<span class="number">1</span>]</span><br><span class="line">    recv_msg = recv_msg[<span class="number">0</span>].decode(<span class="string">"utf-8"</span>)</span><br><span class="line">    <span class="comment"># 3. 显示接收到的数据</span></span><br><span class="line">    print(<span class="string">"&gt;&gt;&gt;%s:%s"</span> % (str(recv_ip), recv_msg))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 1. 创建套接字</span></span><br><span class="line">    udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">    <span class="comment"># 2. 绑定本地信息</span></span><br><span class="line">    udp_socket.bind((<span class="string">""</span>, <span class="number">7890</span>))</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="comment"># 3. 选择功能</span></span><br><span class="line">        print(<span class="string">"="</span>*<span class="number">30</span>)</span><br><span class="line">        print(<span class="string">"1:发送消息"</span>)</span><br><span class="line">        print(<span class="string">"2:接收消息"</span>)</span><br><span class="line">        print(<span class="string">"="</span>*<span class="number">30</span>)</span><br><span class="line">        op_num = input(<span class="string">"请输入要操作的功能序号:"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4. 根据选择调用相应的函数</span></span><br><span class="line">        <span class="keyword">if</span> op_num == <span class="string">"1"</span>:</span><br><span class="line">            send_msg(udp_socket)</span><br><span class="line">        <span class="keyword">elif</span> op_num == <span class="string">"2"</span>:</span><br><span class="line">            recv_msg(udp_socket)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"输入有误，请重新输入..."</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h3 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="TCP 协议"></a>TCP 协议</h3><p>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由 IETF 的 RFC 793 定义。</p>
+<h3 id="七、TCP-协议"><a href="#七、TCP-协议" class="headerlink" title="七、TCP 协议"></a>七、TCP 协议</h3><p>TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由 IETF 的 RFC 793 定义。</p>
 <p>TCP通信需要经过 <strong>创建连接、数据传送、终止连接</strong> 三个步骤。</p>
 <p>TCP通信模型中，在通信开始之前，一定要先建立相关的链接，才能发送数据，类似于生活中，”打电话””</p>
 <h4 id="TCP-特点"><a href="#TCP-特点" class="headerlink" title="TCP 特点"></a>TCP 特点</h4><p><strong>1.面向连接</strong></p>
@@ -543,7 +555,7 @@
 <figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">from socket import *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建socket</span></span><br><span class="line">tcp_client_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目的信息</span></span><br><span class="line">server_ip = input(<span class="string">"请输入服务器ip:"</span>)</span><br><span class="line">server_port = int(input(<span class="string">"请输入服务器port:"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 链接服务器</span></span><br><span class="line">tcp_client_socket.connect((server_ip, server_port))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提示用户输入数据</span></span><br><span class="line">send_data = input(<span class="string">"请输入要发送的数据："</span>)</span><br><span class="line"></span><br><span class="line">tcp_client_socket.send(send_data.encode(<span class="string">"gbk"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收对方发送过来的数据，最大接收1024个字节</span></span><br><span class="line">recvData = tcp_client_socket.recv(1024)</span><br><span class="line"><span class="section">print('接收到的数据为:', recvData.decode('gbk'))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭套接字</span></span><br><span class="line">tcp_client_socket.close()</span><br></pre></td></tr></table></figure>
 <p>2.tcp 服务端</p>
 <figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">步骤：</span></span><br><span class="line"><span class="string">    1.socket创建一个套接字</span></span><br><span class="line"><span class="string">    2.bind绑定ip和port</span></span><br><span class="line"><span class="string">    3.listen使套接字变为可以被动链接</span></span><br><span class="line"><span class="string">    4.accept等待客户端的链接</span></span><br><span class="line"><span class="string">    5.recv/send接收发送数据</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line">from socket import *</span><br><span class="line"></span><br><span class="line"><span class="meta"># 创建socket</span></span><br><span class="line">tcp_server_socket = socket(AF_INET, SOCK_STREAM)</span><br><span class="line"></span><br><span class="line"><span class="meta"># 本地信息</span></span><br><span class="line">address = (<span class="string">''</span>, <span class="number">7788</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta"># 绑定</span></span><br><span class="line">tcp_server_socket.bind(address)</span><br><span class="line"></span><br><span class="line"><span class="meta"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span></span><br><span class="line">tcp_server_socket.listen(<span class="number">128</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务</span></span><br><span class="line"><span class="meta"># client_socket用来为这个客户端服务</span></span><br><span class="line"><span class="meta"># tcp_server_socket就可以省下来专门等待其他新客户端的链接</span></span><br><span class="line">client_socket, clientAddr = tcp_server_socket.accept()</span><br><span class="line"></span><br><span class="line"><span class="meta"># 接收对方发送过来的数据</span></span><br><span class="line">recv_data = client_socket.recv(<span class="number">1024</span>)  # 接收<span class="number">1024</span>个字节</span><br><span class="line">print(<span class="string">'接收到的数据为:'</span>, recv_data.decode(<span class="string">'gbk'</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta"># 发送一些数据到客户端</span></span><br><span class="line">client_socket.send(<span class="string">"thank you !"</span>.encode(<span class="string">'gbk'</span>))</span><br><span class="line"></span><br><span class="line"><span class="meta"># 关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</span></span><br><span class="line">client_socket.close()</span><br></pre></td></tr></table></figure>
-<h3 id="TCP-与-UDP-的不同点"><a href="#TCP-与-UDP-的不同点" class="headerlink" title="TCP 与 UDP 的不同点"></a>TCP 与 UDP 的不同点</h3><p><strong>TCP：</strong></p>
+<h3 id="八、TCP-与-UDP-的不同点"><a href="#八、TCP-与-UDP-的不同点" class="headerlink" title="八、TCP 与 UDP 的不同点"></a>八、TCP 与 UDP 的不同点</h3><p><strong>TCP：</strong></p>
 <ul>
 <li>面向连接（确认有创建三方交握，连接已创建才作传输。）</li>
 <li>有序数据传输</li>
@@ -586,7 +598,7 @@
   <p><span>本文标题:</span><a href="/2018/07/08/Python 网络通信-udp、tcp 与 socket/">Python 网络通信-udp、tcp 与 socket</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
   <p><span>发布时间:</span>2018年07月08日 - 00:07</p>
-  <p><span>最后更新:</span>2018年07月18日 - 10:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
   <p><span>原始链接:</span><a href="/2018/07/08/Python 网络通信-udp、tcp 与 socket/" title="Python 网络通信-udp、tcp 与 socket">http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/08/Python 网络通信-udp、tcp 与 socket/"  aria-label="复制成功！"></i></span>
   </p>
@@ -730,7 +742,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -741,7 +753,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -752,7 +764,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -836,7 +848,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-网络通信"><span class="nav-number">1.</span> <span class="nav-text">Python 网络通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#udp-和-tcp-及-socket-介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">udp 和 tcp 及 socket 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络七层协议-四-五层模型"><span class="nav-number">1.0.2.</span> <span class="nav-text">网络七层协议(四/五层模型)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-地址与端口"><span class="nav-number">1.0.3.</span> <span class="nav-text">IP 地址与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ip-地址"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">ip 地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#知名端口"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">知名端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态端口"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">动态端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看端口"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">查看端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python3-编码转换"><span class="nav-number">1.0.4.</span> <span class="nav-text">Python3 编码转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-套接字"><span class="nav-number">1.0.5.</span> <span class="nav-text">Socket 套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket-反问理解"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Socket 反问理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP-协议"><span class="nav-number">1.0.6.</span> <span class="nav-text">UDP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">TCP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-特点"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">TCP 特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-注意点"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">tcp 注意点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-三次握手和四次挥手"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">tcp 三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-三次握手图解"><span class="nav-number">1.0.7.3.1.</span> <span class="nav-text">tcp 三次握手图解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-四次挥手图解"><span class="nav-number">1.0.7.3.2.</span> <span class="nav-text">tcp 四次挥手图解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例-1"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-与-UDP-的不同点"><span class="nav-number">1.0.8.</span> <span class="nav-text">TCP 与 UDP 的不同点</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-网络通信"><span class="nav-number">1.</span> <span class="nav-text">Python 网络通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、UDP-和-TCP-及-socket-介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、UDP 和 TCP 及 socket 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、网络七层协议-四-五层模型"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、网络七层协议(四/五层模型)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、IP-地址与端口"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、IP 地址与端口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ip-地址"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">ip 地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">端口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#知名端口"><span class="nav-number">1.0.3.2.1.</span> <span class="nav-text">知名端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态端口"><span class="nav-number">1.0.3.2.2.</span> <span class="nav-text">动态端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看端口"><span class="nav-number">1.0.3.2.3.</span> <span class="nav-text">查看端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Python3-编码转换"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、Python3 编码转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、Socket-套接字"><span class="nav-number">1.0.5.</span> <span class="nav-text">五、Socket 套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Socket-反问理解"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Socket 反问理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、UDP-协议"><span class="nav-number">1.0.6.</span> <span class="nav-text">六、UDP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、TCP-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">七、TCP 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-特点"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">TCP 特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-注意点"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">tcp 注意点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tcp-三次握手和四次挥手"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">tcp 三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-三次握手图解"><span class="nav-number">1.0.7.3.1.</span> <span class="nav-text">tcp 三次握手图解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tcp-四次挥手图解"><span class="nav-number">1.0.7.3.2.</span> <span class="nav-text">tcp 四次挥手图解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例-1"><span class="nav-number">1.0.7.4.</span> <span class="nav-text">案例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、TCP-与-UDP-的不同点"><span class="nav-number">1.0.8.</span> <span class="nav-text">八、TCP 与 UDP 的不同点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -893,7 +905,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 20.8k 字</span>
+    <span class="post-count">博客全站共 33.3k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>

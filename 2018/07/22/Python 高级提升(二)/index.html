@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python,Python 高级," />
 
 
 
@@ -90,17 +90,18 @@
 
 
 
-<meta name="description" content="Python 老农民">
-<meta name="keywords" content="jovelin,博客,python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jovelin&#39;s Blog">
-<meta property="og:url" content="http://jovelin.cn/tags/exit方法/index.html">
+<meta name="description" content="前言：  可变参数的装包与拆包； 属性和方法； 魔法属性、方法； property 属性； with 与 上下文管理。">
+<meta name="keywords" content="Python,Python 高级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 高级提升(二)">
+<meta property="og:url" content="http://jovelin.cn/2018/07/22/Python 高级提升(二)/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="Python 老农民">
+<meta property="og:description" content="前言：  可变参数的装包与拆包； 属性和方法； 魔法属性、方法； property 属性； with 与 上下文管理。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-28T02:12:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jovelin&#39;s Blog">
-<meta name="twitter:description" content="Python 老农民">
+<meta name="twitter:title" content="Python 高级提升(二)">
+<meta name="twitter:description" content="前言：  可变参数的装包与拆包； 属性和方法； 魔法属性、方法； property 属性； with 与 上下文管理。">
 
 
 
@@ -130,12 +131,12 @@
 
 
 
-  <link rel="canonical" href="http://jovelin.cn/tags/exit方法/"/>
+  <link rel="canonical" href="http://jovelin.cn/2018/07/22/Python 高级提升(二)/"/>
 
 
 
 
-  <title>标签: exit方法 | Jovelin's Blog</title>
+  <title>Python 高级提升(二) | Jovelin's Blog</title>
   
 
 
@@ -154,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/jovelin"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
 
@@ -261,54 +262,278 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>exit方法<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/07/22/Python 高级提升(二)/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹永林">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jovelin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/15/Python 中 exit() 的用法/" itemprop="url">
-              
-                <span itemprop="name">Python 中 exit( ) 的用法</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python 高级提升(二)</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-15T00:22:31+08:00"
-              content="2018-07-15" >
-          07-15
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T09:00:01+08:00">
+                2018-07-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/22/Python 高级提升(二)/" class="leancloud_visitors" data-flag-title="Python 高级提升(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>°C</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,242
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>可变参数的装包与拆包；</li>
+<li>属性和方法；</li>
+<li>魔法属性、方法；</li>
+<li>property 属性；</li>
+<li>with 与 上下文管理。</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<h3 id="一、可变参数的装包与拆包"><a href="#一、可变参数的装包与拆包" class="headerlink" title="一、可变参数的装包与拆包"></a>一、可变参数的装包与拆包</h3><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 装包，针对的是形参中的 *<span class="keyword">args</span>、**kwargs</span><br><span class="line">    通过<span class="string">'*'</span>告诉 <span class="keyword">python</span> 解析器 把调用者传递过来的没有变量接收的未命名参数，装在 <span class="keyword">args</span> 这个元组中</span><br><span class="line">    通过<span class="string">'**'</span>告诉 <span class="keyword">python</span> 解析器 把调用者传递过来的命名参数，装在kwargs这个字典中</span><br><span class="line">    </span><br><span class="line"><span class="number">2</span>. 拆包，针对的是函数体中的 *<span class="keyword">args</span>、**kwargs</span><br><span class="line">    函数体里的 <span class="keyword">args</span> 依然是那个元组，但是 *<span class="keyword">args</span> 的含义就是把元组中的数据进行拆包，也就是把元组中的数据拆成单个数据</span><br><span class="line">    kwargs 同理可知</span><br></pre></td></tr></table></figure>
+<h3 id="二、属性和方法"><a href="#二、属性和方法" class="headerlink" title="二、属性和方法"></a>二、属性和方法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 类属性与实例属性</span><br><span class="line">    <span class="number">1.</span> 类属性存放在类对象的内存中，在内存中只保存一份</span><br><span class="line">    <span class="number">2.</span> 实例属性存放在实例对象的内存中，在每个实例对象中都单独保存一份</span><br><span class="line">    <span class="number">3.</span> 如果每个实例对象需要具有相同值的属性，那么就定义类属性</span><br><span class="line">	  </span><br><span class="line"><span class="number">2.</span> 静态方法，类方法，实例方法</span><br><span class="line">    <span class="number">1.</span> 方法定义： </span><br><span class="line"><span class="meta">	@staticmethod</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">static_fun</span><span class="params">()</span>:</span></span><br><span class="line">		<span class="string">"""静态方法"""</span></span><br><span class="line"></span><br><span class="line"><span class="meta">	@classmethod</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">class_fun</span><span class="params">(cls)</span>:</span>  </span><br><span class="line">		<span class="string">"""类方法"""</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">instance_fun</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="string">"""实例方法"""</span></span><br><span class="line"></span><br><span class="line">    <span class="number">2.</span> 对比</span><br><span class="line">    相同点：对于所有的方法而言，均属于类，所以在内存中也只保存一份</span><br><span class="line">	不同点：方法调用者不同、调用方法时自动传入的参数不同。</span><br></pre></td></tr></table></figure>
+<h3 id="三、魔法属性、方法"><a href="#三、魔法属性、方法" class="headerlink" title="三、魔法属性、方法"></a>三、魔法属性、方法</h3><figure class="highlight sqf"><table><tr><td class="code"><pre><span class="line">魔法属性和魔法方法是 Python 内置的一些属性和方法，代表着特殊意义，</span><br><span class="line">命名时会在前后加两个下划线，在执行特定操作时，系统会自动调用它</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. <span class="variable">__doc__</span></span><br><span class="line">	<span class="variable">__doc__</span>：表示类的描述信息</span><br><span class="line">	</span><br><span class="line"><span class="number">2</span>. <span class="variable">__module__</span>,<span class="variable">__class__</span></span><br><span class="line">    <span class="variable">__module__</span>：表示当前操作的对象或者类在哪个模块</span><br><span class="line">    <span class="variable">__class__</span>：表示当前操作的对象的类是什么</span><br><span class="line">   </span><br><span class="line"><span class="number">3</span>. <span class="variable">__dict__</span>,<span class="variable">__str__</span></span><br><span class="line">    <span class="variable">__dict__</span>：显示类或对象中的所有属性</span><br><span class="line">    <span class="variable">__str__</span>：如果类中重写了 <span class="variable">__str__</span> 方法，那么在打印对象时，输出该方法的返回值</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. <span class="variable">__init__</span>,<span class="variable">__del__</span></span><br><span class="line">    <span class="variable">__init__</span>：当类初始化对象时，自动执行该方法</span><br><span class="line">    <span class="variable">__del__</span>：当对象在内存中被销毁时，自动执行该方法</span><br><span class="line"></span><br><span class="line"><span class="number">5</span>. <span class="variable">__call__</span>  </span><br><span class="line">    <span class="variable">__call__</span>：对象后面加 ()，会自动执行该魔法方法</span><br><span class="line">    提示：必须在创建对象的类中添加 <span class="variable">__call__</span>() 方法，表示类的实例对象是能被 callable 调用的</span><br></pre></td></tr></table></figure>
+<h3 id="四、property-属性"><a href="#四、property-属性" class="headerlink" title="四、property 属性"></a>四、property 属性</h3><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="keyword">property</span><span class="title"> </span>属性初体验</span><br><span class="line">    一种用起来像是使用的实例属性一样的特殊属性，可以对应于某个方法，<span class="keyword">property</span><span class="title"> </span>属性本质还是方法</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">property</span><span class="title"> </span>属性的定义和调用注意点：</span><br><span class="line">    <span class="number">1</span>. 定义时，在实例方法的基础上添加 @<span class="keyword">property</span><span class="title"> </span>装饰器；并且方法仅有一个 self 参数</span><br><span class="line">    <span class="number">2</span>. 调用时，无需括号</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. <span class="keyword">property</span><span class="title"> </span>属性的好处</span><br><span class="line">	将一个属性的操作方法封装为一个属性，用户用起来就和操作普通属性完全一致,非常简单</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 通过装饰器的方式定义 <span class="keyword">property</span><span class="title"> </span>属性</span><br><span class="line">    <span class="number">1</span>. 使用装饰器方式定义 <span class="keyword">property</span><span class="title"> </span>属性</span><br><span class="line">    - @<span class="keyword">property</span><span class="title"></span></span><br><span class="line">        取得属性值，修饰的方法有且仅有一个 self 参数</span><br><span class="line">    - @方法名.setter</span><br><span class="line">        设置属性值，修饰的方法，只能传一个参数</span><br><span class="line">    - @方法名.deleter</span><br><span class="line">        删除属性，修饰的方法有且仅有一个 self 参数</span><br><span class="line">    </span><br><span class="line">    <span class="number">2</span>. 访问 <span class="keyword">property</span><span class="title"> </span>属性的三种方式</span><br><span class="line">    temp = obj.price  <span class="comment"># 获取 property 属性</span></span><br><span class="line">    obj.price = new_price  <span class="comment"># 修改 property 属性</span></span><br><span class="line">    del obj.price  <span class="comment"># 删除 property 属性(很少使用)</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. 通过类属性方式定义 <span class="keyword">property</span><span class="title"> </span>属性</span><br><span class="line">	price = <span class="keyword">property</span><span class="title"></span>(get_price, set_price, del_price, <span class="string">"描述信息"</span>)</span><br><span class="line">     第一个参数是方法名: 获取属性值</span><br><span class="line">     第二个参数是方法名: 设置属性值</span><br><span class="line">     第三个参数是方法名: 删除属性</span><br><span class="line">     第四个参数是字符串: 该属性的描述信息，通过类名.属性名.__doc__调用</span><br><span class="line">     </span><br><span class="line">    obj.price  <span class="comment"># 获取 property 属性值</span></span><br><span class="line">    obj.price = new_price  <span class="comment"># 设置 property 属性值</span></span><br><span class="line">    obj.del_price()  <span class="comment"># 删除 property 属性(很少使用)</span></span><br><span class="line">    Obj.price.__doc__调用  <span class="comment"># 通过类名.属性名.__doc__调用</span></span><br></pre></td></tr></table></figure>
+<h3 id="五、with-与-上下文管理"><a href="#五、with-与-上下文管理" class="headerlink" title="五、with 与 上下文管理"></a>五、with 与 上下文管理</h3><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">with</span> 使用：</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"/home/python/Desktop/hello.txt"</span>, <span class="string">'w'</span>) <span class="keyword">as</span> <span class="built_in">file</span>:</span><br><span class="line">        <span class="built_in">file</span>.<span class="built_in">write</span>(<span class="string">'hello with'</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 上下文管理器        </span><br><span class="line">    上下文：context，也称为上下文环境，好比教室环境</span><br><span class="line">       上文</span><br><span class="line">       正文：讲课，主业务</span><br><span class="line">       下文</span><br><span class="line"></span><br><span class="line">	上下文管理：</span><br><span class="line">	任何实现了 __enter__() 和 __exit__() 方法的对象</span><br><span class="line">	都可称之为上下文管理器，上下文管理器可以使用 <span class="keyword">with</span> 简化操作</span><br><span class="line">    	__enter__()：初始化资源对象，且返回资源对象</span><br><span class="line">    	__exit__()：业务执行完后，在该方法做善后、清理方面的工作</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 装饰器的方式</span><br><span class="line">	import contextlib</span><br><span class="line">	</span><br><span class="line">	@contextlib.contextmanager</span><br><span class="line">	def my_open(path, mode):</span><br><span class="line">		f = <span class="built_in">open</span>(path, mode)</span><br><span class="line">		yield f</span><br><span class="line">		f.<span class="built_in">close</span>()</span><br><span class="line"></span><br><span class="line">小结： <span class="keyword">with</span> 语法用于简化资源操作的后续清除操作，是 <span class="keyword">try</span>/<span class="keyword">finally</span> 的替代方法，实现原理建立在上下文管理器之上</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/07/22/Python 高级提升(二)/">Python 高级提升(二)</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
+  <p><span>发布时间:</span>2018年07月22日 - 09:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/22/Python 高级提升(二)/" title="Python 高级提升(二)">http://jovelin.cn/2018/07/22/Python 高级提升(二)/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/22/Python 高级提升(二)/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Python-高级/" rel="tag"><i class="fa fa-tag"></i> Python 高级</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/21/Python 高级提升(一)/" rel="next" title="Python 高级提升(一)">
+                <i class="fa fa-chevron-left"></i> Python 高级提升(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/24/Python 高级提升(三)/" rel="prev" title="Python 高级提升(三)">
+                Python 高级提升(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -316,6 +541,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -336,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -356,7 +594,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -367,7 +605,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -378,7 +616,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -453,6 +691,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、可变参数的装包与拆包"><span class="nav-number">1.</span> <span class="nav-text">一、可变参数的装包与拆包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、属性和方法"><span class="nav-number">2.</span> <span class="nav-text">二、属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、魔法属性、方法"><span class="nav-number">3.</span> <span class="nav-text">三、魔法属性、方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、property-属性"><span class="nav-number">4.</span> <span class="nav-text">四、property 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、with-与-上下文管理"><span class="nav-number">5.</span> <span class="nav-text">五、with 与 上下文管理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -503,7 +757,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 20.8k 字</span>
+    <span class="post-count">博客全站共 33.3k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
@@ -744,6 +998,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

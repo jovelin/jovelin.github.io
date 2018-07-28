@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="定义在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。 简而言之：正则表达式就是记录文本规则的代码。">
+<meta name="description" content="前言：  定义； 常用的元字符； 常用的限定符（量词）； 分组； 正则高级 API（4个）； r 的作用； 贪婪/非贪婪。">
 <meta name="keywords" content="Python,正则表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python 正则表达式">
 <meta property="og:url" content="http://jovelin.cn/2018/07/12/Python 正则表达式/index.html">
 <meta property="og:site_name" content="Jovelin&#39;s Blog">
-<meta property="og:description" content="定义在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。 简而言之：正则表达式就是记录文本规则的代码。">
+<meta property="og:description" content="前言：  定义； 常用的元字符； 常用的限定符（量词）； 分组； 正则高级 API（4个）； r 的作用； 贪婪/非贪婪。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-13T12:25:14.000Z">
+<meta property="og:updated_time" content="2018-07-28T02:36:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 正则表达式">
-<meta name="twitter:description" content="定义在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。 简而言之：正则表达式就是记录文本规则的代码。">
+<meta name="twitter:description" content="前言：  定义； 常用的元字符； 常用的限定符（量词）； 分组； 正则高级 API（4个）； r 的作用； 贪婪/非贪婪。">
 
 
 
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,654
+                  1,704
                 </span>
               
 
@@ -408,9 +408,22 @@
       
 
       
-        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。</p>
-<p><strong>简而言之：正则表达式就是记录文本规则的代码。</strong></p>
+        <blockquote>
+<p>前言：</p>
+<ol>
+<li>定义；</li>
+<li>常用的元字符；</li>
+<li>常用的限定符（量词）；</li>
+<li>分组；</li>
+<li>正则高级 API（4个）；</li>
+<li>r 的作用；</li>
+<li>贪婪/非贪婪。</li>
+</ol>
+</blockquote>
 <a id="more"></a>
+<h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。</p>
+<p><strong>简而言之：正则表达式就是记录文本规则的代码。</strong></p>
+<!-- more -->
 <p>特点: </p>
 <p>操作字符串</p>
 <p>1.更快的方式操作字符串；(表单校验，数据匹配…)</p>
@@ -420,7 +433,7 @@
 <p>2.api 里面也需要正则</p>
 <p><strong>正则表达式代码体验</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Python 解释器为我们提供了一个使用正则的模块，这个模块叫做re(regex)</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 1.match()：匹配 -&gt; object</span></span><br><span class="line">    <span class="comment"># group()：通过匹配后，可以使用group()获取内容</span></span><br><span class="line">    obj = re.match(<span class="string">r"jovelin"</span>, <span class="string">"jovelin"</span>)</span><br><span class="line">    print(obj.group())  <span class="comment"># -&gt; jovelin</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.如果被匹配的内容多余正则；(只返回开头匹配的部分)</span></span><br><span class="line">    obj = re.match(<span class="string">r"jovelin"</span>, <span class="string">"jovelin.cn"</span>)</span><br><span class="line">    print(obj.group())  <span class="comment"># -&gt; jovelin</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3.如果开头部分，没有匹配的内容； 那么返回None</span></span><br><span class="line">    obj = re.match(<span class="string">r"jovelin"</span>, <span class="string">"www.jovelin.cn"</span>)</span><br><span class="line">    print(obj)  <span class="comment"># -&gt; None</span></span><br><span class="line"></span><br><span class="line">    print(<span class="keyword">None</span>, type(<span class="keyword">None</span>))  <span class="comment"># -&gt; None &lt;class 'NoneType'&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="常用的元字符"><a href="#常用的元字符" class="headerlink" title="常用的元字符"></a>常用的元字符</h3><table>
+<h3 id="二、常用的元字符"><a href="#二、常用的元字符" class="headerlink" title="二、常用的元字符"></a>二、常用的元字符</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">语法</th>
@@ -464,7 +477,7 @@
 </table>
 <p><strong>代码演示：</strong></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># . 匹配任意1个字符（除了 \n）</span></span><br><span class="line">print(re.match(<span class="string">r'a.b'</span>, <span class="string">'a\nb'</span>))  <span class="comment"># -&gt; None</span></span><br><span class="line"><span class="comment">#  - 在 [] 里代表范围</span></span><br><span class="line">print(re.match(<span class="string">r'a[a-c]c'</span>, <span class="string">'abc'</span>).group())  <span class="comment"># -&gt; abc</span></span><br><span class="line"><span class="comment"># 在 [] 里面也想使用 - 那么需要 \ 转义</span></span><br><span class="line">print(re.match(<span class="string">r'a[a\-c]c'</span>, <span class="string">'a-c'</span>).group())  <span class="comment"># -&gt; a-c</span></span><br><span class="line"><span class="comment"># \b用法 与 ^ $ 相似，不过 \b 只匹配单词，\B 只匹配非单词</span></span><br><span class="line">print(re.match(<span class="string">r"\b\w+\b"</span>, <span class="string">"0_9_a_z_A_Z汉字"</span>).group())  <span class="comment"># -&gt; 0_9_a_z_A_Z</span></span><br><span class="line">print(re.match(<span class="string">r"\B\W+\B"</span>, <span class="string">"!@#$%^&amp;*"</span>).group())  <span class="comment"># -&gt; !@#$%^&amp;*</span></span><br><span class="line"><span class="comment"># ^	匹配字符串开头</span></span><br><span class="line"><span class="comment"># $	匹配字符串结尾</span></span><br><span class="line">print(re.match(<span class="string">r'[\w\W]*$'</span>, <span class="string">'0_9_a_z_A_Z汉字!@#$%^&amp;* \n\t'</span>).group())  <span class="comment"># -&gt; 0_9_a_z_A_Z汉字!@#$%^&amp;* </span></span><br><span class="line">	</span><br><span class="line"><span class="comment"># 注意: ^ 如果出现在 [] 中，代表的是取反!   (想要使用 ^,可以转义 \)</span></span><br><span class="line">print(re.match(<span class="string">r'^[\^]$'</span>, <span class="string">'^'</span>).group())  <span class="comment"># -&gt; ^</span></span><br><span class="line">print(re.match(<span class="string">r'^[^^]$'</span>, <span class="string">'^'</span>))  <span class="comment"># -&gt; None</span></span><br><span class="line">print(re.match(<span class="string">r'^[^47]$'</span>, <span class="string">'47'</span>))  <span class="comment"># -&gt; 47</span></span><br></pre></td></tr></table></figure>
-<h3 id="常用的限定符（量词）"><a href="#常用的限定符（量词）" class="headerlink" title="常用的限定符（量词）"></a>常用的限定符（量词）</h3><table>
+<h3 id="三、常用的限定符（量词）"><a href="#三、常用的限定符（量词）" class="headerlink" title="三、常用的限定符（量词）"></a>三、常用的限定符（量词）</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">语法</th>
@@ -513,7 +526,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMobileNumber</span><span class="params">(tel)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    校验手机号是否正确</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> re.match(<span class="string">r"^[1-][34578-]\d&#123;9&#125;$"</span>, tel) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(isMobileNumber(<span class="string">"18819950820"</span>))</span><br></pre></td></tr></table></figure>
 <p>2.校验邮箱</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">邮箱名称部分为： [a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)&#123;0,4&#125;</span></span><br><span class="line"><span class="string">域名部分： [a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+</span></span><br><span class="line"><span class="string">连起来 ^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)&#123;0,4&#125;@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)&#123;1,2&#125;$</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isEmail</span><span class="params">(email)</span>:</span></span><br><span class="line">    <span class="string">"""校验邮箱是否正确"""</span></span><br><span class="line">    <span class="keyword">if</span> re.match(<span class="string">r"^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)&#123;0,4&#125;@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)&#123;1,2&#125;$"</span>, email) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(isEmail(<span class="string">"jovelin@163.com"</span>))</span><br><span class="line">print(isEmail(<span class="string">"jovelin.dev@gmail.com"</span>))</span><br><span class="line">print(isEmail(<span class="string">"jovelin@163.com.cn"</span>))</span><br><span class="line">print(isEmail(<span class="string">"jovelin.dev@gmail.com.cn"</span>))</span><br></pre></td></tr></table></figure>
-<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了，你也可以对子表达式进行其它一些操作。</p>
+<h3 id="四、分组"><a href="#四、分组" class="headerlink" title="四、分组"></a>四、分组</h3><p>用小括号来指定子表达式(也叫做分组)，然后你就可以指定这个子表达式的重复次数了，你也可以对子表达式进行其它一些操作。</p>
 <table>
 <thead>
 <tr>
@@ -546,7 +559,7 @@
 </table>
 <p>代码演示：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># (abc) 将括号中字符作为一个分组</span></span><br><span class="line">print(re.match(<span class="string">r'(aaa)bbb(ccc)'</span>, <span class="string">'aaabbbccc'</span>).group())</span><br><span class="line"><span class="comment"># 一个括号就是一个分组； group()：参数代表分组的编号；写 0 或者不写时，获取全部；</span></span><br><span class="line">print(re.match(<span class="string">r'(aaa)bbb(ccc)'</span>, <span class="string">'aaabbbccc'</span>).group())</span><br><span class="line">print(re.match(<span class="string">r'(aaa)bbb(ccc)'</span>, <span class="string">'aaabbbccc'</span>).group(<span class="number">0</span>))</span><br><span class="line">print(re.match(<span class="string">r'(aaa)bbb(ccc)'</span>, <span class="string">'aaabbbccc'</span>).group(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 竖线 | 匹配左右任意一个表达式（和 [] 相似）</span></span><br><span class="line">print(re.match(<span class="string">r'aaa(xxx|yyy|zzz)bbb'</span>, <span class="string">'aaaxxxbbb'</span>).group())</span><br><span class="line"></span><br><span class="line"><span class="comment"># \num 引用分组 num 匹配到的字符串</span></span><br><span class="line"><span class="comment">#       前后保证一致，要使用到分组！</span></span><br><span class="line">print(re.match(<span class="string">r'^&lt;(\w+)&gt;\w+&lt;/\1&gt;$'</span>, <span class="string">'&lt;html&gt;nihao&lt;/html&gt;'</span>).group())</span><br><span class="line">print(re.match(<span class="string">r'^&lt;(\w+)&gt;&lt;(\w+)&gt;\w+&lt;/\2&gt;&lt;/\1&gt;$'</span>, <span class="string">'&lt;html&gt;&lt;div&gt;nihao&lt;/div&gt;&lt;/html&gt;'</span>).group())</span><br><span class="line"></span><br><span class="line"><span class="comment"># (?P&lt;name&gt;正则)  分组起别名</span></span><br><span class="line"><span class="comment"># (?P=name)	      引用别名为name分组匹配到的字符串</span></span><br><span class="line">print(re.match(<span class="string">r'^&lt;(?P&lt;re1&gt;\w+)&gt;&lt;(?P&lt;re2&gt;\w+)&gt;\w+&lt;/(?P=re2)&gt;&lt;/(?P=re1)&gt;$'</span>, <span class="string">'&lt;html&gt;&lt;div&gt;jovelin&lt;/div&gt;&lt;/html&gt;'</span>).group())</span><br></pre></td></tr></table></figure>
-<h3 id="正则高级-API（4个）"><a href="#正则高级-API（4个）" class="headerlink" title="正则高级 API（4个）"></a>正则高级 API（4个）</h3><table>
+<h3 id="五、正则高级-API（4个）"><a href="#五、正则高级-API（4个）" class="headerlink" title="五、正则高级 API（4个）"></a>五、正则高级 API（4个）</h3><table>
 <thead>
 <tr>
 <th style="text-align:center">语法</th>
@@ -574,9 +587,9 @@
 </table>
 <p>代码演示：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.search()</span></span><br><span class="line">print(re.search(<span class="string">r"\d+"</span>, <span class="string">"aaa111bbb222ccc333ddd"</span>).group())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.findall()</span></span><br><span class="line">print(re.findall(<span class="string">r"\d+"</span>, <span class="string">"aaa111bbb222ccc333ddd"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.sub()</span></span><br><span class="line">print(re.sub(<span class="string">r"\d+"</span>, <span class="string">"***"</span>, <span class="string">"aaa111bbb222ccc333ddd"</span>))</span><br><span class="line"><span class="comment"># sub(正则, 替换成***, 被操作的字符串, 替换次数)</span></span><br><span class="line">print(re.sub(<span class="string">r"\d+"</span>, <span class="string">"***"</span>, <span class="string">"aaa111bbb222ccc333ddd"</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.split()</span></span><br><span class="line">print(re.split(<span class="string">r"\d+"</span>, <span class="string">"aaa111bbb222ccc333ddd eee"</span>))</span><br><span class="line">print(re.split(<span class="string">r"\d+|\s"</span>, <span class="string">"aaa111bbb222ccc333ddd eee"</span>))</span><br></pre></td></tr></table></figure>
-<h3 id="r-的作用"><a href="#r-的作用" class="headerlink" title="r 的作用"></a>r 的作用</h3><p>让程序把正则直接当做正则看；(不是从字符串开始解释)</p>
+<h3 id="六、r-的作用"><a href="#六、r-的作用" class="headerlink" title="六、r 的作用"></a>六、r 的作用</h3><p>让程序把正则直接当做正则看；(不是从字符串开始解释)</p>
 <figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line"># c:<span class="symbol">\a</span>aa<span class="symbol">\b</span>bb<span class="symbol">\c</span>cc</span><br><span class="line">print('c:<span class="symbol">\a</span>aa<span class="symbol">\b</span>bb<span class="symbol">\c</span>cc')</span><br><span class="line">print('c:<span class="symbol">\\</span>aaa<span class="symbol">\\</span>bbb<span class="symbol">\\</span>ccc')</span><br><span class="line"></span><br><span class="line"># 问题：在字符串中写 <span class="symbol">\ </span>时会转义，需要写成 <span class="symbol">\\</span></span><br><span class="line"># 不写 r 时 <span class="symbol">\\</span><span class="symbol">\\</span> -&gt; <span class="symbol">\\</span></span><br><span class="line">print(re.match('c:<span class="symbol">\\</span><span class="symbol">\\</span>aaa<span class="symbol">\\</span><span class="symbol">\\</span>bbb<span class="symbol">\\</span><span class="symbol">\\</span>ccc', 'c:<span class="symbol">\\</span>aaa<span class="symbol">\\</span>bbb<span class="symbol">\\</span>ccc').group())</span><br><span class="line"># 写 r 时 <span class="symbol">\\</span> -&gt; <span class="symbol">\\</span></span><br><span class="line">print(re.match(r'c:<span class="symbol">\\</span>aaa<span class="symbol">\\</span>bbb<span class="symbol">\\</span>ccc', 'c:<span class="symbol">\\</span>aaa<span class="symbol">\\</span>bbb<span class="symbol">\\</span>ccc').group())</span><br></pre></td></tr></table></figure>
-<h3 id="贪婪-非贪婪"><a href="#贪婪-非贪婪" class="headerlink" title="贪婪/非贪婪"></a>贪婪/非贪婪</h3><p>贪婪：(量词在自己的范围内，取最多…)</p>
+<h3 id="七、贪婪-非贪婪"><a href="#七、贪婪-非贪婪" class="headerlink" title="七、贪婪/非贪婪"></a>七、贪婪/非贪婪</h3><p>贪婪：(量词在自己的范围内，取最多…)</p>
 <p>非贪婪：(量词在自己的范围内，取最少… ) </p>
 <p>非贪婪用法：量词后面加?</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">'贪婪'</span>, re.match(<span class="string">r'a+'</span>, <span class="string">'aaa'</span>).group())  <span class="comment"># -&gt; aaa</span></span><br><span class="line"><span class="comment"># 量词后面加?</span></span><br><span class="line">print(<span class="string">'非贪婪'</span>, re.match(<span class="string">r'a+?'</span>, <span class="string">'aaa'</span>).group())  <span class="comment"># -&gt; a</span></span><br><span class="line">print(<span class="string">'贪婪'</span>, re.match(<span class="string">r'a&#123;1,2&#125;'</span>, <span class="string">'aaa'</span>).group())  <span class="comment"># -&gt; aa</span></span><br><span class="line"><span class="comment"># 量词后面加?</span></span><br><span class="line">print(<span class="string">'非贪婪'</span>, re.match(<span class="string">r'a&#123;1,3&#125;?'</span>, <span class="string">'aaa'</span>).group())  <span class="comment"># -&gt; a</span></span><br></pre></td></tr></table></figure>
@@ -613,7 +626,7 @@
   <p><span>本文标题:</span><a href="/2018/07/12/Python 正则表达式/">Python 正则表达式</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
   <p><span>发布时间:</span>2018年07月12日 - 15:07</p>
-  <p><span>最后更新:</span>2018年07月13日 - 20:07</p>
+  <p><span>最后更新:</span>2018年07月28日 - 10:07</p>
   <p><span>原始链接:</span><a href="/2018/07/12/Python 正则表达式/" title="Python 正则表达式">http://jovelin.cn/2018/07/12/Python 正则表达式/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/07/12/Python 正则表达式/"  aria-label="复制成功！"></i></span>
   </p>
@@ -670,8 +683,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/15/Python 中 exit() 的用法/" rel="prev" title="Python 中 exit( ) 的用法">
-                Python 中 exit( ) 的用法 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/15/Python 中 exit() 的用法/" rel="prev" title="Python 中 exit() 的用法">
+                Python 中 exit() 的用法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -753,7 +766,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +777,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -775,7 +788,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -859,7 +872,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的元字符"><span class="nav-number">2.</span> <span class="nav-text">常用的元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的限定符（量词）"><span class="nav-number">3.</span> <span class="nav-text">常用的限定符（量词）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组"><span class="nav-number">4.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则高级-API（4个）"><span class="nav-number">5.</span> <span class="nav-text">正则高级 API（4个）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r-的作用"><span class="nav-number">6.</span> <span class="nav-text">r 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪-非贪婪"><span class="nav-number">7.</span> <span class="nav-text">贪婪/非贪婪</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、定义"><span class="nav-number">1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、常用的元字符"><span class="nav-number">2.</span> <span class="nav-text">二、常用的元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、常用的限定符（量词）"><span class="nav-number">3.</span> <span class="nav-text">三、常用的限定符（量词）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、分组"><span class="nav-number">4.</span> <span class="nav-text">四、分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、正则高级-API（4个）"><span class="nav-number">5.</span> <span class="nav-text">五、正则高级 API（4个）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、r-的作用"><span class="nav-number">6.</span> <span class="nav-text">六、r 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、贪婪-非贪婪"><span class="nav-number">7.</span> <span class="nav-text">七、贪婪/非贪婪</span></a></li></ol></div>
             
 
           </div>
@@ -916,7 +929,7 @@
 
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共 20.8k 字</span>
+    <span class="post-count">博客全站共 33.3k 字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
