@@ -1090,7 +1090,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: #fff;
+  background: transparent;
 }
 .header-inner {
   position: relative;
@@ -1987,7 +1987,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffc64a;
+  background: #9a135b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3081,11 +3081,19 @@ hr {
   height: 100%;
 }
 .header {
+  color: #000;
+/*background: transparent ;*/
   background: transparent;
+}
+.header a {
+  color: #000;
 }
 .site-meta {
   color: #000;
-  background: #fff;
+  background: transparent;
+}
+.sidebar {
+  background: url("http://om8u46rmb.bkt.clouddn.com/sildeBarBg.jpg") no-repeat !important;
 }
 code {
   color: #ff7600;
@@ -3111,15 +3119,14 @@ pre {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 body {
-  background: url("/images/R9OueKOtGGU.jpg");
+  background: url("https://source.unsplash.com/FIKD9t5_5zQ/1600x900");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
 }
 .main-inner {
   margin-top: 60px;
-  padding: 60px 60px 60px 60px;
+  padding: 30px 25px 0px 25px;
   background: #fff;
-  opacity: 0.85;
-  min-height: 500px;
+  opacity: 0.82;
 }
