@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<!--<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">-->
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+
+
+  <meta name="keywords" content="Python,Flask," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jovelin's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="目录[TOC]">
+<meta name="keywords" content="Python,Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视图及路由">
+<meta property="og:url" content="http://jovelin.cn/2018/08/15/视图及路由/index.html">
+<meta property="og:site_name" content="Jovelin&#39;s Blog">
+<meta property="og:description" content="目录[TOC]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-d7c1e7dfb5b1f5f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-028163c4fa6e3a89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-615a21c89932a594.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-888dd5cc93379a5f.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3365001-cf3e0853e7217c4e.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-08-27T15:11:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="视图及路由">
+<meta name="twitter:description" content="目录[TOC]">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/3365001-d7c1e7dfb5b1f5f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jovelin.cn/2018/08/15/视图及路由/"/>
+
+
+
+
+  <title>视图及路由 | Jovelin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/jovelin"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+    <!--<a href="https://github.com/jovelin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jovelin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Python The old farmer</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jovelin.cn/2018/08/15/视图及路由/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="曹永林">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jovelin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">视图及路由</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-15T09:00:01+08:00">
+                2018-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/Flask/" itemprop="url" rel="index">
+                    <span itemprop="name">Flask</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/15/视图及路由/" class="leancloud_visitors" data-flag-title="视图及路由">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>°C</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,847
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>[TOC]</p>
+<a id="more"></a>
+<h3 id="HTTP-通信过程与框架"><a href="#HTTP-通信过程与框架" class="headerlink" title="HTTP 通信过程与框架"></a>HTTP 通信过程与框架</h3><p>web 开发各个节点关系图<br><img src="https://upload-images.jianshu.io/upload_images/3365001-d7c1e7dfb5b1f5f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="web 开发各个节点关系.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-028163c4fa6e3a89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="web 应用程序请求过程"></p>
+<h3 id="虚拟环境安装"><a href="#虚拟环境安装" class="headerlink" title="虚拟环境安装"></a>虚拟环境安装</h3><blockquote>
+<p>详细笔记：<a href="http://note.youdao.com/noteshare?id=4f38a254471d5e04b31403b2f11df30b" target="_blank" rel="noopener">虚拟环境笔记</a></p>
+</blockquote>
+<h3 id="第一个-Flask-实例"><a href="#第一个-Flask-实例" class="headerlink" title="第一个 Flask 实例"></a>第一个 Flask 实例</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">app</span> 的创建</span><br><span class="line">	<span class="keyword">app</span> = Flask(__name__)</span><br><span class="line">	__name__该xx.py文件就是项目目录，到时候回去这个目录下去找静态文件目录，模板文件目录</span><br><span class="line">	</span><br><span class="line">视图函数和 url 绑定</span><br><span class="line">	装饰器的形式:@<span class="keyword">app</span>.route('请求的 URL')</span><br><span class="line"></span><br><span class="line">如何启动项目</span><br><span class="line">	<span class="keyword">app</span>.<span class="keyword">run</span>(host=xxx, port=8888)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">app：项目的应用对象</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">__name__ 取值：</span></span><br><span class="line"><span class="string">    1. python demo1_helloworld.py 方式运行   ————&gt;   __name__ == __main__</span></span><br><span class="line"><span class="string">    2. import demo1_helloworld 模块导入方式运行   ————&gt;   __name__ == demo1_helloworld</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">__name__ 作用：</span></span><br><span class="line"><span class="string">    demo1_helloworld.py 文件所在的目录就是 flask 项目目录，</span></span><br><span class="line"><span class="string">    进而会在这个项目的目录文件夹下寻找 static 静态文件目录和模板文件目录</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">app = Flask(</span><br><span class="line">    __name__,</span><br><span class="line">    static_path=<span class="string">"/static"</span>,  <span class="comment"># 访问静态文件的 url 的前缀(过期)</span></span><br><span class="line">    static_url_path=<span class="string">"/static"</span>,  <span class="comment"># 访问静态文件的 url 的前缀</span></span><br><span class="line">    static_folder=<span class="string">"static"</span>,  <span class="comment"># 保存静态文件的目录文件夹路径</span></span><br><span class="line">    template_folder=<span class="string">"templates"</span>  <span class="comment"># 保存模板文件的目录文件夹路径</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">视图函数和 url 绑定</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 装饰器的作用是将路由映射到视图函数</span></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/  --&gt;  index 视图函数</span></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 127.0.0.1:5000/demo1  ————&gt;  demo1 视图函数</span></span><br><span class="line"><span class="meta">@app.route('/demo1')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo1'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/user/jovelin  ————&gt;  demo2 视图函数</span></span><br><span class="line"><span class="comment"># &lt;变量&gt; 转换器的形式提取 URL 路径后面的参数</span></span><br><span class="line"><span class="meta">@app.route('/user/&lt;user_id&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo2</span><span class="params">(user_id)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo2 user_id = %s'</span> % user_id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/user/1001  ————&gt;  demo3 视图函数</span></span><br><span class="line"><span class="comment"># &lt;int:变量&gt; 转换器的形式提取 URL 路径后面整形类的参数 int ——&gt; IntegerConverter</span></span><br><span class="line"><span class="meta">@app.route('/user/&lt;int:user_id&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo3</span><span class="params">(user_id)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo3 user_id = %d'</span> % user_id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过设置 methods 列表属性的方式修改的视图函数的请求方式，OPTIONS(自带)、HEAD(自带)</span></span><br><span class="line"><span class="meta">@app.route('/demo4', methods=['GET', 'POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo4</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo4'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">启动项目</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># url_map：将装饰器路由和视图的对应关系保存起来</span></span><br><span class="line">    <span class="comment"># Map([&lt;Rule '/' (OPTIONS, HEAD, GET) -&gt; index&gt;, &lt;Rule '/static/&lt;filename&gt;' (OPTIONS, HEAD, GET) -&gt; static&gt;])</span></span><br><span class="line">    print(app.url_map)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 端口占用问题：</span></span><br><span class="line">    <span class="comment"># 1. lsof -i:5000(端口)</span></span><br><span class="line">    <span class="comment"># 2. kill pid(杀掉对应pid)</span></span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="给-Flask-项目添加配置"><a href="#给-Flask-项目添加配置" class="headerlink" title="给 Flask 项目添加配置"></a>给 Flask 项目添加配置</h3><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line"># 第一种方式：从对象类中加载 flask 配置信息（推荐）</span><br><span class="line"><span class="keyword">class</span> Config(object):</span><br><span class="line">    # flask 项目配置类，通过属性的方式罗列配置信息即可</span><br><span class="line">    DEBUG = <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">app.config.from_object(Config)</span><br><span class="line"></span><br><span class="line"># 第二种方式：可以从 py 文件中加载 flask 配置</span><br><span class="line"># app.config.from_pyfile(<span class="string">"config.ini"</span>)</span><br><span class="line"></span><br><span class="line"># 第三种方式：可以从环境变量中加载 flask 配置</span><br><span class="line"># path：RUN -&gt; Edit Config... -&gt; Environment variables -&gt; ... -&gt; +</span><br><span class="line"># app.config.from_envvar(<span class="string">"flask_config"</span>)</span><br><span class="line"></span><br><span class="line"># 常见的配置属性，也会在 app 中封装一份（以便我们使用）</span><br><span class="line">app.debug = <span class="literal">True</span></span><br><span class="line"># app.secret_key</span><br><span class="line">app.config[<span class="string">"DEBUG"</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 获取 flask 配置的属性值</span><br><span class="line">print(app.config[<span class="string">"DEBUG"</span>])</span><br><span class="line"># app.config.get(<span class="string">"DEBUG"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="json-数据格式"><a href="#json-数据格式" class="headerlink" title="json 数据格式"></a>json 数据格式</h3><figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">jsonify</span>（<span class="selector-tag">flask</span> 模块，推荐使用）</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">jsonify</span>(dict)</span><br><span class="line">	    能够将 <span class="selector-tag">dict</span> 转换成 <span class="selector-tag">json</span> 字符串，还能指明返回数据类型：<span class="selector-tag">contentType</span>: <span class="selector-tag">application</span>/<span class="selector-tag">json</span>，</span><br><span class="line">	    并将返回的内容组织成 <span class="selector-tag">response</span> 对象，注意：在视图函数中使用</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">json</span>（<span class="selector-tag">python</span> 自带模块）</span><br><span class="line"></span><br><span class="line">	<span class="selector-tag">json</span><span class="selector-class">.dumps</span>(dict)</span><br><span class="line">	    字典转成 <span class="selector-tag">json</span> 字符串</span><br><span class="line">	    </span><br><span class="line">	<span class="selector-tag">json</span><span class="selector-class">.loads</span>(json_str)</span><br><span class="line">		<span class="selector-tag">json</span> 字符串转成字典</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/demo1')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 1. 定义一个字典</span></span><br><span class="line">    dict1 = &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"james"</span>,</span><br><span class="line">        <span class="string">"age"</span>: <span class="number">34</span>,</span><br><span class="line">        <span class="string">"info"</span>: &#123;</span><br><span class="line">            <span class="string">"team"</span>: <span class="string">"laker"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 将 python 字典对象转换成 json 字符串</span></span><br><span class="line">    my_json = json.dumps(dict1)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 将 json 字符串转化成 python 字典对象</span></span><br><span class="line">    my_dict = json.loads(my_json)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4. jsonify 的作用</span></span><br><span class="line">    <span class="comment"># 4.1 可以将字典转成 json 字符串</span></span><br><span class="line">    <span class="comment"># 4.2 指定返回字符串的数据类型：contentType: application/json</span></span><br><span class="line">    <span class="comment"># 4.3 并将返回的内容组织成 response 对象</span></span><br><span class="line">    json_str = jsonify(dict1)</span><br><span class="line">    <span class="keyword">return</span> json_str</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>, debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="重定向、自定义状态码"><a href="#重定向、自定义状态码" class="headerlink" title="重定向、自定义状态码"></a>重定向、自定义状态码</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">from flask import Flask, redirect, url_for</span><br><span class="line"></span><br><span class="line">app = Flask(__name_<span class="number">_</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/demo1'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo1</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># 重定向到指定网站</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">'http://jovelin.cn'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/demo2'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo2</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># 重定向到自己的路径</span></span><br><span class="line">    <span class="comment"># url_for(函数名称) 返回：根据函数名称将该视图函数对应的 URL 返回</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/demo3'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo3</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="comment"># 自定义状态码</span></span><br><span class="line">    <span class="comment"># return 'demo3', 666</span></span><br><span class="line">    <span class="comment"># 自定义状态码并声明状态码类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo3'</span>, <span class="string">'666 six six six'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">'__main__'</span><span class="symbol">:</span></span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>, debug=True)</span><br></pre></td></tr></table></figure>
+<h3 id="正则匹配路由（转换器）"><a href="#正则匹配路由（转换器）" class="headerlink" title="正则匹配路由（转换器）"></a>正则匹配路由（转换器）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 普通转换器&lt;参数类型:参数&gt;  </span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 自定义转换器（能够理解）</span><br><span class="line">	<span class="number">1.</span>创建自定义类</span><br><span class="line">		<span class="class"><span class="keyword">class</span> <span class="title">RegxConverter</span><span class="params">(BaseConverter)</span>:</span>  </span><br><span class="line">    		<span class="string">"""自定义正则匹配类"""</span></span><br><span class="line">    		<span class="comment"># regex = "[0-9]&#123;6&#125;"</span></span><br><span class="line"></span><br><span class="line">    		<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url_map, re)</span>:</span></span><br><span class="line">        		super(RegxConverter, self).__init__(url_map)</span><br><span class="line">        		<span class="comment"># 接受外界传入的正则表达式，进行赋值</span></span><br><span class="line">        		self.regex = re</span><br><span class="line"></span><br><span class="line">	<span class="number">2.</span>将自定义的正则类关联到 url_map</span><br><span class="line">		app.url_map.converters[<span class="string">"re"</span>] = RegxConverter</span><br><span class="line">		</span><br><span class="line">	<span class="number">3.</span>使用</span><br><span class="line">		<span class="string">'&lt;re("[0-9]&#123;6&#125;"):user_id&gt;'</span></span><br><span class="line">		</span><br><span class="line">    to_python（了解）</span><br><span class="line">    	re正则匹配成功后的值会传入to_python，可以拦截处理，最终返回</span><br><span class="line">    	</span><br><span class="line">    to_url（了解） </span><br><span class="line">    	调用url_for函数，会将参数传入到to_url最终构建一个完整的url返回</span><br></pre></td></tr></table></figure>
+<p>to_python() 图解</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-615a21c89932a594.gif?imageMogr2/auto-orient/strip" alt="to_python.gif"></p>
+<p>to_url() 图解</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3365001-888dd5cc93379a5f.gif?imageMogr2/auto-orient/strip" alt="tu_url.gif"><br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">from flask import Flask, url_for</span><br><span class="line">from werkzeug.routing import BaseConverter</span><br><span class="line"></span><br><span class="line">app = Flask(__name_<span class="number">_</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 自定义正则配置类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegexConverter</span>(<span class="title">BaseConverter</span>):</span></span><br><span class="line">    <span class="comment"># 将正则规则赋值给 regex，BaseConverter 就会自动帮你去完成正则配置</span></span><br><span class="line">    <span class="comment"># regex = '[0-9]&#123;6&#125;'</span></span><br><span class="line">    <span class="comment"># BaseConverter 这个类帮我们去传入了一个属性 map ：路由映射</span></span><br><span class="line">    <span class="comment"># 我们只需要负责传入 re 正则字符串即可</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, map, re)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">super</span>(RegexConverter, <span class="keyword">self</span>).__init_<span class="number">_</span>(map)</span><br><span class="line">        <span class="keyword">self</span>.regex = re</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_python</span><span class="params">(<span class="keyword">self</span>, value)</span></span><span class="symbol">:</span></span><br><span class="line">        print(<span class="string">'拦截 to_python value = %s'</span> % value)</span><br><span class="line">        <span class="comment"># 可以拦截自己处理，但是一般不这么做</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_url</span><span class="params">(<span class="keyword">self</span>, value)</span></span><span class="symbol">:</span></span><br><span class="line">        print(<span class="string">'拦截 to_url value = %s'</span> % value)</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 注册</span></span><br><span class="line"><span class="comment"># &#123; re : RegexConverter &#125;</span></span><br><span class="line">app.url_map.converters[<span class="string">'re'</span>] = RegexConverter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/user/123456  --&gt; [0-9]&#123;6&#125;</span></span><br><span class="line"><span class="comment"># <span class="doctag">@app</span>.route('/user/&lt;re:user_id&gt;')</span></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/user/1234    --&gt; [0-9]&#123;4&#125;</span></span><br><span class="line"><span class="comment"># 3. 使用 &lt;re(正则字符串):变量名&gt;</span></span><br><span class="line">@app.route(<span class="string">'/user/&lt;re("[0-9]&#123;4&#125;"):user_id&gt;'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user</span><span class="params">(user_id)</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'user user_id = %s'</span> % user_id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># to_url 拦截</span></span><br><span class="line">@app.route(<span class="string">'/redirect_user'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">redirect_user</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'&lt;a href="%s"&gt;redirect_user&lt;/a&gt;'</span> % url_for(<span class="string">'user'</span>, user_id=<span class="string">'1001'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(<span class="string">'/'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">'__main__'</span><span class="symbol">:</span></span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>, debug=True)</span><br></pre></td></tr></table></figure></p>
+<h3 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, abort, redirect</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""HTTP 异常主动抛出"""</span></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 主动产生异常的函数</span></span><br><span class="line">    <span class="comment"># 参数：必须是 HTTP 的错误状态码</span></span><br><span class="line">    abort(<span class="number">404</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/zero')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zero</span><span class="params">()</span>:</span></span><br><span class="line">    a = <span class="number">1</span> / <span class="number">0</span></span><br><span class="line">    redirect(<span class="string">'zero'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""捕获错误"""</span></span><br><span class="line"><span class="meta">@app.errorhandler(404)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">error_handler</span><span class="params">(e)</span>:</span></span><br><span class="line">    print(e)</span><br><span class="line">    <span class="comment"># 当捕获到 404 异常后，重定向到 404 错误页面</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">'http://jovelin.cn/404.html'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 捕获指定异常</span></span><br><span class="line"><span class="meta">@app.errorhandler(ZeroDivisionError)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">error_handler1</span><span class="params">(e)</span>:</span></span><br><span class="line">    print(e)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"不能除0"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>, debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="请求钩子"><a href="#请求钩子" class="headerlink" title="请求钩子"></a>请求钩子</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在客户端和服务器交互的过程中，有些准备工作或扫尾工作需要处理，比如：</span><br><span class="line"></span><br><span class="line">    在请求开始时，建立数据库连接；</span><br><span class="line">    在请求开始时，根据需求进行权限校验；</span><br><span class="line">    在请求结束时，指定数据的交互格式；</span><br><span class="line">    </span><br><span class="line">为了让每个视图函数避免编写重复功能的代码，Flask 提供了通用设施的功能，即请求钩子。</span><br><span class="line"></span><br><span class="line">请求钩子是通过装饰器的形式实现，Flask 支持如下四种请求钩子：</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 在第一次请求之前调用，可以在此方法内部做一些初始化操作</span></span><br><span class="line"><span class="string"># 应用场景：数据库的第一次连接</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@app.before_first_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before_first_request</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'before_first_request'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 在每一次请求之前调用，这时候已经有请求了，可能在这个方法里面做请求的校验</span></span><br><span class="line"><span class="string"># 如果请求的校验不成功，可以直接在此方法中进行响应，直接 return 之后那么就不会执行视图函数</span></span><br><span class="line"><span class="string"># 应用场景：封 ip 处理、过滤处理</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@app.before_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">before_request</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'before_request'</span>)</span><br><span class="line">    <span class="comment"># 黑名单的 ip</span></span><br><span class="line">    ips = []</span><br><span class="line">    <span class="keyword">if</span> request.remote_addr <span class="keyword">in</span> ips:</span><br><span class="line">        <span class="comment"># 假装封 ip 处理</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 在执行完视图函数之后会调用，并且会把视图函数所生成的响应传入，可以在此方法中对响应做最后一步统一的处理</span></span><br><span class="line"><span class="string"># 应用场景：拿到响应对象，进行统一处理</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@app.after_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">after_request</span><span class="params">(response)</span>:</span></span><br><span class="line">    print(<span class="string">"after_request"</span>)</span><br><span class="line">    response.headers[<span class="string">"Content-Type"</span>] = <span class="string">"application/json"</span></span><br><span class="line">    <span class="comment"># 设置 cookie</span></span><br><span class="line">    <span class="comment"># response.set_cookie()</span></span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 请每一次请求之后都会调用，会接受一个参数，参数是服务器出现的错误信息</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@app.teardown_request</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">teardown_request</span><span class="params">(e)</span>:</span></span><br><span class="line">    print(<span class="string">"teardown_request"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'index'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(<span class="string">'0.0.0.0'</span>, <span class="number">5000</span>, debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="装饰器路由具体实现"><a href="#装饰器路由具体实现" class="headerlink" title="装饰器路由具体实现"></a>装饰器路由具体实现</h3><p><img src="https://upload-images.jianshu.io/upload_images/3365001-cf3e0853e7217c4e.gif?imageMogr2/auto-orient/strip" alt="Flask路由实现代码结构.gif"></p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">1. Flask 有两大核心：Werkzeug 和 Jinja2</span><br><span class="line"></span><br><span class="line">    - Werkzeug 实现路由、调试和 Web 服务器网关接口</span><br><span class="line">    - Jinja2 实现了模板。</span><br><span class="line"></span><br><span class="line">2. Werkzeug 是一个遵循 WSGI 协议的 python 函数库</span><br><span class="line"></span><br><span class="line">    - 其内部实现了很多 Web 框架底层的东西，比如 request 和 response 对象；</span><br><span class="line">    - 与 WSGI 规范的兼容；支持 Unicode；</span><br><span class="line">    - 支持基本的会话管理和签名 Cookie；</span><br><span class="line">    - 集成 URL 请求路由等。</span><br><span class="line">    </span><br><span class="line">3. Werkzeug 库的<span class="built_in"> routing </span>模块负责实现 URL 解析。</span><br><span class="line">    不同的 URL 对应不同的视图函数，routing 模块会对请求信息的 URL 进行解析，</span><br><span class="line">    匹配到 URL 对应的视图函数，执行该函数以此生成一个响应信息。</span><br><span class="line"></span><br><span class="line">   <span class="built_in"> routing </span>模块内部有：</span><br><span class="line">    </span><br><span class="line">    Rule类：用来构造不同的URL模式的对象，路由URL规则</span><br><span class="line">    Map类：存储所有的URL规则和一些配置参数</span><br><span class="line">    BaseConverter的子类：负责定义匹配规则</span><br><span class="line">    MapAdapter类：负责协调Rule做具体的匹配的工作</span><br></pre></td></tr></table></figure>
+<h3 id="request-属性"><a href="#request-属性" class="headerlink" title="request 属性"></a>request 属性</h3><figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">request</span> 就是 flask 中代表当前请求的 <span class="built_in">request</span> 对象，其中一个请求上下文变量</span><br><span class="line">(理解成全局变量，在视图函数中直接使用可以取到当前本次请求)</span><br><span class="line"></span><br><span class="line">常用的属性如下：</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>记录请求的数据，并转换为字符串</td>
+<td>*</td>
+</tr>
+<tr>
+<td>form</td>
+<td>记录请求中的表单数据</td>
+<td>MultiDict</td>
+</tr>
+<tr>
+<td>args</td>
+<td>记录请求中的查询参数</td>
+<td>MultiDict</td>
+</tr>
+<tr>
+<td>cookies</td>
+<td>记录请求中的 cookie 信息</td>
+<td>Dict</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>记录请求中的报文头</td>
+<td>EnvironHeaders</td>
+</tr>
+<tr>
+<td>method</td>
+<td>记录请求使用的 HTTP 方法</td>
+<td>GET/POST</td>
+</tr>
+<tr>
+<td>url</td>
+<td>记录请求的 URL 地址</td>
+<td>string</td>
+</tr>
+<tr>
+<td>files</td>
+<td>记录请求上传的文件</td>
+<td>*</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request</span><br><span class="line"></span><br><span class="line"><span class="comment"># get 请求：通过携带参数的方式去获取服务器的资源（参数作用：告知服务器我要获取什么类型的数据）</span></span><br><span class="line"><span class="comment"># get 请求的参数是放到问号后面，使用 &amp; 符号进行拼接</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># post 请求：将客户端的数据发送给服务器，在服务器新建数据（保存到服务器）</span></span><br><span class="line"><span class="comment"># post 请求的参数是放到请求体里面</span></span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/get?name=curry&amp;age=18</span></span><br><span class="line"><span class="comment"># get 问号后面的参数：request.args 属性</span></span><br><span class="line"><span class="meta">@app.route('/get')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""使用 request.args 属性提取 get 请求携带的参数"""</span></span><br><span class="line">    <span class="comment"># request.method 获取请求方式，返回的值是大写格式</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</span><br><span class="line">        <span class="comment"># 格式：request.args.get("key", "")</span></span><br><span class="line">        name = request.args.get(<span class="string">"name"</span>, <span class="string">""</span>)</span><br><span class="line">        age = request.args.get(<span class="string">"age"</span>, <span class="string">""</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"%s ---- %s"</span> % (name, age)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"请求方式不是 get 405"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/post</span></span><br><span class="line"><span class="comment"># post 请求体数据：request.form 属性</span></span><br><span class="line"><span class="meta">@app.route('/post', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""通过 request.form 属性提取 post 请求体（表单）里面的数据"""</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        <span class="comment"># 格式：request.form.get(key, "")</span></span><br><span class="line">        name = request.form.get(<span class="string">"name"</span>, <span class="string">""</span>)</span><br><span class="line">        age = request.form.get(<span class="string">"age"</span>, <span class="string">""</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"%s ---- %s"</span> % (name, age)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"请求方式不是 post 405"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 127.0.0.1:5000/upload</span></span><br><span class="line"><span class="comment"># 文件数据：request.files 属性提取</span></span><br><span class="line"><span class="meta">@app.route('/upload', methods=["post"])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""使用 request.files 属性 接受上传的图片"""</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        <span class="comment"># 1.接受图片数据</span></span><br><span class="line">        pic = request.files.get(<span class="string">"pic"</span>)</span><br><span class="line">        <span class="comment"># 2.保存图片数据 (保存到本地 并修改其名字为: 1.png)</span></span><br><span class="line">        pic.save(<span class="string">"./1.png"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'upload success'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"请求方式不是post 405"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(debug=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="状态保持-cookie-session"><a href="#状态保持-cookie-session" class="headerlink" title="状态保持 cookie/session"></a>状态保持 cookie/session</h3><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">因为 <span class="keyword">http</span> 是一种无状态协议，浏览器请求服务器是无状态的。</span><br><span class="line"></span><br><span class="line">无状态：指一次用户请求时，浏览器、服务器无法知道之前这个用户做过什么，每次请求都是一次新的请求。</span><br><span class="line"></span><br><span class="line">无状态原因：浏览器与服务器是使用 <span class="built_in">socket</span> 套接字进行通信的，服务器将请求结果返回给浏览器之后，会关闭当前的 <span class="built_in">socket</span> 连接，而且服务器也会在处理页面完毕之后销毁页面对象。</span><br><span class="line"></span><br><span class="line">有时需要保持下来用户浏览的状态，比如用户是否登录过，浏览过哪些商品等</span><br><span class="line"></span><br><span class="line">实现状态保持主要有两种方式：</span><br><span class="line"></span><br><span class="line">    在客户端存储信息使用Cookie</span><br><span class="line">    </span><br><span class="line">    在服务器端存储信息使用Session</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. cookie</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span>. cookie 是由服务器端生成，发送给客户端浏览器，浏览器会将 cookie 的 key/value 保存，</span><br><span class="line">        下次请求同一网站时就发送该 cookie 给服务器（前提是浏览器设置为启用 cookie）。</span><br><span class="line">    </span><br><span class="line">    <span class="number">2</span>. cookie 基于域名安全，不同域名的 cookie 是不能互相访问的</span><br><span class="line">        - 如访问 jovelin.cn 时向浏览器中写了 cookie 信息，使用同一浏览器访问 baidu.com 时，无法访问到 jovelin.cn 写的 cookie 信息</span><br><span class="line">        - 浏览器的同源策略</span><br><span class="line">        </span><br><span class="line">    <span class="number">3</span>. 设置 cookie</span><br><span class="line">    </span><br><span class="line">        from flask imoprt Flask,make_response</span><br><span class="line">        @app.route(<span class="string">'/cookie'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">set_cookie</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">            resp = make_response(<span class="string">'this is to set cookie'</span>)</span><br><span class="line">            resp.set_cookie(<span class="string">'userid'</span>, <span class="string">'1001'</span>)</span><br><span class="line">            <span class="comment"># 设置过期时间</span></span><br><span class="line">            response.set_cookie(<span class="string">'username'</span>, <span class="string">'jovelin'</span>, max_age=<span class="number">3600</span>)</span><br><span class="line">            <span class="keyword">return</span> resp</span><br><span class="line">            </span><br><span class="line">    <span class="number">4</span>. 获取cookie</span><br><span class="line">    </span><br><span class="line">        from flask import Flask,request</span><br><span class="line">        <span class="comment"># 获取cookie</span></span><br><span class="line">        @app.route(<span class="string">'/request'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">resp_cookie</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">            resp = request.cookies.get(<span class="string">'username'</span>)</span><br><span class="line">            <span class="keyword">return</span> resp</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. session</span><br><span class="line"></span><br><span class="line">    <span class="symbol">session:</span> 请求上下文对象，用于处理 http 请求中的一些数据内容</span><br><span class="line"></span><br><span class="line">    <span class="number">1</span>. 对于敏感、重要的信息，建议要存储在服务器端，不能存储在浏览器中，如用户名、余额、等级、验证码等信息</span><br><span class="line">    </span><br><span class="line">    <span class="number">2</span>. 在服务器端进行状态保持的方案就是 session</span><br><span class="line">    </span><br><span class="line">    <span class="number">3</span>. session 依赖于 cookie</span><br><span class="line"></span><br><span class="line">    <span class="number">4</span>. session 数据的获取</span><br><span class="line">    </span><br><span class="line">        from flask import Flask, session</span><br><span class="line">    </span><br><span class="line">        <span class="comment"># SECRET_KEY 加密字符串：flask 拿到这个混淆字符串和 session 里面的数据一起加密</span></span><br><span class="line">        <span class="comment"># app.secret_key = "SECRET_KEY 随机字符串"</span></span><br><span class="line">        app.config[<span class="string">"SECRET_KEY"</span>] = <span class="string">"SECRET_KEY"</span></span><br><span class="line"></span><br><span class="line">        @app.route(<span class="string">'/login'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">            <span class="comment"># 存储数据到 session</span></span><br><span class="line">            session[<span class="string">'username'</span>] = <span class="string">'jovelin'</span></span><br><span class="line">            <span class="keyword">return</span> redirect(url_for(<span class="string">'index'</span>))</span><br><span class="line">            </span><br><span class="line">        @app.route(<span class="string">'/'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">            <span class="comment"># 提取 session 里面的键值对数据</span></span><br><span class="line">            username = session.get(<span class="string">'username'</span>, <span class="string">''</span>)</span><br><span class="line">            <span class="keyword">return</span> username</span><br><span class="line">            </span><br><span class="line">        @app.route(<span class="string">'/login_out'</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">login_out</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">            <span class="comment"># 删除 session 里面的键值对数据</span></span><br><span class="line">            session.pop(<span class="string">"username"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"loginout success"</span></span><br></pre></td></tr></table></figure>
+<h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">上下文：相当于一个容器，保存了 Flask 程序运行过程中的一些信息。</span><br><span class="line"></span><br><span class="line">Flask 中有两种上下文，请求上下文和应用上下文。</span><br><span class="line"></span><br><span class="line">    <span class="number">1.</span> 请求上下文(request context)</span><br><span class="line">    </span><br><span class="line">        <span class="number">1.</span> request</span><br><span class="line">            封装了 HTTP 请求的内容，针对的是 http 请求。</span><br><span class="line">            </span><br><span class="line">        <span class="number">2.</span> session</span><br><span class="line">            用来记录请求会话中的信息，针对的是用户信息。</span><br><span class="line">        </span><br><span class="line">    <span class="number">2.</span> 应用上下文(application context)</span><br><span class="line">    </span><br><span class="line">        <span class="number">1.</span> current_app(app 的别名)</span><br><span class="line">            应用程序上下文，用于存储应用程序中的变量</span><br><span class="line">            </span><br><span class="line">        <span class="number">2.</span> g（本次请求的 临时全局变量）</span><br><span class="line">            注意：不同的请求，会有不同的全局变量</span><br><span class="line">        </span><br><span class="line">    <span class="number">3.</span> 两者区别：</span><br><span class="line">        请求上下文：保存了客户端和服务器交互的数据</span><br><span class="line">        应用上下文：flask 应用程序运行过程中，保存的一些配置信息，比如程序名、数据库连接、应用信息等</span><br></pre></td></tr></table></figure>
+<h3 id="Flask-Script-扩展"><a href="#Flask-Script-扩展" class="headerlink" title="Flask-Script 扩展"></a>Flask-Script 扩展</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">通过使用 Flask-Script 扩展，我们可以在 Flask 服务器启动的时候，通过命令行的方式传入参数。</span><br><span class="line">而不仅仅通过 app.run() 方法中传参。</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 安装 Flask-Script 扩展：pip install flask-script</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 查看参数：python3 manager.py runserver --help</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 运行命令：python3 manager.py runserver -h 地址 -p 端口</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 代码实现</span><br><span class="line"></span><br><span class="line">	<span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">	<span class="comment"># 1.导入管理类</span></span><br><span class="line">    <span class="keyword">from</span> flask_script <span class="keyword">import</span> Manager</span><br><span class="line">    </span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 2.创建管理类</span></span><br><span class="line">    manager = Manager(app)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="meta">    @app.route('/')</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">        <span class="comment"># app.run(debug=True)</span></span><br><span class="line">        <span class="comment"># 3.使用管理类运行 flask 项目：manager.run()</span></span><br><span class="line">        manager.run()</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> 命令行运行</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查看脚本运行需要携带那些参数</span></span><br><span class="line">    python3 manager.py runserver --help</span><br><span class="line">    <span class="comment"># python3 项目名称 runserver -h ip地址 -p 端口号 -d 开启 debug 模式</span></span><br><span class="line">    python3 manager.py runserver -h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> -p <span class="number">8888</span> -d</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/15/视图及路由/">视图及路由</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 曹永林 的个人博客">曹永林</a></p>
+  <p><span>发布时间:</span>2018年08月15日 - 09:08</p>
+  <p><span>最后更新:</span>2018年08月27日 - 23:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/15/视图及路由/" title="视图及路由">http://jovelin.cn/2018/08/15/视图及路由/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://jovelin.cn/2018/08/15/视图及路由/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/Flask/" rel="tag"><i class="fa fa-tag"></i> Flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/10/ES6 语法/" rel="next" title="ES6 语法">
+                <i class="fa fa-chevron-left"></i> ES6 语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="曹永林" />
+            
+              <p class="site-author-name" itemprop="name">曹永林</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jovelin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://coding.net/u/jovelin" target="_blank" title="Coding">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>Coding</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/149c3a6ceb25" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gitbook.cn/" title="GitChat" target="_blank">GitChat</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/" title="CSDN" target="_blank">CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://segmentfault.com/" title="SegmentFault" target="_blank">SegmentFault</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.the5fire.com/" title="the5fire" target="_blank">the5fire</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cuiqingcai.com/" title="崔庆才" target="_blank">崔庆才</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-通信过程与框架"><span class="nav-number">1.0.1.</span> <span class="nav-text">HTTP 通信过程与框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟环境安装"><span class="nav-number">1.0.2.</span> <span class="nav-text">虚拟环境安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个-Flask-实例"><span class="nav-number">1.0.3.</span> <span class="nav-text">第一个 Flask 实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给-Flask-项目添加配置"><span class="nav-number">1.0.4.</span> <span class="nav-text">给 Flask 项目添加配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json-数据格式"><span class="nav-number">1.0.5.</span> <span class="nav-text">json 数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向、自定义状态码"><span class="nav-number">1.0.6.</span> <span class="nav-text">重定向、自定义状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则匹配路由（转换器）"><span class="nav-number">1.0.7.</span> <span class="nav-text">正则匹配路由（转换器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常捕获"><span class="nav-number">1.0.8.</span> <span class="nav-text">异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求钩子"><span class="nav-number">1.0.9.</span> <span class="nav-text">请求钩子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器路由具体实现"><span class="nav-number">1.0.10.</span> <span class="nav-text">装饰器路由具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#request-属性"><span class="nav-number">1.0.11.</span> <span class="nav-text">request 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态保持-cookie-session"><span class="nav-number">1.0.12.</span> <span class="nav-text">状态保持 cookie/session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文"><span class="nav-number">1.0.13.</span> <span class="nav-text">上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flask-Script-扩展"><span class="nav-number">1.0.14.</span> <span class="nav-text">Flask-Script 扩展</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+
+    <!--<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=461525011&auto=0&height=66"></iframe>
+    </div>-->
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+    <!--<i class="fa fa-user"></i>-->
+  </span>
+  <span class="author" itemprop="copyrightHolder">曹永林</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i>
+    <span id="busuanzi_container_site_uv">
+      访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="powered-by">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_site_pv">
+      访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count">博客全站共 52.5k 字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <div class="powered-by"></div>
+    <span class="post-count"><p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p></span>
+  </div>
+
+  <!--<div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>-->
+
+
+<!--
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+
+ <script>
+   'use strict';
+   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+   function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+   var Circle = function () {
+      function Circle(x, y) {
+           _classCallCheck(this, Circle);
+           this.x = x;
+           this.y = y;
+           this.r = Math.random() * 10;
+           this._mx = Math.random();
+           this._my = Math.random();
+       }
+      _createClass(Circle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //arc() 方法使用一个中心点和半径，为一个画布的当前子路径添加一条弧。
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               ctx.fillStyle = 'rgba(204, 204, 204, 0.3)';
+               ctx.fill();
+           }
+       }, {
+           key: 'drawLine',
+           value: function drawLine(ctx, _circle) {
+               var dx = this.x - _circle.x;
+               var dy = this.y - _circle.y;
+               var d = Math.sqrt(dx * dx + dy * dy);
+               if (d < 150) {
+                   ctx.beginPath();
+                   ctx.moveTo(this.x, this.y); //起始点
+                   ctx.lineTo(_circle.x, _circle.y); //终点
+                   ctx.closePath();
+                   ctx.strokeStyle = 'rgba(204, 204, 204, 0.3)';
+                   ctx.stroke();
+               }
+           }
+       }, {
+           key: 'move',
+           value: function move(w, h) {
+               this._mx = this.x < w && this.x > 0 ? this._mx : -this._mx;
+               this._my = this.y < h && this.y > 0 ? this._my : -this._my;
+               this.x += this._mx / 2;
+               this.y += this._my / 2;
+           }
+       }]);
+       return Circle;
+   }();
+   var currentCirle = function (_Circle) {
+       _inherits(currentCirle, _Circle);
+       function currentCirle(x, y) {
+           _classCallCheck(this, currentCirle);
+           return _possibleConstructorReturn(this, (currentCirle.__proto__ || Object.getPrototypeOf(currentCirle)).call(this, x, y));
+       }
+       _createClass(currentCirle, [{
+           key: 'drawCircle',
+           value: function drawCircle(ctx) {
+               ctx.beginPath();
+               //this.r = (this.r < 14 && this.r > 1) ? this.r + (Math.random() * 2 - 1) : 2;
+               this.r = 8;
+               ctx.arc(this.x, this.y, this.r, 0, 360);
+               ctx.closePath();
+               //ctx.fillStyle = 'rgba(0,0,0,' + (parseInt(Math.random() * 100) / 100) + ')'
+               ctx.fillStyle = 'rgba(255, 77, 54, 0.6)';
+               ctx.fill();
+           }
+       }]);
+       return currentCirle;
+   }(Circle);
+   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+   var canvas = document.getElementById('canvas');
+   var ctx = canvas.getContext('2d');
+   var w = canvas.width = canvas.offsetWidth;
+   var h = canvas.height = canvas.offsetHeight;
+   var circles = [];
+   var current_circle = new currentCirle(0, 0);
+   var draw = function draw() {
+       ctx.clearRect(0, 0, w, h);
+       for (var i = 0; i < circles.length; i++) {
+           circles[i].move(w, h);
+           circles[i].drawCircle(ctx);
+           for (j = i + 1; j < circles.length; j++) {
+               circles[i].drawLine(ctx, circles[j]);
+           }
+       }
+       if (current_circle.x) {
+           current_circle.drawCircle(ctx);
+           for (var k = 1; k < circles.length; k++) {
+               current_circle.drawLine(ctx, circles[k]);
+           }
+       }
+       requestAnimationFrame(draw);
+   };
+   var init = function init(num) {
+       for (var i = 0; i < num; i++) {
+           circles.push(new Circle(Math.random() * w, Math.random() * h));
+       }
+       draw();
+   };
+   window.addEventListener('load', init(60));
+   window.onmousemove = function (e) {
+       e = e || window.event;
+       current_circle.x = e.clientX;
+       current_circle.y = e.clientY;
+   };
+   window.onmouseout = function () {
+       current_circle.x = null;
+       current_circle.y = null;
+   };
+</script>
+
+  <div class="bg_content">
+      <canvas id="canvas"></canvas>
+ </div>
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("jWsEzfDgfPMwFR8Ipxk79oxQ-gzGzoHsz", "9QB1iOu3CLMOW0BW40BAxL3N");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+</body>
+</html>
